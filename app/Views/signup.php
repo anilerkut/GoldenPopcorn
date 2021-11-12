@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Film Sitesi Adı | Signup</title>
+    <title>GoldenPopcorn | Signup</title>
     <link rel="stylesheet" href="signup.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
                     </span><br>
                     <span>
                         <i class="fas fa-envelope"></i>  <!--icon from fontawesome !-->
-                        <input type="email" name="mail" placeholder="Enter Your Mail">
+                        <input type="email" name="mail" placeholder="Enter Your Mail" value="<?= set_value('email') ?>">
                     </span><br>
                     <span>
                         <input id=birthdateInput type="date" name="birthdate" placeholder="Date of Birth" max="2015-12-31" min="1950-01-01">
@@ -55,7 +55,7 @@
                         </select>
                     </span><br>
                     <button>Sign Up</button><br>
-                    <a href="login.php">Already have an account?</a><br>
+                    <a href="/login">Already have an account?</a><br>
                 </form>  
             </div>
     </div>
