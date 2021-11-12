@@ -1,0 +1,140 @@
+body
+{
+    font-family: sans-serif;
+    background-image:url(https://r.resimlink.com/DboZ.jpeg) ;
+    overflow: hidden;
+    background-repeat: no-repeat;
+   
+}
+
+.container
+{
+    width:580px;
+    height: 600px;
+    margin:5% auto;
+    margin-right: 150px;
+    padding-bottom: 65px;
+    margin-top: -45px;
+    border-radius: 50px;
+    background-color: #A2CBD1;
+    box-shadow: 0 0 5px rgb(82, 81, 81);
+}
+
+.header
+{
+    text-align: center;
+    padding-top: 25px;
+}
+
+.header h2
+{
+    color: #1D3557;
+    font-size: 55px;
+    margin-bottom: 35px;
+    font-family: 'Amaranth', sans-serif;
+}
+
+.title
+{
+    color: #F1FAEE;
+    margin-top: -40px;
+    font-size: 30px;
+    padding-left: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.main
+{
+    text-align: center;
+}
+
+.main input
+{
+    width: 320px;
+    height: 50px;
+    border:none;
+    outline: none;
+    padding-left: 40px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: rgb(219, 219, 219);
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+.main button
+{
+    width: 270px;
+    height: 50px;
+    border:none;
+    outline: none;
+    font-size: 15px;
+    color: #F1FAEE;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding-left: 0;
+    background-color:#C8323D;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.main span
+{
+    position: relative;
+}
+.main i
+{
+    position: absolute;
+    left: 15px;
+    color: #333;
+    font-size: 16px;
+    top: 2px;
+}
+
+ .main button:hover
+ {
+     box-shadow: 2px 2px 5px #555;
+     background-color:#1D3557 ;
+ }
+.main input:hover
+{
+    box-shadow: 2px 2px 5px #555;
+    background-color:white;
+    border-radius: 15px;
+}
+.main a
+{
+   display: block ;
+   margin-bottom: -10px;
+   text-decoration: none;
+   color:#1D3557 ;
+font-weight: bold;
+}
+
+#birthdateInput
+{
+    color:#4b4a4a;
+    width: 160px;
+    padding-left:5px;   
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
+    margin-right: 15px;
+}
+
+#gender
+{
+    width: 160px;
+    height: 50px;
+    padding-left: 40px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #4b4a4a;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
