@@ -54,6 +54,8 @@ class User extends BaseController
                 $session = session();
                 $session->setFlashdata('success','Succesful Registiration');
                 
+
+                
             }
         }
         echo view('signup',$data);
