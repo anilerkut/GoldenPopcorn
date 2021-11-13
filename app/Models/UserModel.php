@@ -20,14 +20,14 @@ class UserModel extends Model
     
     protected $validationRules=  //buraya da istediğimiz formatta olsun diye kural giriyoruz.
     [
-        'user_firstname' => 'required|alpha_space|min_length[2]';
-        'user_lastname' => 'required|alpha_space|min_length[2]';
-        'user_email' => 'required|valid_email|is_unique[user.user_email]';
-        'user_password' => 'required|min_length[4]|max_length[30]';
-        'user_gender'  => 'required';
-        'user_age'  => 'required';
+        'user_firstname' => 'required|alpha_space|min_length[2]',
+        'user_lastname' => 'required|alpha_space|min_length[2]',
+        'user_email' => 'required|valid_email|is_unique[user.user_email]',
+        'user_password' => 'required|min_length[4]|max_length[30]',
+        'user_gender'  => 'required',
+        'user_age'  => 'required',
+    ];
 
-    ];  
     protected $validationMessages=  //kurallara uygun olmayan işlem mesajı
     [ 
         'user_firstname' => 
@@ -66,11 +66,9 @@ class UserModel extends Model
         'user_age' => 
         [
             'required' => "Age is required",  
-        ];
-    ]; 
+        ],
+    ];
+
     protected $skipValidation=false;    //Validasyonları atla , önemseme
-
-
-
 
 }
