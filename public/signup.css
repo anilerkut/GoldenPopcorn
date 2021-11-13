@@ -57,7 +57,7 @@ body
     padding-left: 40px;
     box-sizing: border-box;
     font-size: 15px;
-    color: rgb(219, 219, 219);
+    color: rgb(26, 26, 26);
     margin-bottom: 20px;
     border-radius: 15px;
 }
@@ -115,6 +115,18 @@ font-weight: bold;
     color:#4b4a4a;
     width: 160px;
     padding-left:5px;   
+}
+
+#firstname
+{
+    color:#4b4a4a;
+    width: 160px;
+}
+
+#lastname
+{
+    color:#4b4a4a;
+    width: 160px;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {

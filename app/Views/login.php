@@ -22,7 +22,7 @@
                 <h2>Login</h2>
             </div>
             <div class="main">
-                <form>
+                <form action="login.php" method="post">
                     <!--Take username and password from user !-->
                     <span>
                         <i class="fas fa-user"></i>  <!--icon from fontawesome !-->

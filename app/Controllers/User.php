@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Controllers\BaseController;
+use App\Models\UserModel;
 
 class User extends BaseController
 {
@@ -18,6 +19,41 @@ class User extends BaseController
         $data=[];
         helper(['form']);
         echo view('signup',$data);
+
+        if($this ->request->getMethod()=='post')
+        {
+            $rules=
+            [
+                'user_firstname' => 'required|alpha_space|min_length[2]',
+                'user_lastname' => 'required|alpha_space|min_length[2]',
+                'user_email' => 'required|valid_email|is_unique[user.user_email]',
+                'user_password' => 'required|min_length[4]|max_length[30]',
+                'confirmpassword'  => 'matches[user_password]',
+                'user_gender'  => 'required',
+                'user_birthdate'  => 'required'     
+            ];
+
+            if(! $this->validate($rules))
+            {          
+                $data['validation']= $this->validator;
+            }
+            else
+            {
+                $user = new UserModel();
+
+                $data = [
+                    'user_firstname'     => $this->request->getVar('user_firstname'),
+                    'user_lastname'    => $this->request->getVar('user_lastname'),
+                    'user_password' => password_hash($this->request->getVar('user_password'), PASSWORD_DEFAULT),
+                    'user_email'     => $this->request->getVar('user_email'),
+                    'user_gender'    => $this->request->getVar('user_gender'),
+                    'user_birthdate'    => $this->request->getVar('user_birthdate')
+                ];
+
+                $user->save($data);
+            }
+        }
+
 
     }
 
