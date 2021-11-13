@@ -18,7 +18,7 @@ class User extends BaseController
     {
         $data=[];
         helper(['form']);
-        echo view('signup',$data);
+        
 
         if($this->request->getPost())
         {
@@ -56,5 +56,6 @@ class User extends BaseController
                 
             }
         }
+        echo view('signup',$data);
     }
 }
