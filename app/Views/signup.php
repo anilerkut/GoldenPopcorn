@@ -23,14 +23,9 @@
             <div class="header">
                 <h2>Sign Up</h2>
             </div>
-            <?php if(isset($validation)):?>
-                <div class="alert alert-warning">
-                   <?= $validation->listErrors() ?>
-                </div>
-            <?php endif;?>
             <div class="main">
                  <!--Take user information for recording!-->
-                <form method="post">
+                <form action="signup.php" method="post">
                     <span>
                         <i class="fas fa-user"></i>   <!--icon from fontawesome !-->
                         <input type="text" id="firstname" name="user_firstname" placeholder="First Name">
@@ -63,6 +58,11 @@
                             </optgroup>
                         </select>
                     </span><br>
+                    <?php if(isset($validation)):?>
+                     <div class="alert alert-warning">
+                         <?= $validation->listErrors() ?>
+                     </div>
+                     <?php endif;?>
                     <button type="submit">Sign Up</button><br>
                     <a href="/login">Already have an account?</a><br>
                 </form>  
