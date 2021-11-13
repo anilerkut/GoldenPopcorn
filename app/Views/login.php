@@ -21,6 +21,11 @@
             <div class="header">
                 <h2>Login</h2>
             </div>
+            <?php if(session()->get('success')):?>
+                <div class="alert alert-success alert" role="alert">
+                   <?= session()->get('success') ?>
+                </div>
+            <?php endif;?>
             <div class="main">
                 <form action="login.php" method="post">
                     <!--Take username and password from user !-->

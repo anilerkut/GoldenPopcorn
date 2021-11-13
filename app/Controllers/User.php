@@ -18,9 +18,9 @@ class User extends BaseController
     {
         $data=[];
         helper(['form']);
-        echo view('signup',$data);
+        
 
-        if($this ->request->getMethod()=='post')
+        if($this->request->getPost())
         {
             $rules=
             [
@@ -41,24 +41,21 @@ class User extends BaseController
             {
                 $user = new UserModel();
 
-                $data = [
+                $newdata = [
                     'user_firstname'     => $this->request->getVar('user_firstname'),
                     'user_lastname'    => $this->request->getVar('user_lastname'),
-                    'user_password' => password_hash($this->request->getVar('user_password'), PASSWORD_DEFAULT),
+                    'user_password' => $this->request->getVar('user_password'),
                     'user_email'     => $this->request->getVar('user_email'),
                     'user_gender'    => $this->request->getVar('user_gender'),
                     'user_birthdate'    => $this->request->getVar('user_birthdate')
                 ];
 
-                $user->save($data);
+                $user->save($newdata);
+                $session = session();
+                $session->setFlashdata('success','Succesful Registiration');
+                
             }
         }
-
-
-        
-
+        echo view('signup',$data);
     }
-
-
-
 }
