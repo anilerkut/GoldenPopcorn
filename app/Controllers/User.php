@@ -53,9 +53,9 @@ class User extends BaseController
                 $user->save($newdata);
                 $session = session();
                 $session->setFlashdata('success','Succesful Registiration');
-                
+                return redirect()->to('/login');
 
-                
+
             }
         }
         echo view('signup',$data);
