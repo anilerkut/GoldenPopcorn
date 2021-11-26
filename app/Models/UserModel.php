@@ -41,8 +41,7 @@ class UserModel extends Model
         return $data;
     }
     
-    //buraya da istediğimiz formatta olsun diye kural giriyoruz.  
-   /* protected $validationMessages=  //kurallara uygun olmayan işlem mesajı
+
     [ 
         'user_firstname' => 
         [
@@ -79,9 +78,7 @@ class UserModel extends Model
         ];
     ]; 
     */
-   
 
-
-
+    protected $skipValidation=false;    //Validasyonları atla , önemseme
 
 }
