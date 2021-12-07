@@ -10,11 +10,57 @@ class User extends BaseController
     {
         $data=[];
         helper(['form']);
+
+        if($this->request->getPost())
+        {
+            $rules=
+            [ 
+                'user_email' => 'required|valid_email',
+                'user_password' => 'required|min_length[4]|max_length[30]|validateUser[user_email,user_password]',
+            ];
+
+            $errors=
+            [
+                'user_password'=> 
+                [
+                    'validateUser'=> "Email or Password don't match"
+                ]
+            ];
+
+            if(! $this->validate($rules,$errors))
+            {          
+                $data['validation']= $this->validator;
+            }
+            else
+            {
+                $model = new UserModel();
+                $user=$model->where('user_email',$this->request->getVar('user_email'))
+                            ->first();
+
+                $this->setUserSession($user);
+                //$session->setFlashdata('success','Succesful Registiration');
+                return redirect()->to('/dashboard');
+            }
+        }
         echo view('login',$data);
 
     }
 
-    public function register()
+    private function setUserSession($user)
+    {
+        $data=[
+
+            'user_firstname'=>$user['user_firstname'],
+            'user_lastname'=>$user['user_lastname'],
+            'user_email'=>$user['user_email'],
+            'isLoggedIn'=>true,
+        ];
+
+        session()->set($data);
+        return true;
+    }
+
+    public function register()  
     {
         $data=[];
         helper(['form']);
