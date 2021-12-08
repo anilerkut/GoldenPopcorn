@@ -60,9 +60,11 @@
                         </select>
                     </span><br>
                     <?php if(isset($validation)):?>
-                     <div class="alert alert-warning">
-                         <?= $validation->listErrors() ?>
-                     </div>
+                    <div class="col-12"> 
+                        <div class="alert alert-warning">
+                            <?= $validation->listErrors() ?>
+                        </div>
+                    </div>
                      <?php endif;?>
                     <button type="submit">Sign Up</button><br>
                     <a href="/login">Already have an account?</a><br>

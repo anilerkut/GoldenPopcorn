@@ -27,16 +27,23 @@
                 </div>
             <?php endif;?>
             <div class="main">
-                <form action="login.php" method="post">
+                <form action="User/login" method="post">
                     <!--Take username and password from user !-->
                     <span>
                         <i class="fas fa-user"></i>  <!--icon from fontawesome !-->
-                        <input type="text" name="username" placeholder="Enter Your Username">
+                        <input type="text" name="user_email" placeholder="Enter Your Email">
                     </span><br>
                     <span>
                         <i class="fas fa-lock"></i> <!--icon from fontawesome !-->
-                        <input type="password" name="password" placeholder="Enter Your Password">
+                        <input type="password" name="user_password" placeholder="Enter Your Password">
                     </span><br>
+                    <?php if(isset($validation)):?>
+                    <div class=>        
+                        <div class="alert"> 
+                         <?= $validation->listErrors() ?>
+                        </div>
+                    </div>
+                    <?php endif;?>
                     <button>Login</button><br>
                      <!--Links to other pages !-->
                     <a href="****">Forgot your password?</a><br>
