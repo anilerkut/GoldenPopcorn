@@ -35,6 +35,18 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'User::login');
 $routes->get('/register', 'User::register');
 
+$routes->group('admin', function ($routes){
+    $routes->group('user', function ($routes){
+        $routes->get('add', 'User::register');
+        $routes->get('delete/(:num)', 'User::delete/$1');
+        $routes->get('update/(:num)', 'User::update');
+        $routes->get('find/(:num)', 'User::find/$1');
+        $routes->get('findAll', 'User::findAll');
+    });
+});
+
+
+
 
 
 /*

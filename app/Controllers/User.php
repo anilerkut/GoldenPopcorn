@@ -6,6 +6,12 @@ use App\Models\UserModel;
 
 class User extends BaseController
 {
+    private $userModel;
+
+    public function __construct() {
+        $this->userModel = new UserModel();
+    }
+    
     public function login()
     {
         $data=[];
@@ -38,7 +44,7 @@ class User extends BaseController
                             ->first();
 
                 $this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
+                $session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/dashboard');
             }
         }
@@ -98,12 +104,35 @@ class User extends BaseController
 
                 $user->save($newdata);
                 $session = session();
-                $session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/login');
-
-
             }
         }
         echo view('signup',$data);
+    }
+
+    public function delete($id=null) 
+    {
+        if (!is_null($id)) {
+            $this->userModel->delete($id);
+            return $this->response->setJSON([
+               'message' => 'Kullanıcı silindi'
+            ]);
+        }
+    }
+
+    public function find($id=null) {
+        if (!is_null($id))
+        {
+            $user = $this->userModel->find($id);
+            return $this->response->setJSON([
+                'user' => $user,
+                'message' => "kullanıcı getirildi"
+            ]);
+        }
+    }
+
+    public function findAll() {
+        $users = $this->userModel->findAll();
+        return $this->response->setJSON($users);
     }
 }
