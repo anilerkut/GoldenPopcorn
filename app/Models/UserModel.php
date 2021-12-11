@@ -1,7 +1,6 @@
 <?php 
 
 namespace App\Models;
-use App\Entities\UserEntity;
 use CodeIgniter\Model;
 
 class UserModel extends Model
@@ -9,8 +8,7 @@ class UserModel extends Model
     protected $table = 'user'; //veritabanındaki tablo adı
     protected $primaryKey = 'id';  //o tablonun primary keyi
 
-    // return type, crud islemleri icin gecerlidir, yani builder kullanarak yaptıgımız sorgularda gecerli degildir
-    protected $returnType = UserEntity::class; //sonuçları hangi formatta alabileceğimiz değişken
+    protected $returnType ='array'; //sonuçları hangi formatta alabileceğimiz değişken
     protected $useSoftDeletes =true;  //true yaparsak datayı silince veritabanında kalmaya devam eder false yaparsak gider.
 
     protected $allowedFields = ['user_firstname','user_lastname','user_email','user_password','user_gender','user_birthdate']; //buranın içine kullanıcıların kullanmasını istediğimiz dataları giricez.
@@ -21,6 +19,5 @@ class UserModel extends Model
     protected $deletedField='deleted_at';
 
     protected $skipValidation=false;    //Validasyonları atla , önemseme
-
 
 }
