@@ -41,6 +41,7 @@ class UserModel extends Model
         return $data;
     }
 
+
     protected $skipValidation=false;    //Validasyonları atla , önemseme
 
 }
