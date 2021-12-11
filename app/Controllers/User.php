@@ -6,15 +6,67 @@ use App\Models\UserModel;
 
 class User extends BaseController
 {
+    private $userModel;
+
+    public function __construct() {
+        $this->userModel = new UserModel();
+    }
+    
     public function login()
     {
         $data=[];
         helper(['form']);
+
+        if($this->request->getPost())
+        {
+            $rules=
+            [ 
+                'user_email' => 'required|valid_email',
+                'user_password' => 'required|min_length[4]|max_length[30]|validateUser[user_email,user_password]',
+            ];
+
+            $errors=
+            [
+                'user_password'=> 
+                [
+                    'validateUser'=> "Email or Password don't match"
+                ]
+            ];
+
+            if(! $this->validate($rules,$errors))
+            {          
+                $data['validation']= $this->validator;
+            }
+            else
+            {
+                $model = new UserModel();
+                $user=$model->where('user_email',$this->request->getVar('user_email'))
+                            ->first();
+
+                $this->setUserSession($user);
+                $session->setFlashdata('success','Succesful Registiration');
+                return redirect()->to('/dashboard');
+            }
+        }
         echo view('login',$data);
 
     }
 
-    public function register()
+    private function setUserSession($user)
+    {
+        $data=[
+
+            'user_firstname'=>$user['user_firstname'],
+            'user_lastname'=>$user['user_lastname'],
+            'user_email'=>$user['user_email'],
+            'isLoggedIn'=>true,
+        ];
+
+        session()->set($data);
+        return true;
+    }
+
+    public function register()  
     {
         $data=[];
         helper(['form']);
@@ -52,12 +104,35 @@ class User extends BaseController
 
                 $user->save($newdata);
                 $session = session();
-                $session->setFlashdata('success','Succesful Registiration');
-                
-
-                
+                return redirect()->to('/login');
             }
         }
         echo view('signup',$data);
+    }
+
+    public function delete($id=null) 
+    {
+        if (!is_null($id)) {
+            $this->userModel->delete($id);
+            return $this->response->setJSON([
+               'message' => 'Kullanıcı silindi'
+            ]);
+        }
+    }
+
+    public function find($id=null) {
+        if (!is_null($id))
+        {
+            $user = $this->userModel->find($id);
+            return $this->response->setJSON([
+                'user' => $user,
+                'message' => "kullanıcı getirildi"
+            ]);
+        }
+    }
+
+    public function findAll() {
+        $users = $this->userModel->findAll();
+        return $this->response->setJSON($users);
     }
 }

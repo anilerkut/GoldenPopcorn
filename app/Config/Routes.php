@@ -37,13 +37,17 @@ $routes->get('/register', 'User::register');
 
 $routes->group('admin', function ($routes){
     $routes->group('user', function ($routes){
-        $routes->get('add', 'UserController::add');
-        $routes->get('delete/(:num)', 'UserController::delete');
-        $routes->get('update/(:num)', 'UserController::update');
-        $routes->get('find/(:num)', 'UserController::find');
-        $routes->get('findAll', 'UserController::findAll');
+        $routes->get('add', 'User::register');
+        $routes->get('delete/(:num)', 'User::delete/$1');
+        $routes->get('update/(:num)', 'User::update');
+        $routes->get('find/(:num)', 'User::find/$1');
+        $routes->get('findAll', 'User::findAll');
     });
 });
+
+
+
+
 
 
 /*

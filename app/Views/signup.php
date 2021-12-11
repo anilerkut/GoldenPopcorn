@@ -53,16 +53,18 @@
                     <span>
                         <select name="user_gender" id="gender">
                             <optgroup label="Gender"> 
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="non-binary">Non-Binary</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Non-Binary</option>
                             </optgroup>
                         </select>
                     </span><br>
                     <?php if(isset($validation)):?>
-                     <div class="alert alert-warning">
-                         <?= $validation->listErrors() ?>
-                     </div>
+                    <div class="col-12"> 
+                        <div class="alert alert-warning">
+                            <?= $validation->listErrors() ?>
+                        </div>
+                    </div>
                      <?php endif;?>
                     <button type="submit">Sign Up</button><br>
                     <a href="/login">Already have an account?</a><br>
