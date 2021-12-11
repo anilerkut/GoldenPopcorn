@@ -13,6 +13,7 @@ class UserModel extends Model
 
     protected $allowedFields = ['user_firstname','user_lastname','user_email','user_password','user_gender','user_birthdate','updated_at']; //buranın içine kullanıcıların kullanmasını istediğimiz dataları giricez.
 
+
     protected $useTimestamp= true;  //bunu true yaparsak güncelleme yaptığımızda updated_at sütunu oluşuyor. , Zaman birimleri kullanılsın mı?
     protected $skipValidation=false;    //Validasyonları atla , önemseme
     protected $createdFiled='created_at'; 
