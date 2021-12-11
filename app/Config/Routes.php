@@ -35,6 +35,15 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'User::login');
 $routes->get('/register', 'User::register');
 
+$routes->group('admin', function ($routes){
+    $routes->group('user', function ($routes){
+        $routes->get('add', 'UserController::add');
+        $routes->get('delete/(:num)', 'UserController::delete');
+        $routes->get('update/(:num)', 'UserController::update');
+        $routes->get('find/(:num)', 'UserController::find');
+        $routes->get('findAll', 'UserController::findAll');
+    });
+});
 
 
 /*
