@@ -1,0 +1,8 @@
+.list-font {
+    font-size: 1.25rem;
+}
+
+.nav-link:hover{
+    background-color: #272727;
+    color:gold!important;
+}

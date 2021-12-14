@@ -1,41 +1,68 @@
-
-<div class="card card-primary">
-    <div class="card-header">
-        <h3 class="card-title">Quick Example</h3>
-    </div>
-    <!-- /.card-header -->
-    <!-- form start -->
-    <form>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+<!-- Movie ADD -->
+<div class="container" style="min-height : calc(100vh - 200px);">
+    <form class="mt-5">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputMovieName">Movie Name</label>
+                <input type="text" class="form-control" id="inputMovieName">
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                    </div>
-                </div>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="form-group col-md-6">
+                <label for="inputMovieReleaseDate">Release Date</label>
+                <input type="date" class="form-control" id="inputMovieReleaseDate">
             </div>
         </div>
-        <!-- /.card-body -->
-
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputMovieDuration">Movie Duration</label>
+                <input type="number" class="form-control" id="inputMovieDuration" min="1">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputMovieGross">Movie Gross</label>
+                <input type="number" class="form-control" id="inputMovieGross" min="1">
+            </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputMovieCountry">Related Country</label>
+                <select id="inputMovieCountry" class="form-control">
+                    <option selected>Choose Movie Country</option>
+                    <option>Movie - Country</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputMovieLanguage">Related Language</label>
+                <select id="inputMovieLanguage" class="form-control">
+                    <option selected>Choose Movie Language</option>
+                    <option>Movie - Language</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputMovieIMDBRating">IMDB Rating</label>
+                <input type="number" class="form-control" id="inputMovieIMDBRating" min="0">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputMovieRottentomatoesRating">Rottentomatoes Rating</label>
+                <input type="number" class="form-control" id="inputMovieRottentomatoesRating" min="0">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputMovieMetacriticRating">Metacritic Rating</label>
+                <input type="number" class="form-control" id="inputMovieMetacriticRating" min="0">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputMovieTrailerLink">Trailer Link</label>
+                <input type="text" class="form-control" id="inputMovieTrailerLink">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Movie Summary</span>
+            </div>
+            <textarea class="form-control" id="movieSummary" aria-label="Movie Summary"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Save</button>
     </form>
 </div>
