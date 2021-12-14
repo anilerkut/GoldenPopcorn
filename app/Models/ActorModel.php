@@ -39,6 +39,17 @@ class ActorModel extends Model
         $builder=$builder->get();
         return $builder->getResultArray();
     }
+
+    public function getActorFullName($firstName, $lastName)
+    {
+        $builder=$this->builder($this->table);
+        $builder=$builder->where('actor_firstName',$firstName);
+        $builder=$builder->where('actor_lastName',$lastName);
+        $builder=$builder->select('actor_firstname','actor_lastname');
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
     public function getActorLike($name){
         $builder=$this->builder($this->table);
         $builder=$builder->like('actor_firstname',$name,both);
