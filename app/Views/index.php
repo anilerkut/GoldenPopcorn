@@ -32,6 +32,8 @@ define("PAGE", "include/");
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -39,9 +41,8 @@ define("PAGE", "include/");
     <?php
     include_once(DATA."admin-top-menu.php");
     include_once(DATA."admin-menu.php");
-
-    include_once(PAGE."admin-home.php");
-
+    // include_once(PAGE."admin-home.php");
+    include_once(PAGE."movie-add.php");
     include_once(DATA."admin-footer.php");
     ?>
 
