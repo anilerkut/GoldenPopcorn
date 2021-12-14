@@ -9,4 +9,9 @@ class Home extends BaseController
     {
         return view('index'); // 'welcome_message'
     }
+
+    public function anil()
+    {
+        return view('include/actor-add'); // 'welcome_message'
+    }
 }
