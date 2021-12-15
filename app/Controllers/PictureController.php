@@ -27,6 +27,15 @@ class PictureController extends BaseController
     }
 
 
+    public function list()
+    {
+        //$picture = new LanguageModel();
+        //$data['picture'] = $picture->findAll();
+        //return view('include/picture-list', $data);
+        //return view('include/picture-list');
+    }
+
+
     public function addPicture() {
         $data = [];
         helper(['form']);

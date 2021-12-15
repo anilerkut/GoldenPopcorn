@@ -15,9 +15,10 @@ class DirectorController extends BaseController
     }
 
     public function list() {
-        $director = new DirectorModel();
-        $data['director'] = $director->findAll();
-        return view('include/director-list', $data);
+        //$director = new DirectorModel();
+        //$data['director'] = $director->findAll();
+        //return view('include/director-list', $data);
+        return view('include/director-list');
     }
 
     public function add() {
@@ -105,7 +106,5 @@ class DirectorController extends BaseController
         }
         echo view('login',$data);
     }
-
-
 
 }

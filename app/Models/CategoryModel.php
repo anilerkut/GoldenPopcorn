@@ -27,8 +27,9 @@ class CategoryModel extends Model
     public function getCategory($name){
         $builder=$this->builder($this->table);
         $builder=$builder->where('category_name',$name);
+    }
 
-    public function getCategory($id){
+    public function getCategoryById($id){
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
         $builder=$builder->get();

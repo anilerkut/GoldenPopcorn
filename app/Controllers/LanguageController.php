@@ -26,6 +26,14 @@ class LanguageController extends BaseController
         return true;
     }
 
+    public function list()
+    {
+        //$language = new LanguageModel();
+        //$data['language'] = $language->findAll();
+        //return view('include/language-list', $data);
+        return view('include/language-list');
+    }
+
 
     public function addLanguage() 
     {

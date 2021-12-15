@@ -67,4 +67,12 @@ class CategoryController extends BaseController
     }
 
 
+    public function list()
+    {
+        //$category = new CategoryModel();
+        //$data['category'] = $category->findAll();
+        //return view('include/category-list', $data);
+        return view('include/category-list');
+    }
+
 }
