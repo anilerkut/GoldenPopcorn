@@ -28,8 +28,10 @@ class DirectorController extends BaseController
 
     public function store() {
         $director = new DirectorModel();
-        $data = [
-          'full_name' => $this->request->getPost('director_name')
+        $data = 
+        [
+          'director_name' => $this->request->getPost('director_name'),
+          'director_gender' => 1
         ];
         $director->save($data);
         return redirect()->to(base_url('director'));

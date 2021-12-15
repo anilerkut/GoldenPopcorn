@@ -14,20 +14,6 @@ class CategoryController extends BaseController
         $this->categoryModel = new CategoryModel();
     }
 
-    private function setUserSession($actor)
-    {
-        $data=[
-            'actor_firstname'=>$actor['actor_firstName'],
-            'actor_lastname'=>$actor['actor_lastName'],
-            'actor_birthdate'=>$actor['actor_birthdate'],
-            // gender, veritabanından cekilip forma aktarılacak ve oradan alınacak
-        ];
-
-        session()->set($data);
-        return true;
-    }
-
-
     public function addCategory() {
         $data = [];
         helper(['form']);
@@ -36,7 +22,7 @@ class CategoryController extends BaseController
         {
             $rules=
             [
-                'category_name' => 'required|min_length[2]',
+                'category_name' => 'required|min_length[2]|is_unique[category.category_name]',
             ];
 
             if(! $this->validate($rules))
@@ -46,21 +32,13 @@ class CategoryController extends BaseController
             else
             {
                 $category = new CategoryModel();
-                if(is_null($category->getCategory())) {
-                    $newData =
-                    [
-                        'category_name'  => $this->request->getVar('category_name')
-                    ];
+                $newData =
+                [
+                    'category_name'  => $this->request->getVar('category_name')
+                ];
 
-                    $category->save($newData);
+                $category->save($newData);
 
-                } else 
-                {
-                    echo "category eklenemedi";
-                }
-
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/dashboard');
             }
         }

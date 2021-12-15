@@ -8,12 +8,11 @@ class NewsModel extends Model
     protected $table='news';
     protected $primaryKey = 'id';
     protected $returnType ='array';
-    protected $useSoftDeletes =true;
+    protected $useSoftDeletes =false;
     protected $allowedFields = ['news_content','news_date','actor_id','director_id'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';
-    protected $deletedField='deleted_at';
     protected $skipValidation=false;
 
 
