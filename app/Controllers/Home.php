@@ -27,7 +27,7 @@ class Home extends BaseController
 
     public function add_category()
     {
-        return view('include/category-add');
+        return view('include/category-list');
     }
 
     public function add_language()
@@ -44,8 +44,19 @@ class Home extends BaseController
     {
         return view('include/picture-add');
     }
+
     public function add_gender()
     {
         return view('include/gender-add');
+
+
+    public function add_country()
+    {
+        return view('include/country-add');
+    }
+    public function add_warning()
+    {
+        return view('include/warning-add');
+
     }
 }

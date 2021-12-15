@@ -42,7 +42,7 @@
     <?= $this->include('data/admin-menu.php') ?>
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form action="DirectorController/save" method="POST" class="mt-5">
+    <form action="../DirectorController/store" method="POST" class="mt-5">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputFullName">Full Name</label>
