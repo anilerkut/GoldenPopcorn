@@ -34,6 +34,14 @@ class MovieController extends BaseController
         return checkdate($month, $day, $year);
     }
 
+    public function list()
+    {
+        //$movie = new MovieModel();
+        //$data['movie'] = $movie->findAll();
+        //return view('include/category-list', $data);
+        return view('include/movie-list');
+    }
+
     public function addMovie() {
         $data=[];
         helper(['form']);

@@ -10,6 +10,7 @@ class Home extends BaseController
         return view('index'); // 'welcome_message'
     }
 
+
     public function add_movie()
     {
         return view('include/movie-add');
@@ -40,22 +41,20 @@ class Home extends BaseController
         return view('include/news-add');
     }
 
-    public function add_picture()
-    {
-        return view('include/picture-add');
-    }
-
     public function add_gender()
     {
         return view('include/gender-add');
+
     }
     public function add_country()
     {
         return view('include/country-add');
     }
+
     public function add_warning()
     {
         return view('include/warning-add');
 
     }
+
 }

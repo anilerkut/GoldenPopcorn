@@ -23,58 +23,62 @@
         <nav class="mt-2">
             <ul class="nav">
                 <li class="nav-item">
+
                     <a href="../Home/add_movie" class="nav-link">
+
+                    <a href="../MovieController/list" class="nav-link">
+
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
-                            Add Movie
+                            Movie
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../Home/add_actor" class="nav-link">
+                    <a href="../ActorController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
-                            Add Actor
+                            Actor
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../Home/add_director" class="nav-link">
+                    <a href="../DirectorController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
-                            Add Director
+                            Director
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../Home/add_category" class="nav-link">
+                    <a href="../CategoryController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
-                            Add Category
+                            Category
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../Home/add_language" class="nav-link">
+                    <a href="../LanguageController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
-                            Add Language
+                            Language
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../Home/add_news" class="nav-link">
+                    <a href="../NewsController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
-                            Add News
+                            News
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../Home/add_picture" class="nav-link">
+                    <a href="../PictureController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
-                            Add Picture
+                            Picture
                         </p>
                     </a>
                 </li>
