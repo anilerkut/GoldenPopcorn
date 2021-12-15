@@ -22,6 +22,7 @@ class Home extends BaseController
 
     public function add_director()
     {
+
         return view('include/director-add');
     }
 
