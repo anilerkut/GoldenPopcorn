@@ -43,7 +43,7 @@
 
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5">
+    <form class="mt-5" method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <!-- Link or content ??? -->

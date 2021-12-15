@@ -44,5 +44,4 @@ class Home extends BaseController
     {
         return view('include/picture-add');
     }
-
 }
