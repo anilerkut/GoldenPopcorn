@@ -42,7 +42,7 @@
     <?= $this->include('data/admin-menu.php') ?>
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5"  action="LanguageController/addLanguage" method="post">
+    <form class="mt-5"  action="../LanguageController/addLanguage" method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputLanguageName">Language Name</label>
@@ -51,6 +51,13 @@
         </div>
         <button type="submit" class="btn btn-primary mt-3">Save</button>
     </form>
+    <?php if(isset($validation)):?>
+                    <div class="col-12"> 
+                        <div class="alert alert-warning">
+                            <?= $validation->listErrors() ?>
+                        </div>
+                    </div>
+    <?php endif;?>
 </div>
 
 

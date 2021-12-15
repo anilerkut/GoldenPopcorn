@@ -35,40 +35,24 @@ class CountryController extends BaseController
         {
             $rules=
                 [
-                    'country_name' => 'required|min_length[2]',
+                    'country_name' => 'required|min_length[2]|is_unique[country.country_name]',
                 ];
 
-            $errors=
-                [
-                    'country_name' =>
-                    [
-                        'validateCountry'=> "The length of country name must be minimum two"
-                    ]
-                ];
-
-            if(! $this->validate($rules,$errors))
+            if(! $this->validate($rules))
             {
                 $data['validation']= $this->validator;
             }
             else
             {
                 $country = new CountryModel();
-                if(is_null($country->getCountry()))
-                {
-                    $newData = 
-                    [
-                        'country_name'  => $this->request->getVar('country_name')
-                    ];
+               
+                $newData = 
+                [
+                    'country_name'  => $this->request->getVar('country_name')
+                ];
 
-                    $country->save($newData);
-                }
-                else
-                {
+                $country->save($newData);
 
-                }
-
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/dashboard');
             }
         }

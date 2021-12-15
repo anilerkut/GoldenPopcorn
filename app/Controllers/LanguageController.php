@@ -36,39 +36,24 @@ class LanguageController extends BaseController
         {
             $rules=
                 [
-                    'language_name' => 'required|min_length[2]',
+                    'language_name' => 'required|min_length[2]|is_unique[language.language_name]',
                 ];
 
-            $errors=
-                [
-                    'language_name' =>
-                    [
-                        'validateLanguage'=> "The length of language name must be minimum two"
-                    ]
-                ];
-
-            if(! $this->validate($rules,$errors))
+            if(! $this->validate($rules))
             {
+                echo "hata yaptın sürtük";
                 $data['validation']= $this->validator;
             }
             else
             {
                 $language = new LanguageModel();
-                if(is_null($language->getLanguage()))
-                {
-                    $newData = 
-                    [
-                        'language_name'  => $this->request->getVar('language_name')
-                    ];
+               
+                $newData = 
+                [
+                    'language_name'  => $this->request->getVar('language_name')
+                ];
 
-                    $language->save($newData);
-                }
-                else
-                {
-
-                }
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
+                $language->save($newData);
                 return redirect()->to('/dashboard');
             }
         }
