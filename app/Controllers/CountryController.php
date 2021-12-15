@@ -53,9 +53,10 @@ class CountryController extends BaseController
 
                 $country->save($newData);
 
-                return redirect()->to('/dashboard');
+                return redirect()->to('include/country-add');
             }
         }
+        echo view('include/country-add',$data);
     }
 
 

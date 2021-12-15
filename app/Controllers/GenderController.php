@@ -14,12 +14,10 @@ class GenderController extends BaseController
         $this->genderModel = new GenderModel();
     }
 
-
-
     public function addGender() {
         $data = [];
         helper(['form']);
-
+        
         if($this->request->getPost())
         {
             $rules=
@@ -35,19 +33,17 @@ class GenderController extends BaseController
             {
                 $gender = new GenderModel();
                 
-                    $newData =
-                    [
-                        'gender_name'  => $this->request->getVar('gender_name')
-                    ];
+                $newData =
+                [
+                    'gender_name' => $this->request->getVar('gender_name')
+                ];
 
-                    $gender->save($newData);
+                $gender->save($newData);
 
-
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
-                return redirect()->to('/dashboard');
+                return redirect()->to('include/gender-add');
             }
         }
+        echo view('include/gender-add',$data);
     }
 
 

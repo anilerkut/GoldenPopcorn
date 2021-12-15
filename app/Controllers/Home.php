@@ -22,13 +22,12 @@ class Home extends BaseController
 
     public function add_director()
     {
-
         return view('include/director-add');
     }
 
     public function add_category()
     {
-        return view('include/category-list');
+        return view('include/category-add');
     }
 
     public function add_language()
@@ -49,8 +48,7 @@ class Home extends BaseController
     public function add_gender()
     {
         return view('include/gender-add');
-
-
+    }
     public function add_country()
     {
         return view('include/country-add');

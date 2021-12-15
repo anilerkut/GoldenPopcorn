@@ -23,7 +23,7 @@
         <nav class="mt-2">
             <ul class="nav">
                 <li class="nav-item">
-                    <a href="../Home/index" class="nav-link">
+                    <a href="../Home/add_movie" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Movie
@@ -79,12 +79,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
-
                     <a href="../Home/add_gender" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Gender
-
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="../Home/add_country" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
@@ -97,7 +99,6 @@
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Warning
-
                         </p>
                     </a>
                 </li>
