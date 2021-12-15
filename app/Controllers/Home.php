@@ -45,6 +45,11 @@ class Home extends BaseController
         return view('include/picture-add');
     }
 
+    public function add_gender()
+    {
+        return view('include/gender-add');
+
+
     public function add_country()
     {
         return view('include/country-add');
@@ -52,5 +57,6 @@ class Home extends BaseController
     public function add_warning()
     {
         return view('include/warning-add');
+
     }
 }
