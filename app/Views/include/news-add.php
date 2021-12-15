@@ -45,14 +45,13 @@
 <div class="container" style="min-height : calc(100vh - 200px);">
     <form class="mt-5" method="post">
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <!-- Link or content ??? -->
-                <label for="inputNewsLink">News Content</label>
-                <input type="text" class="form-control" id="inputNewsLink" name="news_content">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputBirthdate">News Date</label>
-                <input type="date" class="form-control" id="inputBirthdate" name="news_date">
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">News Content</span>
+                </div>
+                <textarea class="form-control" id="newsContent" aria-label="News Content" name= "news_content"></textarea>
+
             </div>
         </div>
         <div class="form-row">

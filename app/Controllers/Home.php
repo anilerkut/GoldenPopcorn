@@ -27,7 +27,7 @@ class Home extends BaseController
 
     public function add_category()
     {
-        return view('include/category-add');
+        return view('include/category-list');
     }
 
     public function add_language()
