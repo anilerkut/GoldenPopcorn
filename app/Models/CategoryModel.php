@@ -8,12 +8,11 @@ class CategoryModel extends Model
     protected $table='category';
     protected $primaryKey = 'id';
     protected $returnType ='array';
-    protected $useSoftDeletes =true;
+    protected $useSoftDeletes =false;
     protected $allowedFields = ['category_name'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';
-    protected $deletedField='deleted_at';
     protected $skipValidation=false;
 
 
@@ -24,11 +23,12 @@ class CategoryModel extends Model
     }
 
 
-    public function getCategory($name){
+    public function getNameCategory($name){
         $builder=$this->builder($this->table);
         $builder=$builder->where('category_name',$name);
+    }
 
-    public function getCategory($id){
+    public function getIdCategory($id){
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
         $builder=$builder->get();

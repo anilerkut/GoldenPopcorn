@@ -36,7 +36,8 @@ $routes->get('/login', 'User::login');
 $routes->get('/register', 'User::register');
 
 $routes->group('admin', function ($routes){
-    $routes->group('user', function ($routes){
+    $routes->group('user', function ($routes)
+    {
         $routes->get('add', 'User::register');
         $routes->get('delete/(:num)', 'User::delete/$1');
         $routes->get('update/(:num)', 'User::update');

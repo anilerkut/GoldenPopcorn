@@ -45,11 +45,13 @@
 <div class="container" style="min-height : calc(100vh - 200px);">
     <form class="mt-5" method="post">
         <div class="form-row">
+
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">News Content</span>
                 </div>
                 <textarea class="form-control" id="newsContent" aria-label="News Content" name= "news_content"></textarea>
+
             </div>
         </div>
         <div class="form-row">

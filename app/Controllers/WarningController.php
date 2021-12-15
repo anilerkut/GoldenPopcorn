@@ -35,40 +35,24 @@ class WarningController extends BaseController
         {
             $rules=
                 [
-                    'warning_name' => 'required|min_length[2]',
+                    'warning_name' => 'required|min_length[2]|is_unique[warning.warning_name]',
                 ];
 
-            $errors=
-                [
-                    'warning_name' =>
-                    [
-                        'validateWarning'=> "The length of warning name must be minimum two"
-                    ]
-                ];
-
-            if(! $this->validate($rules,$errors))
+            if(! $this->validate($rules))
             {
                 $data['validation']= $this->validator;
             }
             else
             {
                 $warning = new WarningModel();
-                if(is_null($warning->getWarning()))
-                {
-                    $newData = 
-                    [
-                        'warning_name'  => $this->request->getVar('warning_name')
-                    ];
+               
+                $newData = 
+                [
+                    'warning_name'  => $this->request->getVar('warning_name')
+                ];
 
-                    $warning->save($newData);
-                }
-                else
-                {
+                $warning->save($newData);
 
-                }
-
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/dashboard');
             }
         }

@@ -44,4 +44,13 @@ class Home extends BaseController
     {
         return view('include/picture-add');
     }
+
+    public function add_country()
+    {
+        return view('include/country-add');
+    }
+    public function add_warning()
+    {
+        return view('include/warning-add');
+    }
 }
