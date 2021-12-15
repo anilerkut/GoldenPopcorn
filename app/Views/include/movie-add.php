@@ -1,6 +1,6 @@
 <!-- Movie ADD -->
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5" action="MovieController/addMovie">
+    <form class="mt-5" action="MovieController/addMovie" method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputMovieName">Movie Name</label>

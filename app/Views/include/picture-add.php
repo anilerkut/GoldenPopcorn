@@ -1,6 +1,6 @@
 <!-- PICTURE ADD -->
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5"  action="PictureController/addPicture">
+    <form class="mt-5"  action="PictureController/addPicture" method="post">
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label for="inputPictureLink">Picture Link</label>
