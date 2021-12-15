@@ -54,8 +54,9 @@ class CategoryController extends BaseController
 
                     $category->save($newData);
 
-                } else {
-
+                } else 
+                {
+                    echo "category eklenemedi";
                 }
 
                 //$this->setUserSession($user);
