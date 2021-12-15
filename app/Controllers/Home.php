@@ -44,4 +44,8 @@ class Home extends BaseController
     {
         return view('include/picture-add');
     }
+    public function add_gender()
+    {
+        return view('include/gender-add');
+    }
 }

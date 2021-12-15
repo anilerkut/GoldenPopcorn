@@ -78,6 +78,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="../Home/add_gender" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Add Gender
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
