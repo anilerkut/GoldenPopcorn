@@ -53,6 +53,7 @@
         </div>
         <button type="submit" class="btn btn-primary mt-3">Save</button>
     </form>
+    <br><hr>
     <?php if(isset($validation)):?>
                     <div class="col-12"> 
                         <div class="alert alert-warning">

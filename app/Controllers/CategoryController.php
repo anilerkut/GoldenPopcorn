@@ -32,6 +32,7 @@ class CategoryController extends BaseController
             else
             {
                 $category = new CategoryModel();
+                
                 $newData =
                 [
                     'category_name'  => $this->request->getVar('category_name')
@@ -39,9 +40,10 @@ class CategoryController extends BaseController
 
                 $category->save($newData);
 
-                return redirect()->to('/dashboard');
+                return redirect()->to('../include/category-add');
             }
         }
+        echo view('include/category-add',$data);
     }
 
 

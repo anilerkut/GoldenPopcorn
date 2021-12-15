@@ -62,9 +62,10 @@ class LanguageController extends BaseController
                 ];
 
                 $language->save($newData);
-                return redirect()->to('/dashboard');
+                return redirect()->to('include/language-add');
             }
         }
+        echo view('include/language-add',$data);
     }
 
 
