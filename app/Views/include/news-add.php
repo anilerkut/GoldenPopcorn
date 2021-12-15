@@ -47,12 +47,12 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <!-- Link or content ??? -->
-                <label for="inputNewsLink">News Link</label>
-                <input type="text" class="form-control" id="inputNewsLink">
+                <label for="inputNewsLink">News Content</label>
+                <input type="text" class="form-control" id="inputNewsLink" name="news_content">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputBirthdate">News Date</label>
-                <input type="date" class="form-control" id="inputBirthdate">
+                <input type="date" class="form-control" id="inputBirthdate" name="news_date">
             </div>
         </div>
         <div class="form-row">
