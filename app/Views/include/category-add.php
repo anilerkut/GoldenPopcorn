@@ -1,6 +1,6 @@
 <!-- CATEGORY ADD -->
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5">
+    <form class="mt-5"  action="CategoryController/addCategory">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputCategoryName">Category Name</label>

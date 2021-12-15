@@ -35,19 +35,11 @@ class CategoryController extends BaseController
         if($this->request->getPost())
         {
             $rules=
-                [
-                    'category_name' => 'required|min_length[2]',
-                ];
+            [
+                'category_name' => 'required|min_length[2]',
+            ];
 
-            $errors=
-                [
-                    'category_name' =>
-                        [
-                            'validateCategory'=> "The length of category name must be minimum two"
-                        ]
-                ];
-
-            if(! $this->validate($rules,$errors))
+            if(! $this->validate($rules))
             {
                 $data['validation']= $this->validator;
             }
@@ -55,8 +47,9 @@ class CategoryController extends BaseController
             {
                 $category = new CategoryModel();
                 if(is_null($category->getCategory())) {
-                    $newData = [
-                        'category_name'  => $this->request->getVar('actor_firstName')
+                    $newData =
+                    [
+                        'category_name'  => $this->request->getVar('category_name')
                     ];
 
                     $category->save($newData);
@@ -70,7 +63,6 @@ class CategoryController extends BaseController
                 return redirect()->to('/dashboard');
             }
         }
-        echo view('login',$data);
     }
 
 

@@ -53,26 +53,48 @@ class MovieController extends BaseController
                     'imdb_rating' => 'required|min_length[2]',
                     'metacritic_rating' => 'required|min_length[2]',
                     'rottentomatoes_rating' => 'required|min_length[2]',
+                    'movie_poster' => 'required',
                 ];
             //BUNLARI DÜZELT
             $errors=
                 [
-                    'movie_name'=>
+                        'movie_name'=>
                         [
-                            'validateActor'=> "The length of first name must be minimum two"
+                            'validateMovie'=> "The length of first name must be minimum two"
                         ],
-                    'actor_lastName'=>
+                        'movie_releasedate'=>
                         [
-                            'validateActor'=> "The length of last name must be minimum two"
+                            'validateMovie'=> "The length of last name must be minimum two"
                         ],
-                    'actor_gender'=>
+                        'movie_duration'=>
                         [
-                            'validateActor'=> "The length of first name must be minimum two"
+                            'validateMovie'=> "The length of first name must be minimum two"
                         ],
-                    'movie_releasedate'=>
+                        'movie_summary'=>
                         [
-                            'validateActor'=> "The given date is not valid"
+                            'validateMovie'=> "The given date is not valid"
                         ],
+                        'movie_trailer'=>
+                        [
+                            'validateMovie'=> "The given date is not valid"
+                        ],
+                        'movie_gross'=>
+                        [
+                            'validateMovie'=> "The given date is not valid"
+                        ],
+                        'imdb_rating'=>
+                        [
+                            'validateMovie'=> "The given date is not valid"
+                        ],
+                        'rottentomatoes_rating'=>
+                        [
+                            'validateMovie'=> "The given date is not valid"
+                        ],
+                        'metacritic_rating'=>
+                        [
+                            'validateMovie'=> "The given date is not valid"
+                        ],
+                                          
                 ];
 
             if(! $this->validate($rules,$errors))
@@ -96,6 +118,7 @@ class MovieController extends BaseController
                         'imdb_rating' => $this->request->getVar('imdb_rating'),
                         'metacritic_rating' => $this->request->getVar('metacritic_rating'),
                         'rottentomatoes_rating' => $this->request->getVar('rottentomatoes_rating'),
+                        'movie_poster' => $this->request->getVar('movie_poster'),
                     ];
 
                     $movie->save($newData);

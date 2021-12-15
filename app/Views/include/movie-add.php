@@ -1,6 +1,6 @@
 <!-- Movie ADD -->
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5">
+    <form class="mt-5" action="MovieController/addMovie">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputMovieName">Movie Name</label>
@@ -55,6 +55,12 @@
             <div class="form-group col-md-12">
                 <label for="inputMovieTrailerLink">Trailer Link</label>
                 <input type="text" class="form-control" id="inputMovieTrailerLink"  name="movie_trailer">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputMoviePosterLink">Poster Link</label>
+                <input type="text" class="form-control" id="inputMoviePosterLink"  name="movie_poster">
             </div>
         </div>
         <div class="input-group">
