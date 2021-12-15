@@ -16,15 +16,15 @@ class DirectorModel extends Model
     protected $skipValidation=false;
 
 
-    public function getDirectorList(){
+    public function getDirectorList() {
         $builder=$this->builder($this->table);
         $builder=$builder->get();
         return $builder->getResultArray();
     }
 
-    public function getDirector($id){
+    public function getDirector($fullName) {
         $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
+        $builder=$builder->where('director_name',$fullName);
         $builder=$builder->get();
         return $builder->getResultArray();
     }

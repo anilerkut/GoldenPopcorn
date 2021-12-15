@@ -46,7 +46,13 @@ $routes->group('admin', function ($routes){
 });
 
 
-
+// Director Data
+$routes->get('director', 'DirectorController::list');
+$routes->get('director-add', 'DirectorController::add');
+$routes->post('director-store', 'DirectorController::store');
+$routes->get('director/edit(:num)', 'DirectorController::edit/$1');
+$routes->put('director/update(:num)', 'DirectorController::update/$1');
+$routes->get('director/delete(:num)', 'DirectorController::delete/$1');
 
 
 

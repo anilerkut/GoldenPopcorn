@@ -1,8 +1,6 @@
 <?php
 @session_start(); // oturum islemleri de yapacagımız icin
 @ob_start(); // yonlendırme ve bazı headaer islemlerini kullanabilmek icin
-define("DATA", "data/");
-define("PAGE", "include/");
 ?>
 
 <!DOCTYPE html>
@@ -10,41 +8,38 @@ define("PAGE", "include/");
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>GoldenPopcorn | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
 
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="../admin.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-    <?php
-    include_once(DATA."admin-top-menu.php");
-    include_once(DATA."admin-menu.php");
-    // include_once(PAGE."admin-home.php");
-    include_once(PAGE."movie-add.php");
-    include_once(DATA."admin-footer.php");
-    ?>
+    <?= $this->include('data/admin-top-menu.php') ?>
+    <?= $this->include('data/admin-menu.php') ?>
+    <?= $this->include('include/movie-add.php') ?>
+    <?= $this->include('data/admin-footer.php') ?>
 
 
   <!-- Control Sidebar -->

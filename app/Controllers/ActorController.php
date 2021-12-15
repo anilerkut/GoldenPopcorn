@@ -35,7 +35,7 @@ class ActorController extends BaseController
     }
 
     public function addActor() {
-        $data=[];
+        $data = [];
         helper(['form']);
 
         if($this->request->getPost())
