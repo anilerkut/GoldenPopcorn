@@ -34,6 +34,15 @@ class ActorController extends BaseController
         return checkdate($month, $day, $year);
     }
 
+    public function list()
+    {
+        //$actor = new ActorModel();
+        //$data['actor'] = actor->findAll();
+        //return view('include/actor-list', $data);
+        return view('include/actor-list');
+    }
+
+
     public function addActor() {
         $data = [];
         helper(['form']);
@@ -75,7 +84,7 @@ class ActorController extends BaseController
             else
             {
                 $actor = new ActorModel();
-                if(is_null($actor->getActorFullName())) {
+
                     $newData = [
                         'actor_firstname'  => $this->request->getVar('actor_firstName'),
                         'actor_lastname'  => $this->request->getVar('actor_lastName'),
@@ -85,9 +94,7 @@ class ActorController extends BaseController
 
                     $actor->save($newData);
 
-                } else {
 
-                }
 
                 //$this->setUserSession($user);
                 //$session->setFlashdata('success','Succesful Registiration');

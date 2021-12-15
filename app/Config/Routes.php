@@ -46,6 +46,20 @@ $routes->group('admin', function ($routes){
     });
 });
 
+// Category
+$routes->get('category', 'CategoryController::list');
+
+// Movie
+$routes->get('movie', 'MovieController::list');
+
+// Actor
+$routes->get('actor', 'ActorController::list');
+
+// Picture
+$routes->get('picture', 'PictureController::list');
+
+// Language
+$routes->get('language', 'LanguageController::list');
 
 // Director Data
 $routes->get('director', 'DirectorController::list');
