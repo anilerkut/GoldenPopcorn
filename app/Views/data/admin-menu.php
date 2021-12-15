@@ -23,7 +23,7 @@
         <nav class="mt-2">
             <ul class="nav">
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="../Home/index" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Movie
@@ -31,15 +31,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="../Home/add_actor" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Actor
                         </p>
-                    </a>            <ul class="nav"></ul>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="../Home/add_director" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Director
@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="../Home/add_category" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Category
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="../Home/add_language" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Language
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="../Home/add_news" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add News
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="../Home/add_picture" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Add Picture

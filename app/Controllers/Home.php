@@ -9,4 +9,40 @@ class Home extends BaseController
     {
         return view('index'); // 'welcome_message'
     }
+
+    public function add_movie()
+    {
+        return view('include/movie-add');
+    }
+
+    public function add_actor()
+    {
+        return view('include/actor-add');
+    }
+
+    public function add_director()
+    {
+        return view('include/director-add');
+    }
+
+    public function add_category()
+    {
+        return view('include/category-add');
+    }
+
+    public function add_language()
+    {
+        return view('include/language-add');
+    }
+
+    public function add_news()
+    {
+        return view('include/news-add');
+    }
+
+    public function add_picture()
+    {
+        return view('include/picture-add');
+    }
+
 }
