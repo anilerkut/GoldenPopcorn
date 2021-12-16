@@ -14,19 +14,6 @@ class ActorController extends BaseController
         $this->actorModel = new ActorModel();
     }
 
-    private function setUserSession($actor)
-    {
-        $data=[
-            'actor_firstname'=>$actor['actor_firstName'],
-            'actor_lastname'=>$actor['actor_lastName'],
-            'actor_birthdate'=>$actor['actor_birthdate'],
-            // gender, veritabanından cekilip forma aktarılacak ve oradan alınacak
-        ];
-
-        session()->set($data);
-        return true;
-    }
-
     private function callbackDateValid($date){
         $day = (int) substr($date, 0, 2);
         $month = (int) substr($date, 3, 2);
@@ -36,12 +23,10 @@ class ActorController extends BaseController
 
     public function list()
     {
-        //$actor = new ActorModel();
-        //$data['actor'] = actor->findAll();
-        //return view('include/actor-list', $data);
-        return view('include/actor-list');
+        $actor = new ActorModel();
+        $data['actor'] = $actor->findAll();
+        return view('include/actor-list', $data);
     }
-
 
     public function addActor() {
         $data = [];
@@ -54,7 +39,8 @@ class ActorController extends BaseController
                     'actor_firstName' => 'required|min_length[2]',
                     'actor_lastName' => 'required|min_length[2]',
                     'actor_gender' => 'required',
-                    'actor_birthdate' => 'required'
+                    'actor_birthdate' => 'required',
+                    'actor_picture' => 'required'
                 ];
 
             $errors=
@@ -75,6 +61,10 @@ class ActorController extends BaseController
                         [
                             'validateActor'=> "The given date is not valid"
                         ],
+                    'actor_picture' => 
+                        [
+                        'The actor picture is required'
+                        ]
                 ];
 
             if(! $this->validate($rules,$errors))
@@ -85,23 +75,21 @@ class ActorController extends BaseController
             {
                 $actor = new ActorModel();
 
-                    $newData = [
-                        'actor_firstname'  => $this->request->getVar('actor_firstName'),
-                        'actor_lastname'  => $this->request->getVar('actor_lastName'),
-                        'actor_birthdate'  => $this->request->getVar('actor_birthdate'),
+                $newData = 
+                [
+                    'actor_firstname'  => $this->request->getVar('actor_firstName'),
+                    'actor_lastname'  => $this->request->getVar('actor_lastName'),
+                    'actor_birthdate'  => $this->request->getVar('actor_birthdate'),
+                    'actor_picture' => $this->request->getVar('actor_picture'),
                         // gender gelecek
-                    ];
+                ];
 
                     $actor->save($newData);
 
-
-
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/dashboard');
             }
         }
-        echo view('login',$data);
+        echo view('include/actor-add',$data);
     }
 
 }

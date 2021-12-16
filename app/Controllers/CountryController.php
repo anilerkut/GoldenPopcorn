@@ -14,18 +14,11 @@ class CountryController extends BaseController
         $this->countryModel = new CountryModel();
     }
 
-    private function setUserSession($warning)
+    public function add() 
     {
-        $data=
-        [
-            'warning_name'=>$warning['warning_name'],
-            // gender, veritabanından cekilip forma aktarılacak ve oradan alınacak
-        ];
 
-        session()->set($data);
-        return true;
+        return view('include/country-add');
     }
-
 
     public function addCountry() {
         $data = [];
@@ -53,11 +46,16 @@ class CountryController extends BaseController
 
                 $country->save($newData);
 
-                return redirect()->to('include/country-add');
+                return redirect()->to('/country-list');
             }
         }
         echo view('include/country-add',$data);
     }
 
-
+    public function list() 
+    {
+        $country = new CountryModel();
+        $data['country'] = $country->findAll();
+        return view('include/country-list', $data);
+    }
 }

@@ -38,8 +38,9 @@
 <?= $this->include('data/admin-menu.php') ?>
 
 
+
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <a href="<?= base_url('country-add') ?>" class="btn btn-primary mt-3 btn-lg" >
+    <a href="<?= base_url('gender-add') ?>" class="btn btn-primary mt-3 btn-lg" >
                             <i class="fas fa-plus"></i>
     </a>
 
@@ -47,22 +48,22 @@
         <thead>
         <tr>
             <th scope="col"></th>
-            <th scope="col">Country Name</th>
+            <th scope="col">Gender Name</th>
             <th scope="col">Operations</th>
         </tr>
         </thead>
         <tbody>
         <?php
         $num=1;
-         foreach ($country as $row) : ?>
+         foreach ($gender as $row) : ?>
         <tr>
             <th scope="row"><?= $num ?></th>
-            <td><?= $row['country_name'] ?></td>
+            <td><?= $row['gender_name'] ?></td>
             <?php $num++ ?>
             <td>
                 <table>
                     <td>
-                        <a href="<?= base_url('CountryController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
+                        <a href="<?= base_url('GenderController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
                             <i class="fas fa-pen-square"></i>
                         </a>
                     </td>
@@ -88,12 +89,9 @@
                                                 Are you sure you want to delete it?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="button" class="btn btn-primary">
-                                                    Delete
-                                                </button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Delete</button>
                                             </div>
                                         </div>
                                     </div>

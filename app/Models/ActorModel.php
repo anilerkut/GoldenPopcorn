@@ -8,12 +8,11 @@ class ActorModel extends Model
     protected $table='actor';
     protected $primaryKey = 'id';
     protected $returnType ='array';
-    protected $useSoftDeletes =true;
-    protected $allowedFields = ['actor_firstname','actor_lastname','actor_gender','actor_birthdate'];
+    protected $useSoftDeletes =false;
+    protected $allowedFields = ['actor_firstname','actor_lastname','actor_gender','actor_picture','actor_birthdate'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';
-    protected $deletedField='deleted_at';
     protected $skipValidation=false;
 
 

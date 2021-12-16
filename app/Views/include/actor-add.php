@@ -51,6 +51,10 @@
                 <label for="inputLastName">Last Name</label>
                 <input type="text" class="form-control" id="inputLastName" name="actor_lastName">
             </div>
+            <div class="form-group col-md-6">
+                <label for="inputActorPic">Last Name</label>
+                <input type="text" class="form-control" id="inputLastName" name="actor_picture">
+            </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">

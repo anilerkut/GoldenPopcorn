@@ -14,6 +14,11 @@ class GenderController extends BaseController
         $this->genderModel = new GenderModel();
     }
 
+    public function add() 
+    {
+        return view('include/gender-add');
+    }
+
     public function addGender() {
         $data = [];
         helper(['form']);
@@ -46,5 +51,11 @@ class GenderController extends BaseController
         echo view('include/gender-add',$data);
     }
 
+    public function list()
+    {
+        $gender = new GenderModel();
+        $data['gender'] = $gender->findAll();
+        return view('include/gender-list', $data);
+    }
 
 }

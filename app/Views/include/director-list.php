@@ -56,14 +56,43 @@
             <td>
                 <table>
                     <td>
-                        <a href="<?= base_url('director/edit/'.$row['id'] ) ?>" class="btn btn-warning">
+                        <a href="<?= base_url('DirectorController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
                             <i class="fas fa-pen-square"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="<?= base_url('director/delete/'.$row['id']) ?>" class="btn btn-danger">
-                            <i class="fas fa-trash"></i>
-                        </a>
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-danger" data-toggle="modal"
+                                    data-target="#deleteModal">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Movie Name</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="delete_id" id="delete_id">
+                                                    Are you sure you want to delete it?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                        Close
+                                                    </button>                                        
+                                                    <a href="<?= base_url('DirectorController/delete/'.$row['id'] ) ?>" class="btn btn-primary">
+                                                        Delete
+                                                    </a>                                                                                   
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
                     </td>
                 </table>
             </td>
@@ -74,7 +103,9 @@
 </div>
 
 
+
 <?= $this->include('data/admin-footer.php') ?>
+
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
@@ -110,5 +141,7 @@
 <script src="../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../dist/js/pages/dashboard.js"></script>
+
+
 </body>
 </html>

@@ -23,30 +23,10 @@
         <nav class="mt-2">
             <ul class="nav">
                 <li class="nav-item">
-
-                    <a href="../Home/add_movie" class="nav-link">
-
-                    <a href="../MovieController/list" class="nav-link">
-
-                        <i class="nav-icon fas fa-film"></i>
-                        <p class="list-font" style="display: inline-block">
-                            Movie
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="../ActorController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Actor
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../DirectorController/list" class="nav-link">
-                        <i class="nav-icon fas fa-film"></i>
-                        <p class="list-font" style="display: inline-block">
-                            Director
                         </p>
                     </a>
                 </li>
@@ -59,10 +39,43 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="../CountryController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Country
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../DirectorController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Director
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../GenderController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Gender
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="../LanguageController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Language
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../MovieController/list" class="nav-link">
+
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Movie
                         </p>
                     </a>
                 </li>
@@ -81,28 +94,12 @@
                             Picture
                         </p>
                     </a>
-                </li>
+                </li>           
                 <li class="nav-item">
-                    <a href="../Home/add_gender" class="nav-link">
+                    <a href="../WarningController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
-                            Add Gender
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../Home/add_country" class="nav-link">
-                        <i class="nav-icon fas fa-film"></i>
-                        <p class="list-font" style="display: inline-block">
-                            Add Country
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../Home/add_warning" class="nav-link">
-                        <i class="nav-icon fas fa-film"></i>
-                        <p class="list-font" style="display: inline-block">
-                            Add Warning
+                            Warning
                         </p>
                     </a>
                 </li>
