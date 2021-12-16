@@ -11,7 +11,7 @@
                 <input type="text" class="form-control" id="inputCountryName" name="country_name">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Save</button>
+        <button type="submit" class="btn btn-primary mt-3">Update</button>
     </form>
     <br><hr>
     <?php if(isset($validation)):?>
