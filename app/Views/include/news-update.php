@@ -72,7 +72,7 @@
             </div>
             <textarea class="form-control" id="movieSummary" aria-label="Movie Summary" name= "movie_summary"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Save</button>
+        <button type="submit" class="btn btn-primary mt-3">Update</button>
     </form>
 </div>
 
