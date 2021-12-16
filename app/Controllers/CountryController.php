@@ -16,8 +16,32 @@ class CountryController extends BaseController
 
     public function add() 
     {
-
         return view('include/country-add');
+    }
+
+    public function edit($id) //Brings the information on the edit screen 
+    { 
+        $country = new CountryModel();
+        $data['country'] = $country->find($id);
+        return view('include/country-update', $data);
+    }
+
+    public function update($id) //update the informations
+    {   
+        $country = new CountryModel();
+        $data = 
+        [
+            'country_name' => $this->request->getPost('country_name')
+        ];
+        $country->update($id, $data);
+        return redirect()->to(base_url('country'));
+    }
+
+    public function delete($id) //delete data
+    { 
+        $country = new CountryModel();
+        $country->delete($id);
+        return redirect()->to(base_url('country'));
     }
 
     public function addCountry() {

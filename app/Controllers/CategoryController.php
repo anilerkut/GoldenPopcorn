@@ -19,6 +19,31 @@ class CategoryController extends BaseController
         return view('include/category-add');
     }
 
+    public function edit($id) //Brings the information on the edit screen 
+    { 
+        $category = new CategoryModel();
+        $data['category'] = $category->find($id);
+        return view('include/category-update', $data);
+    }
+
+    public function update($id) //update the informations
+    {   
+        $category = new CategoryModel();
+        $data = 
+        [
+            'category_name' => $this->request->getPost('category_name')
+        ];
+        $category->update($id, $data);
+        return redirect()->to(base_url('category'));
+    }
+
+    public function delete($id) //delete data
+    { 
+        $category = new CategoryModel();
+        $category->delete($id);
+        return redirect()->to(base_url('category'));
+    }
+
     public function addCategory() {
         $data = [];
         helper(['form']);
@@ -50,7 +75,6 @@ class CategoryController extends BaseController
         }
         echo view('include/category-add',$data);
     }
-
 
     public function list()
     {

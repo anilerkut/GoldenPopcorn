@@ -14,27 +14,42 @@ class PictureController extends BaseController
         $this->pictureModel = new PictureModel();
     }
 
-    private function setUserSession($warning)
-    {
-        $data=
-        [
-            'picture_link'=>$warning['warning_name'],
-            // gender, veritabanından cekilip forma aktarılacak ve oradan alınacak
-        ];
-
-        session()->set($data);
-        return true;
-    }
-
-
     public function list()
     {
-        //$picture = new LanguageModel();
-        //$data['picture'] = $picture->findAll();
-        //return view('include/picture-list', $data);
-        //return view('include/picture-list');
+        $picture = new PictureModel();
+        $data['picture'] = $picture->findAll();
+        return view('include/picture-list', $data);
     }
 
+    public function add() //from admin page picture list menu to picture add  
+    {
+        return view('include/picture-add'); 
+    }
+
+    public function edit($id) //Brings the information on the edit screen 
+    { 
+        $picture = new PictureModel();
+        $data['picture'] = $picture->find($id);
+        return view('include/picture-update', $data);
+    }
+
+    public function update($id) //update the informations
+    {   
+        $picture = new PictureModel();
+        $data = 
+        [
+            'picture_name' => $this->request->getPost('picture_name')
+        ];
+        $picture->update($id, $data);
+        return redirect()->to(base_url('picture'));
+    }
+
+    public function delete($id) //delete data
+    { 
+        $picture = new PictureModel();
+        $picture->delete($id);
+        return redirect()->to(base_url('picture'));
+    }
 
     public function addPicture() {
         $data = [];
@@ -44,42 +59,27 @@ class PictureController extends BaseController
         {
             $rules=
                 [
-                    'picture_link' => 'required|min_length[2]',
+                    'picture_link' => 'required|min_length[2]|is_unique[picture.picture_link]',
                     'movie_id'=> 'required',
                 ];
 
-            $errors=
-                [
-                    'picture_link' =>
-                    [
-                        'validatePicture'=> "The length of picture link must be minimum two"
-                    ]
-                ];
 
-            if(! $this->validate($rules,$errors))
+            if(! $this->validate($rules))
             {
                 $data['validation']= $this->validator;
             }
             else
             {
                 $picture = new PictureModel();
-                if(is_null($picture->getPicture()))
-                {
-                    $newData = 
-                    [
-                        'picture_link'  => $this->request->getVar('picture_link'),
-                        'movie_id' =>  $this->request->getVar('movie_id'),
-                    ];
+                
+                $newData = 
+                [
+                    'picture_link'  => $this->request->getVar('picture_link'),
+                    'movie_id' =>  $this->request->getVar('movie_id'),
+                ];
 
-                    $picture->save($newData);
-                }
-                else
-                {
-
-                }
-
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
+                $picture->save($newData);
+               
                 return redirect()->to('/dashboard');
             }
         }

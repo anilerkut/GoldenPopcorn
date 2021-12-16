@@ -19,6 +19,31 @@ class GenderController extends BaseController
         return view('include/gender-add');
     }
 
+    public function edit($id) //Brings the information on the edit screen 
+    { 
+        $gender = new GenderModel();
+        $data['gender'] = $gender->find($id);
+        return view('include/gender-update', $data);
+    }
+
+    public function update($id) //update the informations
+    {   
+        $gender = new GenderModel();
+        $data = 
+        [
+            'gender_name' => $this->request->getPost('gender_name')
+        ];
+        $gender->update($id, $data);
+        return redirect()->to(base_url('gender'));
+    }
+
+    public function delete($id) //delete data
+    { 
+        $gender = new GenderModel();
+        $gender->delete($id);
+        return redirect()->to(base_url('gender'));
+    }
+
     public function addGender() {
         $data = [];
         helper(['form']);
@@ -45,7 +70,7 @@ class GenderController extends BaseController
 
                 $gender->save($newData);
 
-                return redirect()->to('include/gender-add');
+                return redirect()->to('/gender-list');
             }
         }
         echo view('include/gender-add',$data);

@@ -16,8 +16,32 @@ class WarningController extends BaseController
 
     public function add() 
     {
-
         return view('include/warning-add');
+    }
+
+    public function edit($id) //Brings the information on the edit screen 
+    { 
+        $warning = new WarningModel();
+        $data['warning'] = $warning->find($id);
+        return view('include/warning-update', $data);
+    }
+
+    public function update($id) //update the informations
+    {   
+        $warning = new WarningModel();
+        $data = 
+        [
+            'warning_name' => $this->request->getPost('warning_name')
+        ];
+        $warning->update($id, $data);
+        return redirect()->to(base_url('warning'));
+    }
+
+    public function delete($id) //delete data
+    { 
+        $warning = new WarningModel();
+        $warning->delete($id);
+        return redirect()->to(base_url('warning'));
     }
 
     public function addWarning() {
@@ -46,12 +70,11 @@ class WarningController extends BaseController
 
                 $warning->save($newData);
 
-                return redirect()->to('include/warning-add');
+                return redirect()->to('/warning-add');
             }
         }
         echo view('include/warning-add',$data);
     }
-
 
     public function list()
     {
