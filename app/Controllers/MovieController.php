@@ -25,8 +25,7 @@ class MovieController extends BaseController
     {
         $movie = new MovieModel();
         $data['movie'] = $movie->findAll();
-        return view('include/category-list', $data);
-        return view('include/movie-list');
+        return view('include/movie-list', $data);
     }
 
     public function add() //from admin page movie list menu to movie add  

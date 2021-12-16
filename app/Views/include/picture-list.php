@@ -1,9 +1,10 @@
 <!-- Tüm Director'ları Listele -->
+
 <?= $this->include('data/admin-operation-top.php') ?>
 
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <a href="<?= base_url('director-add') ?>" class="btn btn-primary mt-3 btn-lg" > 
+    <a href="<?= base_url('picture-add') ?>" class="btn btn-primary mt-3 btn-lg" >
                             <i class="fas fa-plus"></i>
     </a>
 
@@ -11,52 +12,53 @@
         <thead>
         <tr>
             <th scope="col"></th>
-            <th scope="col">Director Name</th>
-            <th scope="col">Operations</th>
+            <th scope="col">Picture Link</th>
+            <th scope="col">Movie ID</th>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($director as $row) : ?>
+        <?php
+        $num=1;
+         foreach ($picture as $row) : ?>
         <tr>
-            <th scope="row">1</th>
-            <td><?= $row['director_name'] ?></td>
+            <th scope="row"><?= $num ?></th>
+            <td><?= $row['picture_link'] ?></td>
+            <?php $num++ ?>
             <td>
                 <table>
                     <td>
-                        <a href="<?= base_url('DirectorController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
+                        <a href="<?= base_url('PictureController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
                             <i class="fas fa-pen-square"></i>
                         </a>
                     </td>
                     <td>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#deleteModal">
+                                    data-target="#exampleModal">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="deleteModal" tabindex="-1"
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Director Name</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Picture Link</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                                <div class="modal-body">
-                                                    <input type="hidden" name="delete_id" id="delete_id">
-                                                    Are you sure you want to delete it?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                        Close
-                                                    </button>                                        
-                                                    <a href="<?= base_url('DirectorController/delete/'.$row['id'] ) ?>" class="btn btn-primary">
+                                            <div class="modal-body">
+                                                Are you sure you want to delete it?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <a href="<?= base_url('PictureController/delete/'.$row['id'] ) ?>" class="btn btn-primary">
                                                         Delete
-                                                    </a>                                                                                   
-                                                </div>
+                                                </a>     
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +70,6 @@
         </tbody>
     </table>
 </div>
-
 
 
 <?= $this->include('data/admin-operation-bottom.php') ?>

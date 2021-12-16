@@ -55,7 +55,9 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Delete</button>
+                                                <a href="<?= base_url('CategoryController/delete/'.$row['id'] ) ?>" class="btn btn-primary">
+                                                        Delete
+                                                </a>     
                                             </div>
                                         </div>
                                     </div>

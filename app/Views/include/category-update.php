@@ -2,25 +2,18 @@
 
 <?= $this->include('data/admin-operation-top.php') ?>
 
-
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5"  action="../CategoryController/addCategory" method="post">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCategoryName">Category Name</label>
-                <input type="text" class="form-control" id="inputCategoryName" name="category_name"> 
+        <h4>Update Category</h4>
+        <form action="<?= base_url('CategoryController/update/'.$category['id']) ?>" method="POST" class="mt-5">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputFullName">Category Name</label>
+                    <input type="text" class="form-control" id="inputFullName" name="category_name" value="<?= $category['category_name'] ?>">
+                </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary mt-3">Update</button>
-    </form>
-    <br><hr>
-    <?php if(isset($validation)):?>
-                    <div class="col-12"> 
-                        <div class="alert alert-warning">
-                            <?= $validation->listErrors() ?>
-                        </div>
-                    </div>
-    <?php endif;?>
-</div>
+            <button type="submit" class="btn btn-primary mt-3">Update</button>
+        </form>
+    </div>
 
 <?= $this->include('data/admin-operation-bottom.php') ?>

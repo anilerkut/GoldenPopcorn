@@ -3,7 +3,7 @@
 
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <a href="<?= base_url('gender-add') ?>" class="btn btn-primary mt-3 btn-lg" >
+    <a href="<?= base_url('actor-add') ?>" class="btn btn-primary mt-3 btn-lg" >
                             <i class="fas fa-plus"></i>
     </a>
 

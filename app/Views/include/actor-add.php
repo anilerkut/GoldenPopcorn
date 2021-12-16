@@ -2,7 +2,7 @@
 <?= $this->include('data/admin-operation-top.php') ?>
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5">
+    <form class="mt-5" action="/ActorController/addActor" method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputFirstName">First Name</label>
@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" id="inputLastName" name="actor_lastName">
             </div>
             <div class="form-group col-md-6">
-                <label for="inputActorPic">Last Name</label>
+                <label for="inputActorPic">Actor Picture Link</label>
                 <input type="text" class="form-control" id="inputLastName" name="actor_picture">
             </div>
         </div>
@@ -22,11 +22,14 @@
                 <label for="inputBirthdate">Birthdate</label>
                 <input type="date" class="form-control" id="inputBirthdate" name="actor_birthdate">
             </div>
+
             <div class="form-group col-md-6">
                 <label for="inputGender">Gender</label>
-                <select id="inputGender" class="form-control">
+                <select id="inputGender" class="form-control" name="actor_gender">
                     <option selected>Choose Gender</option>
-                    <option>Male</option>
+                    <?php foreach ($gender as $key=> $gen): ?>
+                        <option value=$key><?php echo $gen["gender_name"];?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>
