@@ -14,6 +14,11 @@ class CategoryController extends BaseController
         $this->categoryModel = new CategoryModel();
     }
 
+    public function add() 
+    {
+        return view('include/category-add');
+    }
+
     public function addCategory() {
         $data = [];
         helper(['form']);
@@ -35,12 +40,12 @@ class CategoryController extends BaseController
                 
                 $newData =
                 [
-                    'category_name'  => $this->request->getVar('category_name')
+                    'category_name' => $this->request->getVar('category_name')
                 ];
 
                 $category->save($newData);
 
-                return redirect()->to('../include/category-add');
+                return redirect()->to('/category-list');//?statussuccess
             }
         }
         echo view('include/category-add',$data);
@@ -49,10 +54,9 @@ class CategoryController extends BaseController
 
     public function list()
     {
-        //$category = new CategoryModel();
-        //$data['category'] = $category->findAll();
-        //return view('include/category-list', $data);
-        return view('include/category-list');
+        $category = new CategoryModel();
+        $data['category'] = $category->findAll();
+        return view('include/category-list', $data);
     }
 
 }

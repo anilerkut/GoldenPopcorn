@@ -48,6 +48,13 @@ $routes->group('admin', function ($routes){
 
 // Category
 $routes->get('category', 'CategoryController::list');
+$routes->get('category-add', 'CategoryController::add');
+
+$routes->get('country', 'CountryController::list');
+$routes->get('country-add', 'CountryController::add');
+
+$routes->get('gender', 'GenderController::list');
+$routes->get('gender-add', 'GenderController::add');
 
 // Movie
 $routes->get('movie', 'MovieController::list');
@@ -60,6 +67,10 @@ $routes->get('picture', 'PictureController::list');
 
 // Language
 $routes->get('language', 'LanguageController::list');
+$routes->get('language-add', 'LanguageController::add');
+
+$routes->get('warning', 'LanguageController::list');
+$routes->get('warning-add', 'WarningController::add');
 
 // Director Data
 $routes->get('director', 'DirectorController::list');

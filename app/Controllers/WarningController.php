@@ -14,18 +14,11 @@ class WarningController extends BaseController
         $this->warningModel = new WarningModel();
     }
 
-    private function setUserSession($warning)
+    public function add() 
     {
-        $data=
-        [
-            'warning_name'=>$warning['warning_name'],
-            // gender, veritabanından cekilip forma aktarılacak ve oradan alınacak
-        ];
 
-        session()->set($data);
-        return true;
+        return view('include/warning-add');
     }
-
 
     public function addWarning() {
         $data = [];
@@ -57,6 +50,14 @@ class WarningController extends BaseController
             }
         }
         echo view('include/warning-add',$data);
+    }
+
+
+    public function list()
+    {
+        $warning = new WarningModel();
+        $data['warning'] = $warning->findAll();
+        return view('include/warning-list', $data);
     }
 
 }

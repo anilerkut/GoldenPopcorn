@@ -14,11 +14,11 @@ class DirectorController extends BaseController
         $this->directorModel = new DirectorModel();
     }
 
-    public function list() {
-        //$director = new DirectorModel();
-        //$data['director'] = $director->findAll();
-        //return view('include/director-list', $data);
-        return view('include/director-list');
+    public function list() 
+    {
+        $director = new DirectorModel();
+        $data['director'] = $director->findAll();
+        return view('include/director-list', $data);
     }
 
     public function add() {
@@ -46,7 +46,7 @@ class DirectorController extends BaseController
     public function update($id) {
         $director = new DirectorModel();
         $data = [
-            'full_name' => $this->request->getPost('director_name')
+            'director_name' => $this->request->getPost('director_name')
         ];
         $director->update($id, $data);
         return redirect()->to(base_url('director'));
