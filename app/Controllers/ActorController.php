@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 
 use App\Models\ActorModel;
+use App\Models\GenderModel;
 
 class ActorController extends BaseController
 {
@@ -30,7 +31,9 @@ class ActorController extends BaseController
 
     public function add() //from admin page actor list menu to actor add  
     {
-        return view('include/actor-add'); 
+        $gender = new GenderModel();
+        $data['gender'] = $gender->findAll();
+        return view('include/actor-add',$data); 
     }
 
     public function edit($id) //Brings the information on the edit screen 
@@ -111,12 +114,12 @@ class ActorController extends BaseController
                     'actor_lastname'  => $this->request->getVar('actor_lastName'),
                     'actor_birthdate'  => $this->request->getVar('actor_birthdate'),
                     'actor_picture' => $this->request->getVar('actor_picture'),
-                        // actor gelecek
+                    'actor_gender'=>  $this->request->getVar('actor_gender'),
                 ];
 
                     $actor->save($newData);
 
-                return redirect()->to('/dashboard');
+                return redirect()->to('/actor-list');
             }
         }
         echo view('include/actor-add',$data);

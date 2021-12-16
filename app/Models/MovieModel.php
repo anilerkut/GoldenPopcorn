@@ -7,13 +7,12 @@ class MovieModel extends Model
     protected $table='movie';
     protected $primaryKey = 'id';
     protected $returnType ='array';
-    protected $useSoftDeletes =true;
+    protected $useSoftDeletes =false;
     protected $allowedFields = ['movie_name','movie_summary','movie_duration','movie_release_date','movie_trailer','imdb_rating',
         'metacritic_rating','rottentomatos_rating','movie_gross','movie_poster'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';
-    protected $deletedField='deleted_at';
     protected $skipValidation=false;
 
 

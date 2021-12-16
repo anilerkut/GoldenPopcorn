@@ -21,6 +21,13 @@ class NewsController extends BaseController
         return checkdate($month, $day, $year);
     }
 
+    public function list()
+    {
+        $news = new NewsModel();
+        $data['news'] = $news->findAll();
+        return view('include/news-list', $data);
+    }
+
     public function add() //from admin page news list menu to news add  
     {
         return view('include/news-add'); 

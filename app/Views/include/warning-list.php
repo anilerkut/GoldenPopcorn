@@ -2,7 +2,6 @@
 <?= $this->include('data/admin-operation-top.php') ?>
 
 
-
 <div class="container" style="min-height : calc(100vh - 200px);">
     <a href="<?= base_url('warning-add') ?>" class="btn btn-primary mt-3 btn-lg" >
                             <i class="fas fa-plus"></i>

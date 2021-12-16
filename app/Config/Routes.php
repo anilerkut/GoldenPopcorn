@@ -49,36 +49,71 @@ $routes->group('admin', function ($routes){
 // Category
 $routes->get('category', 'CategoryController::list');
 $routes->get('category-add', 'CategoryController::add');
+$routes->get('category/edit(:num)', 'CategoryController::edit/$1');
+$routes->put('category/update(:num)', 'CategoryController::update/$1');
+$routes->get('category/delete(:num)', 'CategoryController::delete/$1');
 
 $routes->get('country', 'CountryController::list');
 $routes->get('country-add', 'CountryController::add');
+$routes->get('country/edit(:num)', 'CountryController::edit/$1');
+$routes->put('country/update(:num)', 'CountryController::update/$1');
+$routes->get('country/delete(:num)', 'CountryController::delete/$1');
 
 $routes->get('gender', 'GenderController::list');
 $routes->get('gender-add', 'GenderController::add');
+$routes->get('gender/edit(:num)', 'GenderController::edit/$1');
+$routes->put('gender/update(:num)', 'GenderController::update/$1');
+$routes->get('gender/delete(:num)', 'GenderController::delete/$1');
 
 // Movie
 $routes->get('movie', 'MovieController::list');
+$routes->get('movie-add', 'MovieController::add');
+$routes->get('movie/edit(:num)', 'MovieController::edit/$1');
+$routes->put('movie/update(:num)', 'MovieController::update/$1');
+$routes->get('movie/delete(:num)', 'MovieController::delete/$1');
 
 // Actor
 $routes->get('actor', 'ActorController::list');
+$routes->get('actor-add', 'ActorController::add');
+$routes->get('actor/edit(:num)', 'ActorController::edit/$1');
+$routes->put('actor/update(:num)', 'ActorController::update/$1');
+$routes->get('actor/delete(:num)', 'ActorController::delete/$1');
+
 
 // Picture
 $routes->get('picture', 'PictureController::list');
+$routes->get('picture-add', 'PictureController::add');
+$routes->get('picture/edit(:num)', 'PictureController::edit/$1');
+$routes->put('picture/update(:num)', 'PictureController::update/$1');
+$routes->get('picture/delete(:num)', 'PictureController::delete/$1');
 
 // Language
 $routes->get('language', 'LanguageController::list');
 $routes->get('language-add', 'LanguageController::add');
+$routes->get('language/edit(:num)', 'LanguageController::edit/$1');
+$routes->put('language/update(:num)', 'LanguageController::update/$1');
+$routes->get('language/delete(:num)', 'LanguageController::delete/$1');
 
-$routes->get('warning', 'LanguageController::list');
+//Warning
+$routes->get('warning', 'WarningController::list');
 $routes->get('warning-add', 'WarningController::add');
+$routes->get('warning/edit(:num)', 'WarningController::edit/$1');
+$routes->put('warning/update(:num)', 'WarningController::update/$1');
+$routes->get('warning/delete(:num)', 'WarningController::delete/$1');
 
 // Director Data
 $routes->get('director', 'DirectorController::list');
 $routes->get('director-add', 'DirectorController::add');
-$routes->post('director-store', 'DirectorController::store');
 $routes->get('director/edit(:num)', 'DirectorController::edit/$1');
 $routes->put('director/update(:num)', 'DirectorController::update/$1');
 $routes->get('director/delete(:num)', 'DirectorController::delete/$1');
+
+//News
+$routes->get('news', 'NewsController::list');
+$routes->get('news-add', 'NewsController::add');
+$routes->get('news/edit(:num)', 'NewsController::edit/$1');
+$routes->put('news/update(:num)', 'NewsController::update/$1');
+$routes->get('news/delete(:num)', 'NewsController::delete/$1');
 
 
 
