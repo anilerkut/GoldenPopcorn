@@ -28,6 +28,36 @@ class ActorController extends BaseController
         return view('include/actor-list', $data);
     }
 
+    public function add() //from admin page actor list menu to actor add  
+    {
+        return view('include/actor-add'); 
+    }
+
+    public function edit($id) //Brings the information on the edit screen 
+    { 
+        $actor = new ActorModel();
+        $data['actor'] = $actor->find($id);
+        return view('include/actor-update', $data);
+    }
+
+    public function update($id) //update the informations
+    {   
+        $actor = new ActorModel();
+        $data = 
+        [
+            'actor_name' => $this->request->getPost('actor_name')
+        ];
+        $actor->update($id, $data);
+        return redirect()->to(base_url('actor'));
+    }
+
+    public function delete($id) //delete data
+    { 
+        $actor = new ActorModel();
+        $actor->delete($id);
+        return redirect()->to(base_url('actor'));
+    }
+
     public function addActor() {
         $data = [];
         helper(['form']);
@@ -38,7 +68,7 @@ class ActorController extends BaseController
                 [
                     'actor_firstName' => 'required|min_length[2]',
                     'actor_lastName' => 'required|min_length[2]',
-                    'actor_gender' => 'required',
+                    'actor_actor' => 'required',
                     'actor_birthdate' => 'required',
                     'actor_picture' => 'required'
                 ];
@@ -53,7 +83,7 @@ class ActorController extends BaseController
                         [
                             'validateActor'=> "The length of last name must be minimum two"
                         ],
-                    'actor_gender'=>
+                    'actor_actor'=>
                         [
                             'validateActor'=> "The length of first name must be minimum two"
                         ],
@@ -81,7 +111,7 @@ class ActorController extends BaseController
                     'actor_lastname'  => $this->request->getVar('actor_lastName'),
                     'actor_birthdate'  => $this->request->getVar('actor_birthdate'),
                     'actor_picture' => $this->request->getVar('actor_picture'),
-                        // gender gelecek
+                        // actor gelecek
                 ];
 
                     $actor->save($newData);

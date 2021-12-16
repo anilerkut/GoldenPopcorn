@@ -26,17 +26,6 @@ class DirectorController extends BaseController
         return view('include/director-add');
     }
 
-    public function store() {
-        $director = new DirectorModel();
-        $data = 
-        [
-          'director_name' => $this->request->getPost('director_name'),
-          'director_gender' => 1
-        ];
-        $director->save($data);
-        return redirect()->to(base_url('director'));
-    }
-
     public function edit($id) {
         $director = new DirectorModel();
         $data['director'] = $director->find($id);

@@ -14,19 +14,6 @@ class MovieController extends BaseController
         $this->movieModel = new MovieModel();
     }
 
-    private function setUserSession($actor)
-    {
-        $data=[
-            'movie_name'=>$actor['actor_firstName'],
-            'actor_lastname'=>$actor['actor_lastName'],
-            'actor_birthdate'=>$actor['actor_birthdate'],
-            // gender, veritabanından cekilip forma aktarılacak ve oradan alınacak
-        ];
-
-        session()->set($data);
-        return true;
-    }
-
     private function callbackDateValid($date){
         $day = (int) substr($date, 0, 2);
         $month = (int) substr($date, 3, 2);
@@ -36,10 +23,40 @@ class MovieController extends BaseController
 
     public function list()
     {
-        //$movie = new MovieModel();
-        //$data['movie'] = $movie->findAll();
-        //return view('include/category-list', $data);
+        $movie = new MovieModel();
+        $data['movie'] = $movie->findAll();
+        return view('include/category-list', $data);
         return view('include/movie-list');
+    }
+
+    public function add() //from admin page movie list menu to movie add  
+    {
+        return view('include/movie-add'); 
+    }
+
+    public function edit($id) //Brings the information on the edit screen 
+    { 
+        $movie = new MovieModel();
+        $data['movie'] = $movie->find($id);
+        return view('include/movie-update', $data);
+    }
+
+    public function update($id) //update the informations
+    {   
+        $movie = new MovieModel();
+        $data = 
+        [
+            'movie_name' => $this->request->getPost('movie_name')
+        ];
+        $movie->update($id, $data);
+        return redirect()->to(base_url('movie'));
+    }
+
+    public function delete($id) //delete data
+    { 
+        $movie = new MovieModel();
+        $movie->delete($id);
+        return redirect()->to(base_url('movie'));
     }
 
     public function addMovie() {
@@ -120,8 +137,8 @@ class MovieController extends BaseController
                         'movie_duration' => $this->request->getVar('movie_duration'),
                         'movie_summary' => $this->request->getVar('movie_summary'), 
                         'movie_trailer' => $this->request->getVar('movie_trailer'),
-                        'country_id' => $this->request->getVar('actor_firstName'), //bunların formda name i yok , idrise nasıl alınacak sor
-                        'language_id' => $this->request->getVar('actor_firstName'),
+                        'country_id' => $this->request->getVar('movie_firstName'), //bunların formda name i yok , idrise nasıl alınacak sor
+                        'language_id' => $this->request->getVar('movie_firstName'),
                         'movie_gross' =>$this->request->getVar('movie_gross'),
                         'imdb_rating' => $this->request->getVar('imdb_rating'),
                         'metacritic_rating' => $this->request->getVar('metacritic_rating'),
@@ -134,9 +151,6 @@ class MovieController extends BaseController
                 } else {
 
                 }
-
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/dashboard');
             }
         }

@@ -10,15 +10,4 @@ class Home extends BaseController
         return view('index'); // 'welcome_message'
     }
 
-    public function add_news()
-    {
-        return view('include/news-add');
-    }
-
-    public function add_warning()
-    {
-        return view('include/warning-add');
-
-    }
-
 }

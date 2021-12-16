@@ -21,6 +21,36 @@ class NewsController extends BaseController
         return checkdate($month, $day, $year);
     }
 
+    public function add() //from admin page news list menu to news add  
+    {
+        return view('include/news-add'); 
+    }
+
+    public function edit($id) //Brings the information on the edit screen 
+    { 
+        $news = new NewsModel();
+        $data['news'] = $news->find($id);
+        return view('include/news-update', $data);
+    }
+
+    public function update($id) //update the informations
+    {   
+        $news = new NewsModel();
+        $data = 
+        [
+            'news_name' => $this->request->getPost('news_name')
+        ];
+        $news->update($id, $data);
+        return redirect()->to(base_url('news'));
+    }
+
+    public function delete($id) //delete data
+    { 
+        $news = new NewsModel();
+        $news->delete($id);
+        return redirect()->to(base_url('news'));
+    }
+
     public function addNews() {
         $data = [];
         helper(['form']);
@@ -31,27 +61,25 @@ class NewsController extends BaseController
                 [
                     'news_content' => 'required|min_length[2]',
                     'news_date' => 'required|min_length[2]',
-                    'actor_id' => 'required',
-                    'director_id' => 'required'
                 ];
 
             $errors=
                 [
-                    'actor_firstName'=>
+                    'news_firstName'=>
                         [
-                            'validateActor'=> "The length of first name must be minimum two"
+                            'validatenews'=> "The length of first name must be minimum two"
                         ],
-                    'actor_lastName'=>
+                    'news_lastName'=>
                         [
-                            'validateActor'=> "The length of last name must be minimum two"
+                            'validatenews'=> "The length of last name must be minimum two"
                         ],
-                    'actor_gender'=>
+                    'news_gender'=>
                         [
-                            'validateActor'=> "The length of first name must be minimum two"
+                            'validatenews'=> "The length of first name must be minimum two"
                         ],
-                    'actor_birthdate'=>
+                    'news_birthdate'=>
                         [
-                            'validateActor'=> "The given date is not valid"
+                            'validatenews'=> "The given date is not valid"
                         ],
                 ];
 
@@ -67,7 +95,6 @@ class NewsController extends BaseController
                 [
                     'news_content'  => $this->request->getVar('news_content'),
                     'news_date'  => $this->request->getVar('news_date'),
-                      
                 ];
 
                 $news->save($newData);
