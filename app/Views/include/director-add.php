@@ -3,7 +3,7 @@
 <?= $this->include('data/admin-operation-top.php') ?>
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form action="/DirectorController/store" method="POST" class="mt-5">
+    <form action="/DirectorController/addDirector" method="POST" class="mt-5">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputFullName">Full Name</label>
@@ -11,9 +11,11 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputGender">Gender</label>
-                <select id="inputGender" class="form-control">
+                <select id="inputGender" class="form-control" name="director_gender">
                     <option selected>Choose Gender</option>
-                    <option>Male</option>
+                    <?php foreach ($gender as $key=> $gen): ?>
+                        <option value="<?=$gen['id'] ?>"><?php echo $gen["gender_name"];?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>

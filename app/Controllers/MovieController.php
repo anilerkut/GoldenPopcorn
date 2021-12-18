@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 
 use App\Models\MovieModel;
+use App\Models\CountryModel;
+use App\Models\LanguageModel;
 
 class MovieController extends BaseController
 {
@@ -30,7 +32,11 @@ class MovieController extends BaseController
 
     public function add() //from admin page movie list menu to movie add  
     {
-        return view('include/movie-add'); 
+        $country = new CountryModel();
+        $language = new LanguageModel();
+        $data['country'] = $country->findAll();
+        $data['language'] = $language->findAll();
+        return view('include/movie-add',$data); 
     }
 
     public function edit($id) //Brings the information on the edit screen 
@@ -61,98 +67,55 @@ class MovieController extends BaseController
     public function addMovie() {
         $data=[];
         helper(['form']);
+        
 
         if($this->request->getPost())
         {
             $rules=
                 [
-                    'movie_name' => 'required|min_length[2]',
-                    'movie_releasedate' => 'required|min_length[2]',
-                    'movie_duration' => 'required|min_length[2]',
+                    'movie_name' => 'required|min_length[2]|is_unique[movie.movie_name]',
+                    'movie_releasedate' => 'required',
+                    'movie_duration' => 'required',
                     'movie_summary' => 'required|min_length[2]', 
                     'movie_trailer' => 'required|min_length[2]',
-                    'country_id' => 'required|min_length[2]',
-                    'language_id' => 'required|min_length[2]',
+                    'country_id' => 'required',
+                    'language_id' => 'required',
                     'movie_gross' => 'required|min_length[2]',
-                    'imdb_rating' => 'required|min_length[2]',
-                    'metacritic_rating' => 'required|min_length[2]',
-                    'rottentomatoes_rating' => 'required|min_length[2]',
+                    'imdb_rating' => 'required',
+                    'metacritic_rating' => 'required',
+                    'rottentomatoes_rating' => 'required',
                     'movie_poster' => 'required',
                 ];
             //BUNLARI DÜZELT
-            $errors=
-                [
-                        'movie_name'=>
-                        [
-                            'validateMovie'=> "The length of first name must be minimum two"
-                        ],
-                        'movie_releasedate'=>
-                        [
-                            'validateMovie'=> "The length of last name must be minimum two"
-                        ],
-                        'movie_duration'=>
-                        [
-                            'validateMovie'=> "The length of first name must be minimum two"
-                        ],
-                        'movie_summary'=>
-                        [
-                            'validateMovie'=> "The given date is not valid"
-                        ],
-                        'movie_trailer'=>
-                        [
-                            'validateMovie'=> "The given date is not valid"
-                        ],
-                        'movie_gross'=>
-                        [
-                            'validateMovie'=> "The given date is not valid"
-                        ],
-                        'imdb_rating'=>
-                        [
-                            'validateMovie'=> "The given date is not valid"
-                        ],
-                        'rottentomatoes_rating'=>
-                        [
-                            'validateMovie'=> "The given date is not valid"
-                        ],
-                        'metacritic_rating'=>
-                        [
-                            'validateMovie'=> "The given date is not valid"
-                        ],
-                                          
-                ];
 
-            if(! $this->validate($rules,$errors))
+            if(! $this->validate($rules))
             {
+                echo "yok yok buradayım";
                 $data['validation']= $this->validator;
             }
             else
             {
+                
                 $movie = new MovieModel();
-                if(is_null($movie->getMovie()))
-                {
-                    $newData = [
+                $newData = [
                         'movie_name' => $this->request->getVar('movie_name'),
                         'movie_releasedate' => $this->request->getVar('movie_releasedate'),
                         'movie_duration' => $this->request->getVar('movie_duration'),
                         'movie_summary' => $this->request->getVar('movie_summary'), 
                         'movie_trailer' => $this->request->getVar('movie_trailer'),
-                        'country_id' => $this->request->getVar('movie_firstName'), //bunların formda name i yok , idrise nasıl alınacak sor
-                        'language_id' => $this->request->getVar('movie_firstName'),
+                        'country_id' => $this->request->getVar('country_id'), //bunların formda name i yok , idrise nasıl alınacak sor
+                        'language_id' => $this->request->getVar('language_id'),
                         'movie_gross' =>$this->request->getVar('movie_gross'),
                         'imdb_rating' => $this->request->getVar('imdb_rating'),
                         'metacritic_rating' => $this->request->getVar('metacritic_rating'),
                         'rottentomatoes_rating' => $this->request->getVar('rottentomatoes_rating'),
                         'movie_poster' => $this->request->getVar('movie_poster'),
-                    ];
-
-                    $movie->save($newData);
-
-                } else {
-
-                }
+                ];
+                $movie->save($newData);
                 return redirect()->to('/dashboard');
             }
         }
+        echo view('include/movie-add',$data);   
     }
 
 }

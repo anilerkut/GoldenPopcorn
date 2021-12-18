@@ -28,7 +28,7 @@
                 <select id="inputGender" class="form-control" name="actor_gender">
                     <option selected>Choose Gender</option>
                     <?php foreach ($gender as $key=> $gen): ?>
-                        <option value=$key><?php echo $gen["gender_name"];?></option>
+                        <option value="<?=$gen['id'] ?>"><?php echo $gen["gender_name"];?></option>
                     <?php endforeach ?>
                 </select>
             </div>
