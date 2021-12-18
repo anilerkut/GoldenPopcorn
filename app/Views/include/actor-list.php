@@ -1,4 +1,4 @@
-<!-- Tüm Director'ları Listele -->
+<!-- Tüm Actor'ları Listele -->
 <?= $this->include('data/admin-operation-top.php') ?>
 
 
@@ -21,12 +21,12 @@
          foreach ($actor as $row) : ?>
         <tr>
             <th scope="row"><?= $num ?></th>
-            <td><?= $row['country_name'] ?></td>
+            <td><?= $row['actor_name'] ?></td>
             <?php $num++ ?>
             <td>
                 <table>
                     <td>
-                        <a href="<?= base_url('GenderController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
+                        <a href="<?= base_url('ActorController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
                             <i class="fas fa-pen-square"></i>
                         </a>
                     </td>

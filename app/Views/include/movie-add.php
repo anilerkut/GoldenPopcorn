@@ -25,25 +25,29 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputMovieCountry">Related Country</label>
-                <select id="inputMovieCountry" class="form-control">
-                    <option selected>Choose Movie Country</option>
-                    <option>Movie - Country</option>
+        <div class="form-group col-md-6">
+                <label for="inputMovieLanguage">Related Language</label>
+                <select id="inputMovieLangauge" class="form-control" name="language_id">
+                    <option selected>Choose Langauage</option>
+                    <?php foreach ($language as $key=> $lan): ?>
+                        <option value="<?=$lan['id'] ?>"><?php echo $lan["language_name"];?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputMovieLanguage">Related Language</label>
-                <select id="inputMovieLanguage" class="form-control">
-                    <option selected>Choose Movie Language</option>
-                    <option>Movie - Language</option>
+                <label for="inputMovieCountry">Related Country</label>
+                <select id="inputMovieCountry" class="form-control" name="country_id">
+                    <option selected>Choose Country</option>
+                    <?php foreach ($country as $key=> $count): ?>
+                        <option value="<?=$count['id'] ?>"><?php echo $count["country_name"];?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="inputMovieIMDBRating">IMDB Rating</label>
-                <input type="number" class="form-control" id="inputMovieIMDBRating" min="0"  name="imdb_rating">
+                <input type="number" step="0.01" min="0" max="10" class="form-control" id="inputMovieIMDBRating" name="imdb_rating">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputMovieRottentomatoesRating">Rottentomatoes Rating</label>
@@ -74,6 +78,14 @@
         </div>
         <button type="submit" class="btn btn-primary mt-3">Save</button>
     </form>
+    <br><hr>
+    <?php if(isset($validation)):?>
+                    <div class="col-12"> 
+                        <div class="alert alert-warning">
+                            <?= $validation->listErrors() ?>
+                        </div>
+                    </div>
+    <?php endif;?>
 </div>
 
 <?= $this->include('data/admin-operation-bottom.php') ?>

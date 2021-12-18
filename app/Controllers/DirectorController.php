@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\DirectorModel;
+use App\Models\GenderModel;
 use PhpParser\Node\Scalar\MagicConst\Dir;
 
 class DirectorController extends BaseController
@@ -21,9 +22,11 @@ class DirectorController extends BaseController
         return view('include/director-list', $data);
     }
 
-    public function add() {
-
-        return view('include/director-add');
+    public function add() 
+    {
+        $gender = new GenderModel();
+        $data['gender'] = $gender->findAll();
+        return view('include/director-add',$data);
     }
 
     public function edit($id) {
@@ -57,7 +60,7 @@ class DirectorController extends BaseController
             $rules=
                 [
                     'director_name' => 'required|min_length[2]',
-                    // gender gelecek
+                    'director_gender'=> 'required',
                 ];
 
             $errors=
@@ -78,20 +81,14 @@ class DirectorController extends BaseController
             else
             {
                 $director = new DirectorModel();
-                if(is_null($director->getDirector())) {
-                    $newData = [
-                        'category_name' => $this->request->getVar('category_name')
-                        // gender gelecek
-                    ];
+                
+                $newData = 
+                [
+                    'director_name' => $this->request->getVar('director_name'),
+                    'director_gender' => $this->request->getVar('director_gender')
+                ];
 
                     $director->save($newData);
-
-                } else {
-
-                }
-
-                //$this->setUserSession($user);
-                //$session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/dashboard');
             }
         }

@@ -62,6 +62,7 @@ class ActorController extends BaseController
     }
 
     public function addActor() {
+        
         $data = [];
         helper(['form']);
 
@@ -71,7 +72,7 @@ class ActorController extends BaseController
                 [
                     'actor_firstName' => 'required|min_length[2]',
                     'actor_lastName' => 'required|min_length[2]',
-                    'actor_actor' => 'required',
+                    'actor_gender' => 'required',
                     'actor_birthdate' => 'required',
                     'actor_picture' => 'required'
                 ];
@@ -116,7 +117,6 @@ class ActorController extends BaseController
                     'actor_picture' => $this->request->getVar('actor_picture'),
                     'actor_gender'=>  $this->request->getVar('actor_gender'),
                 ];
-
                     $actor->save($newData);
 
                 return redirect()->to('/actor-list');

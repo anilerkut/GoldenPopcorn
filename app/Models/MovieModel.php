@@ -9,7 +9,7 @@ class MovieModel extends Model
     protected $returnType ='array';
     protected $useSoftDeletes =false;
     protected $allowedFields = ['movie_name','movie_summary','movie_duration','movie_release_date','movie_trailer','imdb_rating',
-        'metacritic_rating','rottentomatos_rating','movie_gross','movie_poster'];
+        'metacritic_rating','rottentomatos_rating','movie_gross','movie_poster','country_id','language_id'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';
