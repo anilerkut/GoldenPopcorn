@@ -28,7 +28,7 @@
         <h2 class="text-center">ALL MOVIES</h2>
         <div class="row mb-4" >
         <?php foreach ($movie as $row) : ?>
-            <div class="col-md-4 my-4" >
+            <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"  >
                     <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"
                         alt="...">
