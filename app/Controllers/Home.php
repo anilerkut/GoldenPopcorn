@@ -9,11 +9,14 @@ class Home extends BaseController
 {
     public function index()
     {
+        return view('/index'); 
+
        // $movie = new MovieModel();
         //$datas['movie']=$movie->findAll();
         $director = new DirectorModel();
         $data['director'] = $director->findAll();
         return view('site/director',$data); // 'welcome_message'
+
     }
 
 }
