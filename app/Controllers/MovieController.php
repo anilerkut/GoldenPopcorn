@@ -114,7 +114,6 @@ class MovieController extends BaseController
             }
             else
             {
-                
                 $movie = new MovieModel();
                 $newData = [
                         'movie_name' => $this->request->getVar('movie_name'),

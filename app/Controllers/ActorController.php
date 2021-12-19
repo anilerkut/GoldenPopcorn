@@ -72,8 +72,8 @@ class ActorController extends BaseController
         {
             $rules=
                 [
-                    'actor_firstName' => 'required|min_length[2]',
-                    'actor_lastName' => 'required|min_length[2]',
+                    'actor_firstname' => 'required|min_length[2]',
+                    'actor_lastname' => 'required|min_length[2]',
                     'actor_gender' => 'required',
                     'actor_birthdate' => 'required',
                     'actor_picture' => 'required'
@@ -103,7 +103,7 @@ class ActorController extends BaseController
                         ]
                 ];
 
-            if(! $this->validate($rules,$errors))
+            if(! $this->validate($rules))
             {
                 $data['validation']= $this->validator;
             }
