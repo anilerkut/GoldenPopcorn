@@ -16,8 +16,9 @@ class MovieModel extends Model
     protected $skipValidation=false;
 
 
-    public function getMovieList(){
+    public function getMovieListByCard(){
         $builder=$this->builder($this->table);
+        $builder=$builder->select('movie_name','movie_duration','imdb_rating','movie_releasedate');
         $builder=$builder->get();
         return $builder->getResultArray();
     }
