@@ -101,4 +101,10 @@ class DirectorController extends BaseController
         echo view('login',$data);
     }
 
+    public function listByCard() 
+    {
+        $director = new DirectorModel();
+        $data['director'] = $director->findAll();
+        return view('Views/director', $data);
+    }
 }

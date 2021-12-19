@@ -12,3 +12,14 @@ body {
 .img-height {
     height: 400px;
 }
+
+.card-body-height{
+    min-height:180px;
+    position:relative;
+}
+
+.card-like-button{
+    position:absolute;
+    bottom:5px;
+    width:90%;
+}
