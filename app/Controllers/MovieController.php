@@ -30,6 +30,8 @@ class MovieController extends BaseController
         return view('include/movie-list', $data);
     }
 
+
+
     public function add() //from admin page movie list menu to movie add  
     {
         $country = new CountryModel();
@@ -116,6 +118,14 @@ class MovieController extends BaseController
             }
         }
         echo view('include/movie-add',$data);   
+    }
+
+
+    public function listByCard($id) 
+    {   
+        $movie = new MovieModel();
+        $data['movie'] = $movie->getMovieListByCard();
+        return view('/mainPage', $data);
     }
 
 }

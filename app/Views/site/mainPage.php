@@ -13,59 +13,30 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="site/css/style.css">
 
     <title>GoldenPopCorn</title>
 </head>
 
 <body>
+    
 
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand text-warning" href="#">GOLDENPOPCORN</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Movies<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Actors</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile.html">My Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Log Out</a>
-                </li>
-            </ul>
-        </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search Movie" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </nav>
+<?= $this->include('site/mainpage-header.php') ?>
 
 
     <div class="container my-5">
         <h2 class="text-center">ALL MOVIES</h2>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card border-rounded p-2">
-                    <img src="https://picsum.photos/id/852/200/300" class="card-img-top rounded-top img-height"
+        <div class="row mb-4" >
+        <?php foreach ($movie as $row) : ?>
+            <div class="col-md-4 my-4" >
+                <div class="card border-rounded p-2"  >
+                    <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"
                         alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Toy Story 4</h5>
-                        <span class="movie_info">2019</span>
-                        <span class="movie_info float-right"><i class="fas fa-star"></i> 9 / 10</span>
-                        <div class="mt-3 text-center">
+                    <div class="card-body card-body-height" >
+                        <h5 class="card-title"><?= $row['movie_name'] ?></h5>
+                        <span class="movie_info"><?= $row['movie_releasedate'] ?></span>
+                        <span class="movie_info float-right"><i class="fas fa-star"></i> <?= $row['imdb_rating'] ?></span>
+                        <div class="mt-3 text-center card-like-button">
                             <button type="button" class="btn btn-outline-danger"><i class="fas fa-heart"
                                     data-toggle="tooltip" data-placement="bottom" title="Add Favorite">
                                 </i></button>
@@ -73,7 +44,9 @@
                     </div>
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
+      
     </div>
 
 
