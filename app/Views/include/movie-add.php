@@ -25,23 +25,23 @@
             </div>
         </div>
         <div class="form-row">
-        <div class="form-group col-md-6">
-                <label for="inputMovieLanguage">Related Language</label>
-                <select id="inputMovieLangauge" class="form-control" name="language_id">
-                    <option selected>Choose Langauage</option>
-                    <?php foreach ($language as $key=> $lan): ?>
-                        <option value="<?=$lan['id'] ?>"><?php echo $lan["language_name"];?></option>
-                    <?php endforeach ?>
-                </select>
+            <div class="form-group col-md-6">
+                    <label for="inputMovieLanguage">Related Language</label>
+                    <select id="inputMovieLangauge" class="form-control" name="language_id">
+                        <option selected>Choose Langauage</option>
+                        <?php foreach ($language as $key=> $lan): ?>
+                            <option value="<?=$lan['id'] ?>"><?php echo $lan["language_name"];?></option>
+                        <?php endforeach ?>
+                    </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputMovieCountry">Related Country</label>
-                <select id="inputMovieCountry" class="form-control" name="country_id">
-                    <option selected>Choose Country</option>
-                    <?php foreach ($country as $key=> $count): ?>
-                        <option value="<?=$count['id'] ?>"><?php echo $count["country_name"];?></option>
-                    <?php endforeach ?>
-                </select>
+                    <label for="inputMovieCountry">Related Country</label>
+                    <select id="inputMovieCountry" class="form-control" name="country_id">
+                        <option selected>Choose Country</option>
+                        <?php foreach ($country as $key=> $count): ?>
+                            <option value="<?=$count['id'] ?>"><?php echo $count["country_name"];?></option>
+                        <?php endforeach ?>
+                    </select>
             </div>
         </div>
         <div class="form-row">

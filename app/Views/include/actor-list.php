@@ -11,7 +11,8 @@
         <thead>
         <tr>
             <th scope="col"></th>
-            <th scope="col">Actor Name</th>
+            <th scope="col">Actor First Name</th>
+            <th scope="col">Actor Last Name</th>
             <th scope="col">Operations</th>
         </tr>
         </thead>
@@ -21,7 +22,8 @@
          foreach ($actor as $row) : ?>
         <tr>
             <th scope="row"><?= $num ?></th>
-            <td><?= $row['actor_name'] ?></td>
+            <td><?= $row['actor_firstname'] ?></td>
+            <td><?= $row['actor_lastname'] ?></td>
             <?php $num++ ?>
             <td>
                 <table>
@@ -42,7 +44,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Movie Name</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Actor Name</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>

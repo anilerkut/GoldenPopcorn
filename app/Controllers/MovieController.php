@@ -42,18 +42,39 @@ class MovieController extends BaseController
     public function edit($id) //Brings the information on the edit screen 
     { 
         $movie = new MovieModel();
+        $country = new CountryModel();
+        $language = new LanguageModel();
+        $data['country'] = $country->findAll();
+        $data['language'] = $language->findAll();
         $data['movie'] = $movie->find($id);
-        return view('include/movie-update', $data);
+        return view('include/movie-update',$data);
     }
 
     public function update($id) //update the informations
     {   
+        $country = new CountryModel();
+        $language = new LanguageModel();
         $movie = new MovieModel();
         $data = 
         [
-            'movie_name' => $this->request->getPost('movie_name')
+                    'movie_name' => $this->request->getPost('movie_name'),
+                    'movie_releasedate' => $this->request->getPost('movie_releasedate'),
+                    'movie_duration' => $this->request->getPost('movie_duration'),
+                    'movie_summary' => $this->request->getPost('movie_summary'), 
+                    'movie_trailer' => $this->request->getPost('movie_trailer'),
+                    'country_id' => $this->request->getPost('country_id'), 
+                    'language_id' => $this->request->getPost('language_id'),
+                    'movie_gross' =>$this->request->getPost('movie_gross'),
+                    'imdb_rating' => $this->request->getPost('imdb_rating'),
+                    'metacritic_rating' => $this->request->getPost('metacritic_rating'),
+                    'rottentomatoes_rating' => $this->request->getPost('rottentomatoes_rating'),
+                    'movie_poster' => $this->request->getPost('movie_poster'),
         ];
         $movie->update($id, $data);
+        $data['movie'] = $movie->find($id);
+        $data['country'] = $country->findAll();
+        $data['language'] = $language->findAll();
+        echo view('include/movie-update',$data);  
         return redirect()->to(base_url('movie'));
     }
 
@@ -86,11 +107,9 @@ class MovieController extends BaseController
                     'rottentomatoes_rating' => 'required',
                     'movie_poster' => 'required',
                 ];
-            //BUNLARI DÜZELT
 
             if(! $this->validate($rules))
             {
-                echo "yok yok buradayım";
                 $data['validation']= $this->validator;
             }
             else
@@ -103,7 +122,7 @@ class MovieController extends BaseController
                         'movie_duration' => $this->request->getVar('movie_duration'),
                         'movie_summary' => $this->request->getVar('movie_summary'), 
                         'movie_trailer' => $this->request->getVar('movie_trailer'),
-                        'country_id' => $this->request->getVar('country_id'), //bunların formda name i yok , idrise nasıl alınacak sor
+                        'country_id' => $this->request->getVar('country_id'), 
                         'language_id' => $this->request->getVar('language_id'),
                         'movie_gross' =>$this->request->getVar('movie_gross'),
                         'imdb_rating' => $this->request->getVar('imdb_rating'),

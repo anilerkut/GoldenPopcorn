@@ -13,9 +13,11 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputGender">Gender</label>
-                    <select id="inputGender" class="form-control">
-                        <option selected>Choose Gender</option>
-                        <option>Male</option>
+                    <select id="inputMovieLangauge" class="form-control" name="gender_id">
+                            <option selected>Choose Gender</option>
+                            <?php foreach ($gender as $key=> $gen): ?>
+                                <option value="<?=$gen['id'] ?>"><?php echo $gen["gender_name"];?></option>
+                            <?php endforeach ?>
                     </select>
                 </div>
             </div>
