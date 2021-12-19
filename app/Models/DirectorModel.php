@@ -10,7 +10,7 @@ class DirectorModel extends Model
     protected $primaryKey = 'id';
     protected $returnType ='array';
     protected $useSoftDeletes =false;
-    protected $allowedFields = ['director_name','director_gender'];
+    protected $allowedFields = ['director_name','director_gender','director_picture'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';

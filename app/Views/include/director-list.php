@@ -16,10 +16,13 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($director as $row) : ?>
+        <?php
+        $num=1;
+         foreach ($director as $row) : ?>
         <tr>
-            <th scope="row">1</th>
+            <th scope="row"><?= $num ?></th>
             <td><?= $row['director_name'] ?></td>
+            <?php $num++ ?>
             <td>
                 <table>
                     <td>

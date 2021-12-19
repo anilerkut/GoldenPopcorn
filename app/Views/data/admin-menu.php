@@ -89,7 +89,15 @@
                             Picture
                         </p>
                     </a>
-                </li>           
+                </li>        
+                <li class="nav-item">
+                    <a href="/User/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            User
+                        </p>
+                    </a>
+                </li>   
                 <li class="nav-item">
                     <a href="/WarningController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>

@@ -19,6 +19,12 @@
                 </select>
             </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                    <label for="inputdirectorPicture">Director Picture</label>
+                    <input type="text" class="form-control" id="inputFullName" name="director_picture">
+                </div>
+        </div>
         <button type="submit" class="btn btn-primary mt-3">Save</button>
     </form>
     <br><hr>
