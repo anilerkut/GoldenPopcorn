@@ -34,11 +34,11 @@
                     <td>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#exampleModal">
+                                    data-target="#exampleModal-<?=$row['id']?>">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-<?=$row['id']?>" tabindex="-1"  
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">

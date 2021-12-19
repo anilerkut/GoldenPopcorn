@@ -38,7 +38,7 @@ class CategoryController extends BaseController
     }
 
     public function delete($id) //delete data
-    { 
+    {                                                        
         $category = new CategoryModel();
         $category->delete($id);
         return redirect()->to(base_url('category'));

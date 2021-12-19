@@ -30,16 +30,22 @@ class DirectorController extends BaseController
     }
 
     public function edit($id) {
+        $gender = new GenderModel();
         $director = new DirectorModel();
+        $data['gender'] = $gender->findAll();
         $data['director'] = $director->find($id);
         return view('include/director-update', $data);
     }
 
     public function update($id) {
         $director = new DirectorModel();
+        $gender = new GenderModel();
         $data = [
-            'director_name' => $this->request->getPost('director_name')
+            'director_name' => $this->request->getPost('director_name'),
+            'director_gender' => $this->request->getPost('director_gender')
         ];
+        $data['gender'] = $gender->findAll();
+        $data['director'] = $director->find($id);
         $director->update($id, $data);
         return redirect()->to(base_url('director'));
     }

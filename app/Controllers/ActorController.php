@@ -38,7 +38,9 @@ class ActorController extends BaseController
 
     public function edit($id) //Brings the information on the edit screen 
     { 
+        $gender = new GenderModel();
         $actor = new ActorModel();
+        $data['gender'] = $gender->findAll();
         $data['actor'] = $actor->find($id);
         return view('include/actor-update', $data);
     }
@@ -111,8 +113,8 @@ class ActorController extends BaseController
 
                 $newData = 
                 [
-                    'actor_firstname'  => $this->request->getVar('actor_firstName'),
-                    'actor_lastname'  => $this->request->getVar('actor_lastName'),
+                    'actor_firstname'  => $this->request->getVar('actor_firstname'),
+                    'actor_lastname'  => $this->request->getVar('actor_lastname'),
                     'actor_birthdate'  => $this->request->getVar('actor_birthdate'),
                     'actor_picture' => $this->request->getVar('actor_picture'),
                     'actor_gender'=>  $this->request->getVar('actor_gender'),

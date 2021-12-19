@@ -80,6 +80,6 @@ class CountryController extends BaseController
     {
         $country = new CountryModel();
         $data['country'] = $country->findAll();
-        return view('/country-list', $data);
+        return view('include/country-list', $data);
     }
 }

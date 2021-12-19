@@ -6,11 +6,11 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputFirstName">First Name</label>
-                <input type="text" class="form-control" id="inputFirstName" name="actor_firstName">
+                <input type="text" class="form-control" id="inputFirstName" name="actor_firstname">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputLastName">Last Name</label>
-                <input type="text" class="form-control" id="inputLastName" name="actor_lastName">
+                <input type="text" class="form-control" id="inputLastName" name="actor_lastname">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputActorPic">Actor Picture Link</label>
@@ -22,7 +22,6 @@
                 <label for="inputBirthdate">Birthdate</label>
                 <input type="date" class="form-control" id="inputBirthdate" name="actor_birthdate">
             </div>
-
             <div class="form-group col-md-6">
                 <label for="inputGender">Gender</label>
                 <select id="inputGender" class="form-control" name="actor_gender">
