@@ -23,15 +23,15 @@
 
 <?= $this->include('site/mainpage-header.php') ?>
 
-
     <div class="container my-5">
         <h2 class="text-center">ALL MOVIES</h2>
         <div class="row mb-4" >
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
-                <div class="card border-rounded p-2"  >
-                    <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"
-                        alt="...">
+                <div class="card border-rounded p-2"> 
+                        <a href="<?= base_url('MovieController/movieDetails/'.$row['id'] ) ?>" class="btn btn-warning">
+                            <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"alt="...">  
+                        </a>
                     <div class="card-body card-body-height" >
                         <h5 class="card-title"><?= $row['movie_name'] ?></h5>
                         <span class="movie_info"><?= $row['movie_releasedate'] ?></span>
@@ -46,7 +46,6 @@
             </div>
             <?php endforeach; ?>
         </div>
-      
     </div>
 
 

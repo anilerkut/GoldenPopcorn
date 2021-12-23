@@ -30,6 +30,14 @@ class MovieModel extends Model
         return $builder->getResultArray();
     }
 
+    public function getMovieCountryID($id){
+        $builder=$this->builder($this->table);
+        $builder=$builder->where('id',$id);
+        $builder=$builder->select('country_id');
+        $builder=$builder->get();
+        return $builder->getFirstRow();
+    }
+
     public function getMovieSelect($id){
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
