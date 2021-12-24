@@ -15,12 +15,12 @@
         padding: 0 1rem; /* space out the stars */
       }
       .star::before{
-        content: url('C:/Users/dervis/Desktop/blackwhite.png');    /* star outline */
+        content: url('<?= base_url('blackwhite.png')?>');    /* star outline */
         cursor: pointer;
       }
       .star.rated::before{
         /* the style for a selected star */
-        content: url('C:/Users/dervis/Desktop/org.png');  /* filled star */
+        content: url('<?= base_url('org.png')?>');  /* filled star */
       }
       
       .stars{
@@ -48,7 +48,11 @@
     <div class="row">
       <div class="col-md-6">
             <img src=<?php echo $movie["movie_poster"]?> class="d-block w-50 mx-auto " style="" alt="...">
-           
+            <div class="mt-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Watch Trailer
+            </button>
+        </div>
       </div>
 
       <div class="col-md-4">
@@ -66,41 +70,7 @@
           <span class="star">&nbsp;</span>
       </div>
       <div class="col-md-4"></div>
-      <script>
-        
-        //initial setup
-        document.addEventListener('DOMContentLoaded', function(){
-            let stars = document.querySelectorAll('.star');
-            stars.forEach(function(star){
-                star.addEventListener('click', setRating); 
-            });
-            
-            let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
-            let target = stars[rating - 1];
-            target.dispatchEvent(new MouseEvent('click'));
-        });
-
-        function setRating(ev){
-            let span = ev.currentTarget;
-            let stars = document.querySelectorAll('.star');
-            let match = false;
-            let num = 0;
-            stars.forEach(function(star, index){
-                if(match){
-                    star.classList.remove('rated');
-                }else{
-                    star.classList.add('rated');
-                }
-                //are we currently looking at the span that was clicked
-                if(star === span){
-                    match = true;
-                    num = index + 1;
-                }
-            });
-            document.querySelector('.stars').setAttribute('data-rating', num);
-        }
-        
-    </script>
+      
         <div class="bg-gray py-2 px-3 mt-4">
           <h2 class="mb-0">
             Category
@@ -109,7 +79,34 @@
             Action Horror Comedy
           </h5>
         </div>
-        
+
+
+        <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Değerlendiren site</th>
+      <th scope="col">Puanı</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png" alt="tomato_logo" style="width:50px;height:50px"><span class="rating-font">Rottan Tomatoes</span></td>
+      <td><?php echo $movie["rottentomatoes_rating"]?></td>
+    </tr>
+    <tr>
+      <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/IMDb_Logo_Square.svg/2048px-IMDb_Logo_Square.svg.png" alt="imdb_logo" style="width:50px;height:50px"><span class="rating-font">Imdb</span></td>
+      <td><?php echo $movie["imdb_rating"]?></td>
+    </tr>
+    <tr>
+      <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/1024px-Metacritic.svg.png" alt="meta_logo" style="width:50px;height:50px"><span class="rating-font">Meta Critic</span></td>
+      <td><?php echo $movie["metacritic_rating"]?></td>
+    </tr>
+    <tr>
+      <td><img src="<?= base_url('org.png')?>" alt="imdb_logo" style="width:50px;height:60px"><span class="rating-font">Golden Popcorn</span></td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
         <div class="mt-4">
           <div class="btn btn-primary btn-lg btn-flat">
             <i class="fas fa-cart-plus fa-lg mr-2"></i>
@@ -170,9 +167,83 @@
   <!-- /.card-body -->
 </div>
 <!-- /.card -->
+<!-- Modal -->
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <iframe width="420" height="345" src="<?php echo $movie["movie_trailer"]?>">
+</iframe>
+      </div>
+      
+    </div>
+  </div>
+</div>
 </section>
 <!-- /.content -->
+
+<script>
+        $(document).ready(function() {
+
+// Gets the video src from the data-src on each button
+
+var $videoSrc;  
+$('.video-btn').click(function() {
+    $videoSrc = $(this).data( "src" );
+});
+console.log($videoSrc);
+
+  
+  
+// when the modal is opened autoplay it  
+$('#myModal').on('shown.bs.modal', function (e) {
+    
+// set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
+})
+  
+
+
+// stop playing the youtube video when I close the modal
+$('#myModal').on('hide.bs.modal', function (e) {
+    // a poor man's stop video
+    $("#video").attr('src',$videoSrc); 
+}) 
+        //initial setup
+        document.addEventListener('DOMContentLoaded', function(){
+            let stars = document.querySelectorAll('.star');
+            stars.forEach(function(star){
+                star.addEventListener('click', setRating); 
+            });
+            
+            let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+            let target = stars[rating - 1];
+            target.dispatchEvent(new MouseEvent('click'));
+        });
+
+        function setRating(ev){
+            let span = ev.currentTarget;
+            let stars = document.querySelectorAll('.star');
+            let match = false;
+            let num = 0;
+            stars.forEach(function(star, index){
+                if(match){
+                    star.classList.remove('rated');
+                }else{
+                    star.classList.add('rated');
+                }
+                //are we currently looking at the span that was clicked
+                if(star === span){
+                    match = true;
+                    num = index + 1;
+                }
+            });
+            document.querySelector('.stars').setAttribute('data-rating', num);
+        }
+        
+    </script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
