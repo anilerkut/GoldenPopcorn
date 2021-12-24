@@ -42,7 +42,8 @@ class DirectorController extends BaseController
         $gender = new GenderModel();
         $data = [
             'director_name' => $this->request->getPost('director_name'),
-            'director_gender' => $this->request->getPost('director_gender')
+            'director_gender' => $this->request->getPost('director_gender'),
+            'director_picture' => $this->request->getPost('director_picture')
         ];
         $data['gender'] = $gender->findAll();
         $data['director'] = $director->find($id);
@@ -67,6 +68,7 @@ class DirectorController extends BaseController
                 [
                     'director_name' => 'required|min_length[2]',
                     'director_gender'=> 'required',
+                    'director_picture'=> 'required',
                 ];
 
             $errors=
@@ -91,9 +93,9 @@ class DirectorController extends BaseController
                 $newData = 
                 [
                     'director_name' => $this->request->getVar('director_name'),
-                    'director_gender' => $this->request->getVar('director_gender')
+                    'director_gender' => $this->request->getVar('director_gender'),
+                    'director_picture' => $this->request->getVar('director_picture')
                 ];
-
                     $director->save($newData);
                 return redirect()->to('/dashboard');
             }

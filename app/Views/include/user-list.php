@@ -8,23 +8,26 @@
         <tr>
             <th scope="col"></th>
             <th scope="col">User First Name</th>
-            <th scope="col">User Last Name</th>
-            <th scope="col">User Register Date</th>
+            <th scope="col">User Email</th>
             <th>Operations</th>
         </tr>
         </thead>
         <tbody>
+        <?php
+        $num=1;
+         foreach ($user as $row) : ?>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>11/12/2021</td>
+            <th scope="row"><?= $num ?></th>
+            <td><?= $row['user_firstname'] ?></td>
+            <td><?= $row['user_email'] ?></td>
+            <?php $num++ ?>
             <td>
                 <a href="#" class="btn btn-danger">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>
         </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
 </div>

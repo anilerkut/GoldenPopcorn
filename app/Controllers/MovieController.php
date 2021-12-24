@@ -31,8 +31,6 @@ class MovieController extends BaseController
         return view('include/movie-list', $data);
     }
 
-
-
     public function add() //from admin page movie list menu to movie add  
     {
         $country = new CountryModel();
@@ -52,6 +50,20 @@ class MovieController extends BaseController
         $data['movie'] = $movie->find($id);
         return view('include/movie-update',$data);
     }
+
+    public function movieDetails($id) //Brings the information on the edit screen 
+    { 
+        $movie = new MovieModel();
+        $country = new CountryModel();
+        $language = new LanguageModel();
+        
+        //echo gettype((($movie->getMovieCountryID($id))));
+        $data['movie'] = $movie->find($id);
+        $data['country'] = $country->findAll();
+        $data['language'] = $language->findAll();
+        return view('/site/muvi',$data);
+    }
+
 
     public function update($id) //update the informations
     {   

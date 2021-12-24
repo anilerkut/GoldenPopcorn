@@ -17,10 +17,13 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($movie as $row) : ?>
+        <?php
+        $num=1;
+         foreach ($movie as $row) : ?>
         <tr>
-            <th scope="row">1</th>
+            <th scope="row"><?= $num ?></th>
             <td><?= $row['movie_name'] ?></td>
+            <?php $num++ ?>
             <td>
                 <table>
                     <td>
