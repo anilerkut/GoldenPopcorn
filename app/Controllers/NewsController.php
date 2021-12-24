@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 
 use App\Models\NewsModel;
+use App\Models\DirectorModel;
+use App\Models\ActorModel;
+use App\Models\MovieModel;
 
 class NewsController extends BaseController
 {
@@ -30,7 +33,9 @@ class NewsController extends BaseController
 
     public function add() //from admin page news list menu to news add  
     {
-        return view('include/news-add'); 
+        $actor = new ActorModel();
+        $data['actor'] = $actor->findAll();
+        return view('include/news-add',$data); 
     }
 
     public function edit($id) //Brings the information on the edit screen 
@@ -102,6 +107,7 @@ class NewsController extends BaseController
                 [
                     'news_content'  => $this->request->getVar('news_content'),
                     'news_date'  => $this->request->getVar('news_date'),
+                    'actor_id' => $this->request->getVar('actor_id'), 
                 ];
 
                 $news->save($newData);

@@ -50,16 +50,16 @@ class MovieController extends BaseController
         return view('include/movie-update',$data);
     }
 
-    public function movieDetails($id) //Brings the information on the edit screen 
+    public function movieDetails($id) //Brings the movie details
     { 
         $movie = new MovieModel();
         $country = new CountryModel();
         $language = new LanguageModel();
-        
-        //echo gettype((($movie->getMovieCountryID($id))));
+        $movie_country=(($movie->getMovieCountryID($id)));
+        $movie_language=(($movie->getMovieLanguageID($id)));    
         $data['movie'] = $movie->find($id);
-        $data['country'] = $country->findAll();
-        $data['language'] = $language->findAll();
+        $data['country'] = $country->find($movie_country->country_id);
+        $data['language'] = $language->find($movie_language->language_id);
         return view('/site/muvi',$data);
     }
 

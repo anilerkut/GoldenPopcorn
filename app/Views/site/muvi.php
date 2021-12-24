@@ -153,10 +153,10 @@
                 <p>Release Date: <?php echo $movie["movie_releasedate"]?></p>
               </div>
               <div>
-                <p>Country: <?php echo $movie["country_id"]?></p>
+                <p>Country: <?php echo $country["country_name"]?></p>
               </div>
               <div>
-                <p>Language: <?php echo $movie["language_id"]?></p>
+                <p>Language: <?php echo $language["language_name"]?></p>
               </div>
               <div>
                 <p>Movie Gross: <?php echo $movie["movie_gross"]?></p>
