@@ -4,7 +4,7 @@
 
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5" method="post">
+    <form class="mt-5"  action="NewsController/addNews" method="post">
         <div class="form-row">
 
             <div class="input-group">
@@ -17,18 +17,21 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputActor">Related Actor</label>
-                <select id="inputActor" class="form-control">
-                    <option selected>Choose An Actor</option>
-                    <option>Actor - FirstName LastName</option>
-                </select>
+                <div class="input-group-prepend">
+                    <label for="inputNewsDate">News Date</label>
+                </div>
+                <input type="date" class="form-control" id="newsDate"  name="news_date">
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputDirector">Related Director</label>
-                <select id="inputDirector" class="form-control">
-                    <option selected>Choose An Director</option>
-                    <option>Director - FullName</option>
-                </select>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                        <label for="inputRelatedActor">Related Actor</label>
+                        <select id="inputRelatedActor" class="form-control" name="actor_id">
+                            <option selected>Choose Actor</option>
+                            <?php foreach ($actor as $key=> $act): ?>
+                                <option value="<?=$act['id'] ?>"><?php echo $act["actor_firstname"]." ".$act["actor_lastname"]  ;?></option>
+                            <?php endforeach ?>
+                        </select>
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Save</button>

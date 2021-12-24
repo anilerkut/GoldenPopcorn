@@ -9,7 +9,7 @@ class NewsModel extends Model
     protected $primaryKey = 'id';
     protected $returnType ='array';
     protected $useSoftDeletes =false;
-    protected $allowedFields = ['news_content','news_date','actor_id','director_id'];
+    protected $allowedFields = ['news_content','news_date','actor_id'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';
@@ -32,14 +32,14 @@ class NewsModel extends Model
     public function getNewsSelect($id){
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
-        $builder=$builder->select('director_name');
+        $builder=$builder->select('actor_firstname','actor_lastname');
         $builder=$builder->get();
         return $builder->getResultArray();
     }
 
     public function getNewsLike($name){
         $builder=$this->builder($this->table);
-        $builder=$builder->like('director_name',$name,both);
+        $builder=$builder->like('actor_firstname',$name,both);
         $builder=$builder->get();
         return $builder->getResultArray();
     }
