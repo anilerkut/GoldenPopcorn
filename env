@@ -40,7 +40,7 @@
  database.default.hostname = localhost:3306
  database.default.database = movie_website
  database.default.username = root
- database.default.password = 
+ database.default.password =
  database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 

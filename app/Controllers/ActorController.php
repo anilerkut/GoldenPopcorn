@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-
 use App\Models\ActorModel;
 use App\Models\GenderModel;
 
@@ -125,6 +124,12 @@ class ActorController extends BaseController
             }
         }
         echo view('include/actor-add',$data);
+    }
+
+    public function listByCard() {
+        $actor = new ActorModel();
+        $data['$actor'] = $actor->findAll();
+        return view('site/actor', $data);
     }
 
 }

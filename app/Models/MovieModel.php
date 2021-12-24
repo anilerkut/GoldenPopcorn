@@ -40,8 +40,18 @@ class MovieModel extends Model
 
     public function getMovieLike($name){
         $builder=$this->builder($this->table);
-        $builder=$builder->like('movie_name',$name,both);
+        $builder=$builder->like('movie_name',$name);
         $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getMovieByCategory($categoryId) {
+        $builder=$this->builder($this->table);
+        $builder = $builder->join('movie_category', 'movie_category.movie_id = movie.id');
+        $builder = $builder->join('category', 'category.id = movie_category.category_id');
+        $builder=$builder->where('movie_category.category_id',$categoryId);
+        $builder=$builder->get();
+       // $builder = $builder->li(12);
         return $builder->getResultArray();
     }
 }

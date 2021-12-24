@@ -8,7 +8,7 @@ class ActorModel extends Model
     protected $table='actor';
     protected $primaryKey = 'id';
     protected $returnType ='array';
-    protected $useSoftDeletes =false;
+    protected $useSoftDeletes = false;
     protected $allowedFields = ['actor_firstname','actor_lastname','actor_gender','actor_picture','actor_birthdate'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
@@ -23,13 +23,14 @@ class ActorModel extends Model
         return $builder->getResultArray();
     }
 
-    public function getActor($id){
-
+    public function getActor($id)
+    {
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
         $builder=$builder->get();
         return $builder->getResultArray();
     }
+
     public function getActorSelect($id)
     {
         $builder=$this->builder($this->table);
@@ -39,13 +40,11 @@ class ActorModel extends Model
         return $builder->getResultArray();
     }
 
-    public function getActorFullName($firstName, $lastName)
+    public function getActorFullNameAndPicture()
     {
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('actor_firstName',$firstName);
-        $builder=$builder->where('actor_lastName',$lastName);
-        $builder=$builder->select('actor_firstname','actor_lastname');
-        $builder=$builder->get();
+        $builder = $this->builder($this->table);
+        $builder = $builder->select('actor_firstname, actor_lastname, actor_picture');
+        $builder = $builder->get();
         return $builder->getResultArray();
     }
 

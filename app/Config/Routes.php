@@ -35,6 +35,8 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'User::login');
 $routes->get('/register', 'User::register');
 
+// $routes->get('/profile', 'User::');
+
 $routes->group('admin', function ($routes){
     $routes->group('user', function ($routes)
     {
@@ -53,12 +55,14 @@ $routes->get('category/edit(:num)', 'CategoryController::edit/$1');
 $routes->put('category/update(:num)', 'CategoryController::update/$1');
 $routes->get('category/delete(:num)', 'CategoryController::delete/$1');
 
+// Country
 $routes->get('country', 'CountryController::list');
 $routes->get('country-add', 'CountryController::add');
 $routes->get('country/edit(:num)', 'CountryController::edit/$1');
 $routes->put('country/update(:num)', 'CountryController::update/$1');
 $routes->get('country/delete(:num)', 'CountryController::delete/$1');
 
+// Gender
 $routes->get('gender', 'GenderController::list');
 $routes->get('gender-add', 'GenderController::add');
 $routes->get('gender/edit(:num)', 'GenderController::edit/$1');
@@ -67,13 +71,17 @@ $routes->get('gender/delete(:num)', 'GenderController::delete/$1');
 
 // Movie
 $routes->get('movie', 'MovieController::list');
+$routes->get('movies', 'MovieController::listByCard');
+$routes->get('movies/filter(:num)', 'MovieController::listByCategory/$1');
 $routes->get('movie-add', 'MovieController::add');
 $routes->get('movie/edit(:num)', 'MovieController::edit/$1');
 $routes->put('movie/update(:num)', 'MovieController::update/$1');
 $routes->get('movie/delete(:num)', 'MovieController::delete/$1');
+$routes->get('search/movie(:num)', 'MovieController::searchByName/$1');
 
 // Actor
 $routes->get('actor', 'ActorController::list');
+$routes->get('actors', 'ActorController::listByCard');
 $routes->get('actor-add', 'ActorController::add');
 $routes->get('actor/edit(:num)', 'ActorController::edit/$1');
 $routes->put('actor/update(:num)', 'ActorController::update/$1');
@@ -103,6 +111,7 @@ $routes->get('warning/delete(:num)', 'WarningController::delete/$1');
 
 // Director Data
 $routes->get('director', 'DirectorController::list');
+$routes->get('directors', 'DirectorController::listByCard');
 $routes->get('director-add', 'DirectorController::add');
 $routes->get('director/edit(:num)', 'DirectorController::edit/$1');
 $routes->put('director/update(:num)', 'DirectorController::update/$1');

@@ -13,25 +13,34 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="site/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <title>GoldenPopCorn</title>
 </head>
-
 <body>
-    
 
-<?= $this->include('site/mainpage-header.php') ?>
+    <?= $this->include('site/mainpage-header.php') ?>
 
+    <a href="top"></a>
 
     <div class="container my-5">
+
+            <select class="custom-select my-1 mr-sm-2 bg-warning" id="inlineFormCustomSelectPref">
+                <option selected>Choose a category</option>
+                <?php foreach ($category as $row) : ?>
+                <option value="<?=$row['id']?>"><?=$row['category_name']?></option>
+                <?php endforeach; ?>
+            </select>
+            <a href="/MovieController/listByCategory/4" class="btn btn-outline-dark my-1">Sort</a>
+
+
         <h2 class="text-center">ALL MOVIES</h2>
-        <div class="row mb-4" >
+        <div class="row mb-4">
         <?php foreach ($movie as $row) : ?>
-            <div class="col-md-4 my-4" >
+            <div class="col-md-4 my-5" >
                 <div class="card border-rounded p-2"  >
-                    <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"
-                        alt="...">
+                    <img src="<?=$row['movie_poster']?>" class="card-img-top rounded-top img-height"
+                        alt="movie_poster">
                     <div class="card-body card-body-height" >
                         <h5 class="card-title"><?= $row['movie_name'] ?></h5>
                         <span class="movie_info"><?= $row['movie_releasedate'] ?></span>
@@ -46,12 +55,19 @@
             </div>
             <?php endforeach; ?>
         </div>
-      
+
+        <nav class="page-numbers">
+            <?= $pager->links() ?>
+        </nav>
+
     </div>
 
+    <div class="my-5 mr-5">
+        <a class="btn btn-lg btn-primary float-right" href="#top"><i class="fas fa-arrow-up"></i></a>
+    </div>
 
+    <?= $this->include('site/mainpage-footer.php') ?>
 
-    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -61,12 +77,20 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
 
-
-
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
+
+        let btnSearch = document.querySelector('#btnSearch');
+        btnSearch.addEventListener("click", searchMovie);
+
+        function searchMovie() {
+            let inputTxt = document.querySelector('#searchTxt');
+            console.log('ARANAN FİLM ADI: ' + inputTxt.value);
+            window.location.href = "MovieController/searchByName/" + inputTxt.value;
+        }
+
     </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
