@@ -45,10 +45,10 @@ class User extends BaseController
 
                 $this->setUserSession($user);
                 $session->setFlashdata('success','Succesful Registiration');
-                return redirect()->to('/dashboard');
+                return redirect()->to('/movies');
             }
         }
-        echo view('login',$data);
+        echo view('site/login',$data);
 
     }
 
@@ -107,7 +107,7 @@ class User extends BaseController
                 return redirect()->to('/login');
             }
         }
-        echo view('signup',$data);
+        echo view('site/signup',$data);
     }
 
     public function delete($id=null) 

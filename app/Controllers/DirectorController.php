@@ -107,6 +107,6 @@ class DirectorController extends BaseController
     {
         $director = new DirectorModel();
         $data['director'] = $director->findAll();
-        return view('Views/director', $data);
+        return view('site/director', $data);
     }
 }

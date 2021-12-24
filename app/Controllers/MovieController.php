@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 
+use App\Models\CategoryModel;
 use App\Models\MovieModel;
 use App\Models\CountryModel;
 use App\Models\LanguageModel;
@@ -150,12 +151,30 @@ class MovieController extends BaseController
         echo view('include/movie-add',$data);   
     }
 
-
-    public function listByCard($id) 
-    {   
+    public function listByCard($id) {
         $movie = new MovieModel();
         $data['movie'] = $movie->getMovieListByCard();
         return view('/mainPage', $data);
+    }
+
+    public function searchByName($name) {
+        $movie = new MovieModel();
+        $data['movie'] = $movie->getMovieLike($name);
+        $category = new CategoryModel();
+        $data['category'] = $category->findAll();
+        $data['pager'] = $movie->pager;
+        return view('site/mainPage', $data);
+    }
+
+    public function listByCategory($categoryId) {
+        $movie = new MovieModel();
+        $data['movie'] = $movie->getMovieByCategory($categoryId)->paginate(12);
+        $category = new CategoryModel();
+        $data['category'] = $category->findAll();
+        //var_dump($data);
+        // $data['movie']=$movie->paginate(12);
+        $data['pager'] = $movie->pager;
+        return view('site/mainPage', $data);
     }
 
 }

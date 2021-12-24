@@ -12,9 +12,9 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="welcome_screen.css">
+    <link rel="stylesheet" href="/css/welcome_screen.css">
 
-    <title>MOVIE WEBSITE</title>
+    <title>GoldenPopcorn</title>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
                         <img class="logo"
                             src="https://cdn.discordapp.com/attachments/901451470942109758/908767100561149963/logo.png"
                             alt="logo">
-                        <button class="btn btn-custom-yellow p-3" id="signIn">SIGN IN</button>
+                        <a href="/login" class="btn btn-lg btn-custom-yellow p-3">SIGN IN</a>
                     </div>
                 </div>
             </div>
@@ -40,8 +40,8 @@
                 </div>
             </div>
             <div class="row my-3">
-                <div class="col-md-6 mx-auto text-center w-sm-100">
-                    <button class="btn btn-custom-yellow p-3" id="signUp">SIGN UP</button>
+                <div class="col-md-6 mx-auto text-center">
+                    <a href="/register" class="btn btn-lg btn-custom-yellow p-3">SIGN UP</a>
                 </div>
             </div>
             <div class="row">
@@ -159,31 +159,6 @@
 
     <footer>
         <div class="container">
-            <!--
-            <div class="row">
-                <div class="col-md-10 mx-auto">
-                    <div class="row text-white">
-                        <div class="col-md-12">
-                            <p>Lorem, ipsum dolor.</p>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <ul class="nav flex-column">
-                                <li>Lorem, ipsum.</li>
-                                <li>Lorem, ipsum.</li>
-                                <li>Lorem, ipsum.</li>
-                            </ul>
-                        </div>
-                        <div class="col-6 col-md-4">
-                            <ul class="nav flex-column">
-                                <li>Lorem, ipsum.</li>
-                                <li>Lorem, ipsum.</li>
-                                <li>Lorem, ipsum.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             -->
             <div class="row text-secondary d-flex justify-content-center">
                 <p class="copyright">
                     @All Rights Reserved.

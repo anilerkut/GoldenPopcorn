@@ -5,7 +5,7 @@ body{
 }
 
 header {
-    background-image: url('\theater_Powerpoint_Template.jfif');
+    background-image: url('../theater_Powerpoint_Template.jfif');
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
