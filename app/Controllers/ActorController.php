@@ -128,7 +128,8 @@ class ActorController extends BaseController
 
     public function listByCard() {
         $actor = new ActorModel();
-        $data['$actor'] = $actor->findAll();
+        $data['actor'] = $actor->paginate(9);
+        $data['pager'] = $actor->pager;
         return view('site/actor', $data);
     }
 

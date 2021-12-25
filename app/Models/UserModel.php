@@ -42,4 +42,13 @@ class UserModel extends Model
         return $data;
     }
 
+    public function getUserDetails($id) {
+        $builder=$this->builder($this->table);
+        $builder = $builder->join('watchlist', 'watchlist.user_id = user.id');
+        $builder = $builder->join('movie', 'movie.id = watchlist.movie_id');
+        $builder=$builder->where('user.id',$id);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
 }

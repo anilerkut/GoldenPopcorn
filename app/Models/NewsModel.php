@@ -9,32 +9,26 @@ class NewsModel extends Model
     protected $primaryKey = 'id';
     protected $returnType ='array';
     protected $useSoftDeletes =false;
-    protected $allowedFields = ['news_content','news_date','actor_id'];
+    protected $allowedFields = ['news_title','news_content','news_date','actor_id'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
-
-    public function getNewsList(){
+    public function getNewsByCard(){
         $builder=$this->builder($this->table);
+        $builder=$builder->select('news.id, news_title, actor_firstname, actor_lastname');
+        $builder = $builder->join('actor', 'actor.id = news.actor_id');
         $builder=$builder->get();
         return $builder->getResultArray();
     }
 
-    public function getNews($id){
+    public function getNewsWithActor($id){
         $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
+        $builder = $builder->join('actor', 'actor.id = news.actor_id');
+        $builder=$builder->where('news.id',$id);
         $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getNewsSelect($id){
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->select('actor_firstname','actor_lastname');
-        $builder=$builder->get();
-        return $builder->getResultArray();
+        return $builder->getFirstRow();
     }
 
     public function getNewsLike($name){
