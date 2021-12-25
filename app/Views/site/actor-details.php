@@ -17,18 +17,16 @@
 <?= $this->include('site/mainpage-header.php') ?>
 
 <div class="container emp-profile">
-    <?php foreach ($actor as $row) : ?>
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-
+                    <img src=<?php echo $actor["actor_picture"]?> alt=""/>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="profile-head">
                     <h5>
-                        <?= $row['actor_firstname']." ".$row['actor_lastname'] ?>
+                        <?php echo $actor["actor_firstname"]." ".$actor["actor_lastname"]?>
                     </h5>
                     <h6>
                         Actor
@@ -55,26 +53,10 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
                             <div class="col-md-6">
-                                <label>First Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Celal</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Last Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Gündoğdu</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
                                 <label>Birthdate</label>
                             </div>
                             <div class="col-md-6">
-                                <p>31.31.1931</p>
+                                <p><?php echo $actor["actor_birthdate"]?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -82,7 +64,7 @@
                                 <label>Gender</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Transeksüel</p>
+                                <p><?php echo $gender["gender_name"]?></p>
                             </div>
                         </div>
 
@@ -100,7 +82,6 @@
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
 </div>
 
 <?= $this->include('site/mainpage-footer.php') ?>

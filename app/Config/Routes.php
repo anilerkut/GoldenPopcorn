@@ -35,7 +35,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'User::login');
 $routes->get('/register', 'User::register');
 
-// $routes->get('/profile', 'User::');
+//$routes->get('/profile', 'User::');
 
 $routes->group('admin', function ($routes){
     $routes->group('user', function ($routes)
@@ -78,6 +78,16 @@ $routes->get('movie/edit(:num)', 'MovieController::edit/$1');
 $routes->put('movie/update(:num)', 'MovieController::update/$1');
 $routes->get('movie/delete(:num)', 'MovieController::delete/$1');
 $routes->get('search/movie(:num)', 'MovieController::searchByName/$1');
+
+//Role
+$routes->get('role', 'MovieActorController::list');
+$routes->get('roles', 'MovieActorController::listByCard');
+$routes->get('role/filter(:num)', 'MovieActorController::listByCategory/$1');
+$routes->get('role-add', 'MovieActorController::add');
+$routes->get('role/edit(:num)', 'MovieActorController::edit/$1');
+$routes->put('role/update(:num)', 'MovieActorController::update/$1');
+$routes->get('role/delete(:num)', 'MovieActorController::delete/$1');
+$routes->get('role/movie(:num)', 'MovieActorController::searchByName/$1');
 
 // Actor
 $routes->get('actor', 'ActorController::list');

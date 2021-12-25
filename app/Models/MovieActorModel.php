@@ -3,27 +3,27 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class ActorModel extends Model
+class MovieActorModel extends Model
 {
-    protected $table='actor';
+    protected $table='movie_actor';
     protected $primaryKey = 'id';
     protected $returnType ='array';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['actor_firstname','actor_lastname','actor_gender','actor_picture','actor_birthdate'];
+    protected $allowedFields = ['actor_id','movie_id','role_name'];
     protected $useTimestamps= false;
     protected $createdField='created_at';
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
 
-    public function getActorList()
+    public function getRoleList()
     {
         $builder=$this->builder($this->table);
         $builder=$builder->get();
         return $builder->getResultArray();
     }
 
-    public function getActor($id)
+    public function getRole($id)
     {
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
@@ -31,7 +31,7 @@ class ActorModel extends Model
         return $builder->getResultArray();
     }
 
-    public function getActorSelect($id)
+    public function getRoleSelect($id)
     {
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
@@ -40,26 +40,10 @@ class ActorModel extends Model
         return $builder->getResultArray();
     }
 
-    public function getActorFullNameAndPicture()
-    {
-        $builder = $this->builder($this->table);
-        $builder = $builder->select('actor_firstname, actor_lastname, actor_picture');
-        $builder = $builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getActorLike($name){
-        $builder=$this->builder($this->table);
-        $builder=$builder->like('actor_firstname',$name,both);
-        $builder=$builder->orLike('actor_lastname',$name,both);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getActorGenderID($id){ //brings the actor's gender from gender table
+    public function getActorID($id){ //brings the actor's gender from gender table
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
-        $builder=$builder->select('actor_gender');
+        $builder=$builder->select('actor_id');
         $builder=$builder->get();
         return $builder->getFirstRow();
     }

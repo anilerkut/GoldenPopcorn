@@ -126,10 +126,23 @@ class ActorController extends BaseController
         echo view('include/actor-add',$data);
     }
 
-    public function listByCard() {
+    public function listByCard() 
+    {
         $actor = new ActorModel();
-        $data['$actor'] = $actor->findAll();
-        return view('site/actor', $data);
+        $gender = new GenderModel();
+        $data['gender'] = $gender->findAll();
+        $data['actor'] = $actor->findAll();
+        return view('site/actor-page', $data);
+    }
+
+    public function actorDetails($id) //Brings the movie details
+    { 
+        $actor = new ActorModel();
+        $gender = new GenderModel();
+        $actorGender=(($actor->getActorGenderID($id)));
+        $data['actor'] = $actor->find($id);
+        $data['gender'] = $gender->find($actorGender->actor_gender);
+        return view('/site/actor-details',$data);
     }
 
 }
