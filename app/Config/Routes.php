@@ -34,8 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'User::login');
 $routes->get('/register', 'User::register');
-
-// $routes->get('/profile', 'User::');
+$routes->get('/profile/(:num)', 'User::edit/$1');
 
 $routes->group('admin', function ($routes){
     $routes->group('user', function ($routes)
@@ -119,6 +118,8 @@ $routes->get('director/delete(:num)', 'DirectorController::delete/$1');
 
 //News
 $routes->get('news', 'NewsController::list');
+$routes->get('news-list', 'NewsController::listByCard');
+$routes->get('news-details/(:num)', 'NewsController::showWithDetail/$1');
 $routes->get('news-add', 'NewsController::add');
 $routes->get('news/edit(:num)', 'NewsController::edit/$1');
 $routes->put('news/update(:num)', 'NewsController::update/$1');

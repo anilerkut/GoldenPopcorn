@@ -28,20 +28,14 @@
             <select class="custom-select my-1 mr-sm-2 bg-warning" id="inlineFormCustomSelectPref">
                 <option selected>Choose a category</option>
                 <?php foreach ($category as $row) : ?>
-                <option value="<?=$row['id']?>"><?=$row['category_name']?></option>
+                <option><?=$row['category_name']?></option>
                 <?php endforeach; ?>
             </select>
             <a href="/MovieController/listByCategory/4" class="btn btn-outline-dark my-1">Sort</a>
 
-
         <h2 class="text-center">ALL MOVIES</h2>
         <div class="row mb-4">
         <?php foreach ($movie as $row) : ?>
-
-            <div class="col-md-4 my-5" >
-                <div class="card border-rounded p-2"  >
-                    <img src="<?=$row['movie_poster']?>" class="card-img-top rounded-top img-height"
-                        alt="movie_poster">
 
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 
@@ -64,11 +58,9 @@
         <?php endforeach; ?>
         </div>
 
-
-        <nav class="page-numbers">
+        <nav>
             <?= $pager->links() ?>
         </nav>
-
 
     </div>
 

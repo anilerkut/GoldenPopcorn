@@ -1,13 +1,5 @@
 body {
-    background: #FFE400;
-}
-
-.img-height {
-    height: 400px;
-}
-
-.bg-black {
-    background-color: #000;
+    background-color: #f7786b;
 }
 
 .pagination {
@@ -31,4 +23,8 @@ body {
 .pagination a:hover{
     background-color: black;
     color: white;
+}
+
+.bg-black {
+    background-color: black;
 }

@@ -1,0 +1,16 @@
+body {
+    background-color: goldenrod;
+}
+
+.img-height {
+    max-height: 500px;
+    width: auto;
+}
+
+.img-container {
+    text-align: center;
+}
+
+.bg-black {
+    background-color: black;
+}
