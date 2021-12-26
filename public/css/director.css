@@ -38,11 +38,12 @@
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: #ffa60c;
   color: white;
   transform: rotateY(180deg);
 }
 
-.img-height {
-  height: 500px;
+.director-img-height {
+  width: 300px;
+  height: 200px;
 }

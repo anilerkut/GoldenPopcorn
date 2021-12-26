@@ -19,13 +19,25 @@
 
   <?= $this->include('site/mainpage-header.php') ?>
 
-  <div class="container">
-      <div class="row">
+  <div class="container my-5">
+
+      <div class="dropdown mt-4 mb-3">
+          <button class="btn btn-lg btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort By Name
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/ActorController/listByAtoZ">A to Z</a>
+              <a class="dropdown-item" href="/ActorController/listByZtoA">Z to A</a>
+          </div>
+      </div>
+
+      <h2 class="text-center">ALL ACTORS</h2>
+      <div class="row mb-4">
           <?php foreach ($actor as $row) : ?>
           <div class="col-md-4 my-4">
               <div class="card text-center">
                   <a href="<?= base_url('ActorController/actorDetails/'.$row['id'] ) ?>" class="btn btn-warning">
-                            <img src=<?=$row['actor_picture']?> class="card-img-top rounded-top img-height"alt="...">  
+                            <img src="<?=$row['actor_picture']?>" class="card-img-top rounded-top img-height" alt="...">
                   </a>
                   <div class="card-body bg-black">
                       <p class="card-text font-weight-bold text-white"><?= $row['actor_firstname']." ".$row['actor_lastname'] ?></p>
@@ -34,7 +46,7 @@
           </div>
           <?php endforeach; ?>
       </div>
-      <nav class="page-numbers">
+      <nav>
           <?= $pager->links() ?>
       </nav>
   </div>

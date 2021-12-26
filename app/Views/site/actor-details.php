@@ -41,46 +41,43 @@
                         </li>
                     </ul>
                 </div>
-            </div>
 
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Birthdate</label>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Birthdate</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?php echo $actor["actor_birthdate"]?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Gender</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?php echo $gender["gender_name"]?></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <p><?php echo $actor["actor_birthdate"]?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Gender</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p><?php echo $gender["gender_name"]?></p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Movie Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Role</p>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Movie Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Role</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 </div>
 
