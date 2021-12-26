@@ -149,6 +149,21 @@ class User extends BaseController
         return view('site/profile', $data);
     }
 
-
+    public function update($id) {
+        $userModel = new UserModel();
+        $newPassword = $this->request->getPost('user_password');
+        $newPasswordAgain = $this->request->getPost('user_password_again');
+        echo "Burdayım";
+        if ($newPassword == $newPasswordAgain) {
+            $data = [
+                'user_firstname' => $this->request->getPost('user_firstname'),
+                'user_lastname' => $this->request->getPost('user_lastname'),
+                'user_password' => $newPassword
+            ];
+            $userModel->update($id, $data);
+        }
+        // return redirect()->to(base_url('site/profile', $data));
+        $this->edit($id);
+    }
 
 }

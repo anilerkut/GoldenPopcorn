@@ -133,4 +133,28 @@ class NewsController extends BaseController
         return view('site/news-details', $data);
     }
 
+    public function listByNewDate() {
+        $newsModel = new NewsModel();
+        $actorModel = new ActorModel();
+        $data['news'] = $newsModel->select('news.id, news_title, actor_firstname, actor_lastname')
+            ->join('actor', 'actor.id = news.actor_id')
+            ->orderBy('news_date', 'DESC')
+            ->paginate(9);
+        $data['actor'] = $actorModel->findAll();
+        $data['pager'] = $newsModel->pager;
+        return view('site/news', $data);
+    }
+
+    public function listByOldDate() {
+        $newsModel = new NewsModel();
+        $actorModel = new ActorModel();
+        $data['news'] = $newsModel->select('news.id, news_title, actor_firstname, actor_lastname')
+            ->join('actor', 'actor.id = news.actor_id')
+            ->orderBy('news_date', 'ASC')
+            ->paginate(9);
+        $data['actor'] = $actorModel->findAll();
+        $data['pager'] = $newsModel->pager;
+        return view('site/news', $data);
+    }
+
 }
