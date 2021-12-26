@@ -8,4 +8,11 @@
     font-size: 1.5ram;
 }
 
+.trailer-tab-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vW;
+}
+
 
