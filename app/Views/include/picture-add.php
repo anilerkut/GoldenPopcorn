@@ -13,10 +13,12 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputMovie">Related Movie</label>
-                <select id="inputMovie" class="form-control" name='movie_id'>
-                    <option selected>Choose A Movie</option>
-                    <option>Movie - Name</option>
+                <label for="inputMovie">Movie</label>
+                <select id="inputMovie" class="form-control" name="movie_id">
+                    <option selected>Choose Movie</option>
+                    <?php foreach ($movie as $key=> $mov): ?>
+                        <option value="<?=$mov['id'] ?>"><?php echo $mov["movie_name"];?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
         </div>

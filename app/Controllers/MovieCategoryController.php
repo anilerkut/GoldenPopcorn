@@ -19,7 +19,6 @@ class MovieCategoryController extends BaseController
     {
         $categories = new MovieCategoryModel();
         $data['categories'] = $categories->findAll();
-        var_dump( $data['categories']);
         return view('include/movie-category-list', $data);
     }
 
@@ -34,29 +33,32 @@ class MovieCategoryController extends BaseController
 
     public function edit($id) //Brings the information on the edit screen 
     { 
-        $gender = new GenderModel();
-        $actor = new ActorModel();
-        $data['gender'] = $gender->findAll();
-        $data['actor'] = $actor->find($id);
-        return view('include/actor-update', $data);
+        $movieCategoryModel = new MovieCategoryModel();
+        $category = new CategoryModel();
+        $movie = new MovieModel();
+        $data['movie'] = $movie->findAll();
+        $data['category'] = $category->findAll();
+        $data['movieCategoryModel'] = $movieCategoryModel->find($id);
+        return view('include/movie-category-update', $data);
     }
 
     public function update($id) //update the informations
     {   
-        $actor = new ActorModel();
+        $movieCategoryModel = new MovieCategoryModel();
         $data = 
         [
-            'actor_name' => $this->request->getPost('actor_name')
+            'movie_id' => $this->request->getPost('movie_id'),
+            'category_id' => $this->request->getPost('category_id')
         ];
-        $actor->update($id, $data);
-        return redirect()->to(base_url('actor'));
+        $movieCategoryModel->update($id, $data);
+        return redirect()->to(base_url('categoryList'));
     }
 
     public function delete($id) //delete data
     { 
-        $actor = new ActorModel();
-        $actor->delete($id);
-        return redirect()->to(base_url('actor'));
+        $movieCategoryModel = new MovieCategoryModel();
+        $movieCategoryModel->delete($id);
+        return redirect()->to(base_url('categories/delete'));
     }
 
     public function addMovieCategories() {
