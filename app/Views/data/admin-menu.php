@@ -114,6 +114,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/MovieCategoryController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Movie Categories
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
