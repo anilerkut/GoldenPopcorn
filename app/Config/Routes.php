@@ -98,6 +98,16 @@ $routes->put('categories/update(:num)', 'MovieCategoryController::update/$1');
 $routes->get('categories/delete(:num)', 'MovieCategoryController::delete/$1');
 $routes->get('categories/movie(:num)', 'MovieCategoryController::searchByName/$1');
 
+//MovieCategory
+$routes->get('warningList', 'MovieWarningController::list');
+$routes->get('warning', 'MovieWarningController::listByCard');
+$routes->get('warning/filter(:num)', 'MovieWarningController::listByWarning/$1');
+$routes->get('warning-add', 'MovieWarningController::add');
+$routes->get('warning/edit(:num)', 'MovieWarningController::edit/$1');
+$routes->put('warning/update(:num)', 'MovieWarningController::update/$1');
+$routes->get('warning/delete(:num)', 'MovieWarningController::delete/$1');
+$routes->get('warning/movie(:num)', 'MovieWarningController::searchByName/$1');
+
 // Actor
 $routes->get('actor', 'ActorController::list');
 $routes->get('actors', 'ActorController::listByCard');
