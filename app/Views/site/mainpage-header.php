@@ -19,7 +19,7 @@
                     <a class="nav-link" href="<?=base_url('news-list')?>">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('profile/'.session()->get('user')['id'])?>">My Profile</a>
+                    
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('login')?>">Log Out</a>
