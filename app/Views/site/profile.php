@@ -23,10 +23,9 @@
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
-                        width="150px"
-                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
-                        class="font-weight-bold">Name Surname</span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px" src="https://picsum.photos/id/1005/200/300">
+                    <span class="font-weight-bold">Name Surname</span></div>
             </div>
             <div class="col-md-9 border-right">
                 <div class="p-3 py-5">
@@ -37,13 +36,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="account-fn">First Name</label>
-                                <input class="form-control" type="text" id="account-fn" value="Daniel" required="">
+                                <input class="form-control" type="text" id="account-fn" value="<?= $user[0]['user_firstname'] ?>" required="">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="account-ln">Last Name</label>
-                                <input class="form-control" type="text" id="account-ln" value="Adams" required="">
+                                <input class="form-control" type="text" id="account-ln" value="<?= $user[0]['user_lastname']  ?>" required="">
                             </div>
                         </div>
                     </div>
@@ -52,7 +51,7 @@
                             <div class="form-group">
                                 <label for="account-email">E-mail Address</label>
                                 <input class="form-control" type="email" id="account-email"
-                                    value="daniel.adams@example.com" disabled="">
+                                    value="<?= $user[0]['user_email']  ?>" disabled="">
                             </div>
                         </div>
                     </div>
@@ -78,29 +77,26 @@
             </div>
         </div>
     </div>
-    </div>
 
 
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
+            <?php foreach ($user as $row) : ?>
             <div class="col-md-12">
-                <div class="tab-content p-0">
-                    <div class="tab-pane fade active show" id="profile-followers">
-                        <div class="list-group">
-                            <div class="list-group-item d-flex align-items-center">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" width="50px"
-                                    class="rounded-sm ml-n2" />
-                                <div class="flex-fill pl-3 pr-3">
-                                    <div>FİLM ADI</div>
-                                </div>
-                                <a href="#" class="btn btn-outline-primary mr-2">SEE DETAILS</a>
-                                <a href="#" class="btn btn-outline-danger card-link"><i class="fas fa-trash"></i></a>
-                            </div>
+                <div class="list-group">
+                    <div class="list-group-item d-flex align-items-center">
+                        <img src="<?= $row['movie_poster']  ?>" alt="" width="100px" class="rounded-sm ml-n2"/>
+                        <div class="flex-fill pl-3 pr-3">
+                                    <div><?= $row['movie_name']  ?></div>
                         </div>
+                        <a href="<?= base_url() ?>" class="btn btn-outline-primary mr-2">SEE DETAILS</a>
+                        <a href="#" class="btn btn-outline-danger card-link"><i class="fas fa-trash"></i></a>
                     </div>
                 </div>
             </div>
+            <?php endforeach;?>
         </div>
+
     </div>
 
 

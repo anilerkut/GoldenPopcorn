@@ -14,10 +14,12 @@
         font-size: 2.0rem;
         padding: 0 1rem; /* space out the stars */
       }
+
       .star::before{
         content: url('<?= base_url('blackwhite.png')?>');    /* star outline */
         cursor: pointer;
       }
+
       .star.rated::before{
         /* the style for a selected star */
         content: url('<?= base_url('org.png')?>');  /* filled star */
@@ -28,9 +30,11 @@
           font-size: 2.0rem;
           font-weight: 900;
       }
+
       .star.rated{
           counter-increment: rateme 1;
       }
+
       .stars::after{
           content: counter(rateme) '/5';
       }
@@ -59,11 +63,12 @@
         <h4>Rate Movie</h4>
 
         <div class="stars" data-rating="3">
-          <span class="star">&nbsp;</span>
-          <span class="star">&nbsp;</span>
-          <span class="star">&nbsp;</span>
-          <span class="star">&nbsp;</span>
-          <span class="star">&nbsp;</span>
+            <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+            <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+            <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+            <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+            <img src="<?= base_url('org.png')?>" style="width: 80px; height: 80px" alt="">
+        </div>
       </div>
       <div class="col-md-4"></div>
       
@@ -75,7 +80,6 @@
               Action Horror Comedy
             </h5>
         </div>
-
 
         <table class="table table-hover">
   <thead>
@@ -203,71 +207,71 @@
 </section>
 <!-- /.content -->
 
-<script>
-        $(document).ready(function() {
 
-// Gets the video src from the data-src on each button
+    <script>
+            $(document).ready(function() {
 
-var $videoSrc;  
-$('.video-btn').click(function() {
-    $videoSrc = $(this).data( "src" );
-});
-console.log($videoSrc);
+    // Gets the video src from the data-src on each button
 
-  
-  
-// when the modal is opened autoplay it  
-$('#myModal').on('shown.bs.modal', function (e) {
-    
-// set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
-$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
-})
-  
+    var $videoSrc;
+    $('.video-btn').click(function() {
+        $videoSrc = $(this).data( "src" );
+    });
+    console.log($videoSrc);
+
+    // when the modal is opened autoplay it
+    $('#myModal').on('shown.bs.modal', function (e) {
+
+    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+    $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+    })
 
 
-// stop playing the youtube video when I close the modal
-$('#myModal').on('hide.bs.modal', function (e) {
-    // a poor man's stop video
-    $("#video").attr('src',$videoSrc); 
-}) 
-        //initial setup
-        document.addEventListener('DOMContentLoaded', function(){
-            let stars = document.querySelectorAll('.star');
-            stars.forEach(function(star){
-                star.addEventListener('click', setRating); 
+    // stop playing the youtube video when I close the modal
+    $('#myModal').on('hide.bs.modal', function (e) {
+        // a poor man's stop video
+        $("#video").attr('src',$videoSrc);
+    })
+            //initial setup
+            document.addEventListener('DOMContentLoaded', function(){
+                let stars = document.querySelectorAll('.star');
+                stars.forEach(function(star){
+                    star.addEventListener('click', setRating);
+                });
+
+                let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+                let target = stars[rating - 1];
+                target.dispatchEvent(new MouseEvent('click'));
             });
-            
-            let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
-            let target = stars[rating - 1];
-            target.dispatchEvent(new MouseEvent('click'));
-        });
 
-        function setRating(ev){
-            let span = ev.currentTarget;
-            let stars = document.querySelectorAll('.star');
-            let match = false;
-            let num = 0;
-            stars.forEach(function(star, index){
-                if(match){
-                    star.classList.remove('rated');
-                }else{
-                    star.classList.add('rated');
-                }
-                //are we currently looking at the span that was clicked
-                if(star === span){
-                    match = true;
-                    num = index + 1;
-                }
-            });
-            document.querySelector('.stars').setAttribute('data-rating', num);
-        }
-        
+            function setRating(ev){
+                let span = ev.currentTarget;
+                let stars = document.querySelectorAll('.star');
+                let match = false;
+                let num = 0;
+                stars.forEach(function(star, index){
+                    if(match){
+                        star.classList.remove('rated');
+                    }else{
+                        star.classList.add('rated');
+                    }
+                    //are we currently looking at the span that was clicked
+                    if(star === span){
+                        match = true;
+                        num = index + 1;
+                    }
+                });
+                document.querySelector('.stars').setAttribute('data-rating', num);
+            }
+
+
+
+
     </script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
 </body>
 </html>

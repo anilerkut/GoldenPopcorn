@@ -117,4 +117,20 @@ class NewsController extends BaseController
         }
     }
 
+    public function listByCard()
+    {
+        $news = new NewsModel();
+        // $data['news'] = $news->paginate(10);
+        $data['news'] = $news->getNewsByCard();
+        // $data['pager'] = $news->pager;
+        return view('site/news', $data);
+    }
+
+    public function showWithDetail($id)
+    {
+        $news = new NewsModel();
+        $data['news'] = $news->getNewsWithActor($id);
+        return view('site/news-details', $data);
+    }
+
 }

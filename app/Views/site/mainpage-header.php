@@ -6,7 +6,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto text-uppercase">
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('')?>">Movies<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -16,13 +16,13 @@
                     <a class="nav-link" href="<?=base_url('directors')?>">Directors</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
+                    <a class="nav-link" href="<?=base_url('news-list')?>">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('site/profile')?>">My Profile</a>
+                    <a class="nav-link" href="<?=base_url('profile/9')?>">My Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log Out</a>
+                    <a class="nav-link" href="<?=base_url('login')?>">Log Out</a>
                 </li>
             </ul>
         </div>

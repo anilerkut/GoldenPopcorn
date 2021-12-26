@@ -138,9 +138,17 @@ class User extends BaseController
         return view('include/user-list', $data);
     }
 
-
     public function findAll() {
         $users = $this->userModel->findAll();
         return $this->response->setJSON($users);
     }
+
+    public function edit($id) {
+        $userModel = new UserModel();
+        $data['user'] = $userModel->getUserDetails($id);
+        return view('site/profile', $data);
+    }
+
+
+
 }
