@@ -52,15 +52,11 @@
     <div class="row">
       <div class="col-md-6">
             <img src=<?php echo $movie["movie_poster"]?> class="d-block w-50 mx-auto " style="" alt="...">
-            <div class="mt-4">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Watch Trailer
-            </button>
-        </div>
+            <div class="mt-4"></div>
       </div>
 
       <div class="col-md-4">
-        <h3 class="my-3"><?php echo $movie["movie_name"]?></h3>
+        <h3 class="my-3"><?=$movie["movie_name"]?></h3>
         <p><?php echo $movie["movie_summary"]?></p>
 
         <hr>
@@ -77,12 +73,12 @@
       <div class="col-md-4"></div>
       
         <div class="bg-gray py-2 px-3 mt-4">
-          <h2 class="mb-0">
-            Category
-          </h2>
-          <h5 class="mt-0">
-            Action Horror Comedy
-          </h5>
+            <h2 class="mb-0">
+              Category
+            </h2>
+            <h5 class="mt-0">
+              Action Horror Comedy
+            </h5>
         </div>
 
         <table class="table table-hover">
@@ -94,15 +90,15 @@
   </thead>
   <tbody>
     <tr>
-      <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png" alt="tomato_logo" style="width:50px;height:50px"><span class="rating-font">Rottan Tomatoes</span></td>
+      <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png" alt="tomato_logo" style="width:50px;height:50px"><span class="rating-font"> Rottan Tomatoes</span></td>
       <td><?php echo $movie["rottentomatoes_rating"]?></td>
     </tr>
     <tr>
-      <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/IMDb_Logo_Square.svg/2048px-IMDb_Logo_Square.svg.png" alt="imdb_logo" style="width:50px;height:50px"><span class="rating-font">Imdb</span></td>
+      <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/IMDb_Logo_Square.svg/2048px-IMDb_Logo_Square.svg.png" alt="imdb_logo" style="width:50px;height:50px"><span class="rating-font"> Imdb</span></td>
       <td><?php echo $movie["imdb_rating"]?></td>
     </tr>
     <tr>
-      <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/1024px-Metacritic.svg.png" alt="meta_logo" style="width:50px;height:50px"><span class="rating-font">Meta Critic</span></td>
+      <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/1024px-Metacritic.svg.png" alt="meta_logo" style="width:50px;height:50px"><span class="rating-font"> Meta Critic</span></td>
       <td><?php echo $movie["metacritic_rating"]?></td>
     </tr>
     <tr>
@@ -142,48 +138,71 @@
           <a class="nav-item nav-link" id="movie-informations-tab" data-toggle="tab" href="#movie-informations" role="tab" aria-controls="movie-informations" aria-selected="true">Movie Details</a>
           <a class="nav-item nav-link" id="movie-comments-tab" data-toggle="tab" href="#movie-comments" role="tab" aria-controls="movie-comments" aria-selected="false">Comments</a>
           <a class="nav-item nav-link" id="movie-rating-tab" data-toggle="tab" href="#movie-rating" role="tab" aria-controls="movie-rating" aria-selected="false">Rating</a>
-        </div>
+          <a class="nav-item nav-link" id="movie-trailer-tab" data-toggle="tab" href="#movie-trailer" role="tab" aria-controls="movie-trailer" aria-selected="false">Trailer</a>
+       
       </nav>
       <div class="tab-content p-3" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="movie-actors" role="tabpanel" aria-labelledby="movie-actors-tab"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae condimentum erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed posuere, purus at efficitur hendrerit, augue elit lacinia arcu, a eleifend sem elit et nunc. Sed rutrum vestibulum est, sit amet cursus dolor fermentum vel. Suspendisse mi nibh, congue et ante et, commodo mattis lacus. Duis varius finibus purus sed venenatis. Vivamus varius metus quam, id dapibus velit mattis eu. Praesent et semper risus. Vestibulum erat erat, condimentum at elit at, bibendum placerat orci. Nullam gravida velit mauris, in pellentesque urna pellentesque viverra. Nullam non pellentesque justo, et ultricies neque. Praesent vel metus rutrum, tempus erat a, rutrum ante. Quisque interdum efficitur nunc vitae consectetur. Suspendisse venenatis, tortor non convallis interdum, urna mi molestie eros, vel tempor justo lacus ac justo. Fusce id enim a erat fringilla sollicitudin ultrices vel metus. </div>
+        <div class="tab-pane fade show active" id="movie-actors" role="tabpanel" aria-labelledby="movie-actors-tab"> 
+            <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th class="px-5"scope="col">Picture</th>
+                          <th class="px-5"scope="col">Actor/Actress</th>
+                          <th class="px-5"scope="col">Role</th>
+                      </tr>
+                  </thead>
+                  <?php foreach ($role as $row) : ?>  
+                          <tbody class="text-center">                    
+                                                     
+                              <td>
+                                  <img src="<?=$row['actor_picture']?>" width="80px" height="100px" alt=""> 
+                              </td>
+                              <td style="vertical-align:middle">
+                                  <?=$row['actor_firstname']." ".$row['actor_lastname']?>                     
+                              </td>
+                              <td style="vertical-align:middle">
+                                  <?=$row['role_name']?>
+                              </td>                    
+                          </tbody>
+                  <?php endforeach; ?>
+            </table>
+              <div>
+
+                      
+              </div>
+            
+        </div>
         <div class="tab-pane fade" id="movie-informations" role="tabpanel" aria-labelledby="movie-informations-tab">
               <div>
-                <p>Duration:<?php echo $movie["movie_duration"]?></p>
+              <p> <b> Duration </b>:<?php echo $movie["movie_duration"]?></p>
               </div>
               <div>
-                <p>Release Date: <?php echo $movie["movie_releasedate"]?></p>
+              <p> <b> Release Date </b>: <?php echo $movie["movie_releasedate"]?></p>
               </div>
               <div>
-                <p>Country: <?php echo $country["country_name"]?></p>
+              <p> <b> Country </b>: <?php echo $country["country_name"]?></p>
               </div>
               <div>
-                <p>Language: <?php echo $language["language_name"]?></p>
+              <p> <b> Language </b>: <?php echo $language["language_name"]?></p>
               </div>
               <div>
-                <p>Movie Gross: <?php echo $movie["movie_gross"]?></p>
+              <p> <b> Movie Gross </b>: <?php echo $movie["movie_gross"]?></p>
               </div>
         </div>
         <div class="tab-pane fade" id="movie-comments" role="tabpanel" aria-labelledby="movie-comments-tab"> Vivamus rhoncus nisl sed venenatis luctus. Sed condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla turpis elit, consequat eu eros ac, consectetur fringilla urna. Duis gravida ex pulvinar mauris ornare, eget porttitor enim vulputate. Mauris hendrerit, massa nec aliquam cursus, ex elit euismod lorem, vehicula rhoncus nisl dui sit amet eros. Nulla turpis lorem, dignissim a sapien eget, ultrices venenatis dolor. Curabitur vel turpis at magna elementum hendrerit vel id dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum. </div>
-        <div class="tab-pane fade" id="movie-rating" role="tabpanel" aria-labelledby="movie-rating-tab"> Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam dignissim aliquam ligula, aliquet feugiat nibh rhoncus ut. Aliquam efficitur lacinia lacinia. Morbi ac molestie lectus, vitae hendrerit nisl. Nullam metus odio, malesuada in vehicula at, consectetur nec justo. Quisque suscipit odio velit, at accumsan urna vestibulum a. Proin dictum, urna ut varius consectetur, sapien justo porta lectus, at mollis nisi orci et nulla. Donec pellentesque tortor vel nisl commodo ullamcorper. Donec varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
+        <div class="tab-pane fade" id="movie-rating" role="tabpanel" aria-labelledby="movie-rating-tab">
+
+
+        </div>
+        <div class="tab-pane fade" id="movie-trailer" role="tabpanel" aria-labelledby="movie-trailer-tab">
+            <iframe width="1000" height="600" class=""
+                src=<?php echo $movie["movie_trailer"]?> type="video/mp4"> 
+            </iframe>
+        </div>
       </div>
     </div>
   </div>
   <!-- /.card-body -->
-</div>
-<!-- /.card -->
-<!-- Modal -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      
-      <div class="modal-body">
-        <iframe width="420" height="345" src="<?php echo $movie["movie_trailer"]?>">
-</iframe>
-      </div>
-      
-    </div>
-  </div>
 </div>
 </section>
 <!-- /.content -->
