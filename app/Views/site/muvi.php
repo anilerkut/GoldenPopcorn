@@ -217,16 +217,20 @@
 
             </div>
             <!-- trailer tab -->
-            <div class="tab-pane fade " id="movie-trailer" role="tabpanel" aria-labelledby="movie-trailer-tab">
-                <iframe width="1000" height="600" class=""
-                    src=<?= $movie["movie_trailer"]?> type="video/mp4">
-                </iframe>
-            </div>
+              <div class="tab-pane fade" id="movie-trailer" style="width:100vw " role="tabpanel" aria-labelledby="movie-trailer-tab" >
+                  <div class="trailer-tab-center " style="display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100vW;">
+                      <iframe width="1000" height="600" class=""
+                              src=<?php echo $movie["movie_trailer"]?> type="video/mp4">
+                      </iframe>
+                  </div>
+              </div>
           </div>
         </div>
         <!-- row end -->
 </section>
-
 
 
 <?= $this->include('site/mainpage-footer.php') ?>

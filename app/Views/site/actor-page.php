@@ -46,9 +46,11 @@
           </div>
           <?php endforeach; ?>
       </div>
+
       <nav>
           <?= $pager->links() ?>
       </nav>
+
   </div>
 
   <?= $this->include('site/mainpage-footer.php') ?>
