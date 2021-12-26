@@ -106,6 +106,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/MovieActorController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Role
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

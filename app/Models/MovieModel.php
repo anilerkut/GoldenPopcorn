@@ -73,4 +73,13 @@ class MovieModel extends Model
         }
         return $builder->getResultArray();
     }
+
+    public function getMovieActors($movieId) {
+        $builder=$this->builder($this->table);
+        $builder = $builder->join('movie_actor', 'movie_actor.movie_id = movie.id');
+        $builder = $builder->join('actor', 'actor.id = movie_actor.actor_id');
+        $builder=$builder->where('movie_actor.movie_id',$movieId);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
 }

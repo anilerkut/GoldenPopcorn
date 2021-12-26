@@ -24,7 +24,9 @@
           <?php foreach ($actor as $row) : ?>
           <div class="col-md-4 my-4">
               <div class="card text-center">
-                  <img src="<?= $row['actor_picture'] ?>" class="card-img-top img-height" alt="...">
+                  <a href="<?= base_url('ActorController/actorDetails/'.$row['id'] ) ?>" class="btn btn-warning">
+                            <img src=<?=$row['actor_picture']?> class="card-img-top rounded-top img-height"alt="...">  
+                  </a>
                   <div class="card-body bg-black">
                       <p class="card-text font-weight-bold text-white"><?= $row['actor_firstname']." ".$row['actor_lastname'] ?></p>
                   </div>

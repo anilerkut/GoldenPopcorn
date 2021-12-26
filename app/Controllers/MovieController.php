@@ -7,6 +7,7 @@ use App\Models\CategoryModel;
 use App\Models\MovieModel;
 use App\Models\CountryModel;
 use App\Models\LanguageModel;
+use App\Models\MovieActorModel;
 
 class MovieController extends BaseController
 {
@@ -15,13 +16,6 @@ class MovieController extends BaseController
     public function __construct()
     {
         $this->movieModel = new MovieModel();
-    }
-
-    private function callbackDateValid($date){
-        $day = (int) substr($date, 0, 2);
-        $month = (int) substr($date, 3, 2);
-        $year = (int) substr($date, 6, 4);
-        return checkdate($month, $day, $year);
     }
 
     public function list()
@@ -51,16 +45,19 @@ class MovieController extends BaseController
         return view('include/movie-update',$data);
     }
 
-    public function movieDetails($id) //Brings the movie details
+    public function movieDetails($id) //to the movie details page
     { 
+        //$role=new MovieActorModel();
         $movie = new MovieModel();
         $country = new CountryModel();
         $language = new LanguageModel();
-        $movie_country=(($movie->getMovieCountryID($id)));
-        $movie_language=(($movie->getMovieLanguageID($id)));    
+        $movieCountry=(($movie->getMovieCountryID($id)));
+        $movieLanguage=(($movie->getMovieLanguageID($id)));   
+        $movieActors=(($movie->getMovieActors($id))); 
         $data['movie'] = $movie->find($id);
-        $data['country'] = $country->find($movie_country->country_id);
-        $data['language'] = $language->find($movie_language->language_id);
+        $data['role']=$movieActors;
+        $data['country'] = $country->find($movieCountry->country_id);
+        $data['language'] = $language->find($movieLanguage->language_id);
         return view('/site/muvi',$data);
     }
 
