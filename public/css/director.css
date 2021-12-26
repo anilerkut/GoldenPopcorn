@@ -42,3 +42,7 @@
   color: white;
   transform: rotateY(180deg);
 }
+
+.img-height {
+  height: 500px;
+}

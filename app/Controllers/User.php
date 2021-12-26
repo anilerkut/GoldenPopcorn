@@ -45,10 +45,10 @@ class User extends BaseController
 
                 $this->setUserSession($user);
                 $session->setFlashdata('success','Succesful Registiration');
-                return redirect()->to('/dashboard');
+                return redirect()->to('/movies');
             }
         }
-        echo view('login',$data);
+        echo view('site/login',$data);
 
     }
 
@@ -107,7 +107,7 @@ class User extends BaseController
                 return redirect()->to('/login');
             }
         }
-        echo view('signup',$data);
+        echo view('site/signup',$data);
     }
 
     public function delete($id=null) 
@@ -138,9 +138,32 @@ class User extends BaseController
         return view('include/user-list', $data);
     }
 
-
     public function findAll() {
         $users = $this->userModel->findAll();
         return $this->response->setJSON($users);
     }
+
+    public function edit($id) {
+        $userModel = new UserModel();
+        $data['user'] = $userModel->getUserDetails($id);
+        return view('site/profile', $data);
+    }
+
+    public function update($id) {
+        $userModel = new UserModel();
+        $newPassword = $this->request->getPost('user_password');
+        $newPasswordAgain = $this->request->getPost('user_password_again');
+        echo "Burdayım";
+        if ($newPassword == $newPasswordAgain) {
+            $data = [
+                'user_firstname' => $this->request->getPost('user_firstname'),
+                'user_lastname' => $this->request->getPost('user_lastname'),
+                'user_password' => $newPassword
+            ];
+            $userModel->update($id, $data);
+        }
+        // return redirect()->to(base_url('site/profile', $data));
+        $this->edit($id);
+    }
+
 }
