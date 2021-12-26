@@ -34,9 +34,6 @@
           </div>
           <?php endforeach; ?>
       </div>
-      <nav class="page-numbers">
-          <?= $pager->links() ?>
-      </nav>
   </div>
 
   <?= $this->include('site/mainpage-footer.php') ?>
