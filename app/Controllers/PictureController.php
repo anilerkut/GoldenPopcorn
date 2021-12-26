@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\PictureModel;
+use App\Models\MovieModel;
 
 class PictureController extends BaseController
 {
@@ -23,7 +24,9 @@ class PictureController extends BaseController
 
     public function add() //from admin page picture list menu to picture add  
     {
-        return view('include/picture-add'); 
+        $movie = new MovieModel();
+        $data['movie']=$movie->findAll();
+        return view('include/picture-add',$data); 
     }
 
     public function edit($id) //Brings the information on the edit screen 

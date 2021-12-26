@@ -21,8 +21,8 @@
          foreach ($categories as $row) : ?>
         <tr>
             <th scope="row"><?= $num ?></th>
+            <td><?= $row['category_id'] ?></td>
             <td><?= $row['movie_id'] ?></td>
-            
             <?php $num++ ?>
             <td>
                 <table>

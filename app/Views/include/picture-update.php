@@ -12,6 +12,15 @@
                     <label for="inputFullName">Picture Link</label>
                     <input type="text" class="form-control" id="inputFullName" name="category_name" value="<?= $picture['picture_link'] ?>">
                 </div>
+                <div class="form-group col-md-6">
+                    <label for="inputMovie">Movie</label>
+                    <select id="inputMovie" class="form-control" name="movie_id">
+                        <option selected>Choose Movie</option>
+                        <?php foreach ($movie as $key=> $mov): ?>
+                            <option value="<?=$mov['id'] ?>"><?php echo $mov["movie_name"];?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary mt-3">Update</button>
         </form>

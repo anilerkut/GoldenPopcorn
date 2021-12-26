@@ -88,6 +88,7 @@ $routes->put('role/update(:num)', 'MovieActorController::update/$1');
 $routes->get('role/delete(:num)', 'MovieActorController::delete/$1');
 $routes->get('role/movie(:num)', 'MovieActorController::searchByName/$1');
 
+//MovieCategory
 $routes->get('categoryList', 'MovieCategoryController::list');
 $routes->get('categories', 'MovieCategoryController::listByCard');
 $routes->get('categories/filter(:num)', 'MovieCategoryController::listByCategory/$1');
