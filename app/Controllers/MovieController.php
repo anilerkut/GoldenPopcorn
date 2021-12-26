@@ -164,14 +164,15 @@ class MovieController extends BaseController
     }
 
     public function listByCategory($categoryId) {
-        $movie = new MovieModel();
-        $data['pager'] = $movie->pager;
-        $data['movie'] = $movie->getMovieByCategory($categoryId, 8);
-        $category = new CategoryModel();
-        $data['category'] = $category->findAll();
-        // var_dump($data);
-        // $data['movie']=$movie->paginate(12);
-
+        $movieModel = new MovieModel();
+        $categoryModel = new CategoryModel();
+        $data['movie'] = $movieModel->select('*')
+                             ->join('movie_category', 'movie_category.movie_id = movie.id')
+                             ->join('category', 'category.id = movie_category.category_id')
+                             ->where('movie_category.category_id',$categoryId)
+                             ->paginate(9);
+        $data['category'] = $categoryModel->findAll();
+        $data['pager'] = $movieModel->pager;
         return view('site/mainPage', $data);
     }
 

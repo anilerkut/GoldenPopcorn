@@ -61,19 +61,6 @@ class MovieModel extends Model
         return $builder->getResultArray();
     }
 
-    public function getMovieByCategory($categoryId, $pagination=null) {
-        $builder=$this->builder($this->table);
-        $builder = $builder->join('movie_category', 'movie_category.movie_id = movie.id');
-        $builder = $builder->join('category', 'category.id = movie_category.category_id');
-        $builder=$builder->where('movie_category.category_id',$categoryId);
-
-        $builder=$builder->get();
-        if ($pagination) {
-            $builder = $this->paginate($pagination);
-        }
-        return $builder->getResultArray();
-    }
-
     public function getMovieActors($movieId) {
         $builder=$this->builder($this->table);
         $builder = $builder->join('movie_actor', 'movie_actor.movie_id = movie.id');
@@ -82,4 +69,5 @@ class MovieModel extends Model
         $builder=$builder->get();
         return $builder->getResultArray();
     }
+
 }

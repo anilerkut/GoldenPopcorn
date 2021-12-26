@@ -25,24 +25,25 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5" width="150px" src="https://picsum.photos/id/1005/200/300">
-                    <span class="font-weight-bold">Name Surname</span></div>
+                    <span class="font-weight-bold"><?= $user[0]['user_firstname']." ".$user[0]['user_lastname'] ?></span></div>
             </div>
             <div class="col-md-9 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
+                    <form action="<?= base_url('User/update/'.$user[0]['id']) ?>" method="POST" class="mt-5">
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="account-fn">First Name</label>
-                                <input class="form-control" type="text" id="account-fn" value="<?= $user[0]['user_firstname'] ?>" required="">
+                                <input class="form-control" type="text" id="account-fn" placeholder="<?= $user[0]['user_firstname'] ?>" name="user_firstname">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="account-ln">Last Name</label>
-                                <input class="form-control" type="text" id="account-ln" value="<?= $user[0]['user_lastname']  ?>" required="">
+                                <input class="form-control" type="text" id="account-ln" placeholder="<?= $user[0]['user_lastname']  ?>" name="user_lastname">
                             </div>
                         </div>
                     </div>
@@ -59,7 +60,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="account-pass">New Password</label>
-                                <input class="form-control" type="password" id="account-pass">
+                                <input class="form-control" type="password" id="account-pass" name="user_password">
                             </div>
                         </div>
                     </div>
@@ -67,13 +68,15 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="account-confirm-pass">Confirm Password</label>
-                                <input class="form-control" type="password" id="account-confirm-pass">
+                                <input class="form-control" type="password" id="account-confirm-pass" name="user_password_again">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mb-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
-                        Profile</button></div>
+                <div class="mb-5 text-center">
+                    <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>

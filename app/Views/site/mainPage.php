@@ -25,18 +25,20 @@
 
     <div class="container my-5">
 
-            <select class="custom-select my-1 mr-sm-2 bg-warning" id="inlineFormCustomSelectPref">
-                <option selected>Choose a category</option>
+        <div class="dropdown">
+            <button class="btn btn-lg btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <?php foreach ($category as $row) : ?>
-                <option><?=$row['category_name']?></option>
+                        <a class="dropdown-item" href="/MovieController/listByCategory/<?= $row['id'] ?>"><?=$row['category_name']?></a>
                 <?php endforeach; ?>
-            </select>
-            <a href="/MovieController/listByCategory/4" class="btn btn-outline-dark my-1">Sort</a>
+            </div>
+        </div>
 
         <h2 class="text-center">ALL MOVIES</h2>
         <div class="row mb-4">
         <?php foreach ($movie as $row) : ?>
-
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 
                         <a href="<?= base_url('MovieController/movieDetails/'.$row['id'] ) ?>" class="btn btn-warning">

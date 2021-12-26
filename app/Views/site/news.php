@@ -18,7 +18,19 @@
 <?= $this->include('site/mainpage-header.php') ?>
 
 <div class="container my-5">
-    <div class="row">
+
+    <div class="dropdown">
+        <button class="btn btn-lg btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort By Date
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/NewsController/listByNewDate">New To Old</a>
+            <a class="dropdown-item" href="/NewsController/listByOldDate">Old To New</a>
+        </div>
+    </div>
+
+    <h2 class="text-center">ALL NEWS</h2>
+    <div class="row my-4">
         <?php foreach ($news as $row) : ?>
         <div class="col-sm-6">
             <div class="card bg-dark text-white h-100">
@@ -35,6 +47,14 @@
 </div>
 
 <?= $this->include('site/mainpage-footer.php') ?>
+
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
 
 </body>
 
