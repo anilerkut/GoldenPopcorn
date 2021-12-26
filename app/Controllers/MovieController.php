@@ -53,9 +53,10 @@ class MovieController extends BaseController
         $language = new LanguageModel();
         $movieCountry=(($movie->getMovieCountryID($id)));
         $movieLanguage=(($movie->getMovieLanguageID($id)));   
-        $movieActors=(($movie->getMovieActors($id))); 
+        $movieActors=(($movie->getMovieActors($id)));
         $data['movie'] = $movie->find($id);
-        $data['role']=$movieActors;
+        $data['director'] = $movie->getMovieDirectors($id);
+        $data['role'] = $movieActors;
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
         return view('/site/muvi',$data);
