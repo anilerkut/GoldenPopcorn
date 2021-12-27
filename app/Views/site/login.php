@@ -27,7 +27,7 @@
                 </div>
             <?php endif;?>
             <div class="main">
-                <form action="/login" method="post">
+                <form action="/User/login" method="post">
                     <!--Take username and password from user !-->
                     <span>
                         <i class="fas fa-user"></i>  <!--icon from fontawesome !-->

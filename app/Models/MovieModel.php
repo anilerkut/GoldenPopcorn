@@ -18,7 +18,7 @@ class MovieModel extends Model
 
     public function getMovieListByCard(){
         $builder=$this->builder($this->table);
-        $builder=$builder->select('movie_name, movie_duration, imdb_rating, movie_releasedate');
+        $builder=$builder;
         $builder=$builder->get();
         return $builder->getResultArray();
     }

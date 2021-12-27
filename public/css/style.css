@@ -15,7 +15,7 @@ body {
 }
 
 .card-body-height{
-    min-height:180px;
+    min-height:150px;
     position:relative;
 }
 

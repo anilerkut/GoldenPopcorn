@@ -71,6 +71,7 @@ $routes->get('gender/delete(:num)', 'GenderController::delete/$1');
 // Movie
 $routes->get('movie', 'MovieController::list');
 $routes->get('movies', 'MovieController::listByCard');
+$routes->get('movie/(:num)', 'MovieController::movieDetails/$1');
 $routes->get('movies/filter(:num)', 'MovieController::listByCategory/$1');
 $routes->get('movie-add', 'MovieController::add');
 $routes->get('movie/edit(:num)', 'MovieController::edit/$1');
@@ -144,7 +145,6 @@ $routes->get('warning/delete(:num)', 'WarningController::delete/$1');
 
 // Director
 $routes->get('director', 'DirectorController::list');
-$routes->get('directors', 'DirectorController::listByCard');
 $routes->get('director-add', 'DirectorController::add');
 $routes->get('director/edit(:num)', 'DirectorController::edit/$1');
 $routes->put('director/update(:num)', 'DirectorController::update/$1');

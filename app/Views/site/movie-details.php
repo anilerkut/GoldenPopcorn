@@ -58,16 +58,20 @@
               <img src="<?= $movie["movie_poster"]?>" class="d-block w-50 mx-auto" style="" alt="...">
               <div class="text-center">
                   <p class="my-4"><?= $movie["movie_summary"]?></p>
-                  <button class="d-block btn btn-outline-danger btn-lg mx-auto">
-                      <i class="far fa-plus-square fa-lg"></i>
+
+                  <a href="<?= base_url('WatchlistController/addUserMovie/'.'11'.'/'.$movie['id']) ?>"
+                     class="btn btn-outline-danger btn-lg mx-auto">
+                      <i class="fas fa-heart fa-lg"></i>
                       Add to Watchlist
-                  </button>
+                  </a>
+
               </div>
           </div>
           <!-- left end -->
           <!-- right start -->
           <div class="col-md-4">
               <h3><?= $movie["movie_name"] ?></h3>
+
                 <span class="font-weight-bold">Category: </span>
                 <?php foreach ($categories as $row) : ?>                  
                         <span><?=$row['category_name']?></span>
@@ -76,6 +80,7 @@
                 <?php foreach ($warnings as $row) : ?>                  
                         <span><?=$row['warning_name']?></span>
                 <?php endforeach; ?> 
+
               <hr>
               <h4>Rate Movie</h4>
                 <div class="stars" data-rating="3">
@@ -146,6 +151,7 @@
                                       <img src="<?=$row['actor_picture']?>" width="80px" height="100px" alt="">
                                   </td>
                                   <td style="vertical-align:middle">
+                                      <?=$row['actor_firstname']." ".$row['actor_lastname']?>
                                         <a href="<?= base_url('ActorController/actorDetails/'.$row['actor_id'] ) ?>"><?=$row['actor_firstname']." ".$row['actor_lastname']?></a>
                                   </td>
                                   <td style="vertical-align:middle">
@@ -186,11 +192,11 @@
 
             <!-- movie pictures tab -->
             <div class="tab-pane fade" id="movie-pictures" role="tabpanel" aria-labelledby="movie-pictures-tab">
-               
-            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+              
+              <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                 
                     <div class="carousel-inner carousel-height">
-                    
+                   
                         <div class="carousel-item active">
                                 <img src=" <?= $picture[0]['picture_link']?>" class="d-block w-100" alt="...">
                         </div>
@@ -216,7 +222,8 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </button>
-                    </div>
+               </div>
+
             </div>
             <!-- comments tab -->
             <div class="tab-pane fade" id="movie-comments" role="tabpanel" aria-labelledby="movie-comments-tab">

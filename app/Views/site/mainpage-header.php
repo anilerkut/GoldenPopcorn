@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto text-uppercase" id="menu">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('')?>">Movies<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?=base_url('movies')?>">Movies<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('actors')?>">Actors</a>
@@ -16,7 +16,7 @@
                     <a class="nav-link" href="<?=base_url('news-list')?>">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('profile/9')?>">My Profile</a>
+                    <a class="nav-link" href="<?=base_url('profile/'.session()->get('user')['id'])?>">My Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('login')?>">Log Out</a>

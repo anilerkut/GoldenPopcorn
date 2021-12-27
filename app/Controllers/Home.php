@@ -12,13 +12,7 @@ class Home extends BaseController
 {
     public function index()
     {
-        $movie = new MovieModel();
-        $data['movie']=$movie->paginate(12);
-        $data['pager'] = $movie->pager;
-        $category = new CategoryModel();
-        $data['category'] = $category->findAll();
-        return view('site/mainPage.php',$data);
-        //return view('site/welcome_screen.php');
+        return view('site/welcome_screen.php');
     }
 
 }
