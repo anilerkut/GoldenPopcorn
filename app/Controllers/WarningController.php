@@ -70,7 +70,7 @@ class WarningController extends BaseController
 
                 $warning->save($newData);
 
-                return redirect()->to('/warning-add');
+                return redirect()->to(base_url('warning'));
             }
         }
         echo view('include/warning-add',$data);

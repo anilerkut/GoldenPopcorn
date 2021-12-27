@@ -97,7 +97,7 @@ class DirectorController extends BaseController
                     'director_picture' => $this->request->getVar('director_picture')
                 ];
                     $director->save($newData);
-                return redirect()->to('/dashboard');
+                    return redirect()->to(base_url('director'));
             }
         }
         echo view('login',$data);

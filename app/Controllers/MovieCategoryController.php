@@ -89,7 +89,7 @@ class MovieCategoryController extends BaseController
                 ];
                     $movieCategoryModel->save($newData);
 
-                return redirect()->to('/include/movie-category-list');
+                    return redirect()->to(base_url('categoryList'));
             }
         }
         echo view('include/movie-category-add',$data);

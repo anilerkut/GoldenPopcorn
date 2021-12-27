@@ -68,10 +68,13 @@
           <!-- right start -->
           <div class="col-md-4">
               <h3><?= $movie["movie_name"] ?></h3>
-              <span class="font-weight-bold">
-                  Category: </span>
+                <span class="font-weight-bold">Category: </span>
                 <?php foreach ($categories as $row) : ?>                  
-                        <span> <?=$row['category_name']?></span>
+                        <span><?=$row['category_name']?></span>
+                <?php endforeach; ?> 
+                <span class="font-weight-bold">Warning: </span>
+                <?php foreach ($warnings as $row) : ?>                  
+                        <span><?=$row['warning_name']?></span>
                 <?php endforeach; ?> 
               <hr>
               <h4>Rate Movie</h4>
@@ -91,7 +94,7 @@
                   </thead>
                   <tbody>
                       <tr>
-                          <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png" alt="tomato_logo" style="width:50px;height:50px"><span class="rating-font"> Rottan Tomatoes</span></td>
+                          <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png" alt="tomato_logo" style="width:50px;height:50px"><span class="rating-font"> Rotten Tomatoes</span></td>
                           <td><?= $movie["rottentomatoes_rating"]?></td>
                       </tr>
                       <tr>
@@ -143,7 +146,7 @@
                                       <img src="<?=$row['actor_picture']?>" width="80px" height="100px" alt="">
                                   </td>
                                   <td style="vertical-align:middle">
-                                      <?=$row['actor_firstname']." ".$row['actor_lastname']?>
+                                        <a href="<?= base_url('ActorController/actorDetails/'.$row['actor_id'] ) ?>"><?=$row['actor_firstname']." ".$row['actor_lastname']?></a>
                                   </td>
                                   <td style="vertical-align:middle">
                                       <?=$row['role_name']?>

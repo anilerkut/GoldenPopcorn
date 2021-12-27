@@ -13,7 +13,7 @@
 
       <link href="/css/actor.css" type="text/css" rel="stylesheet"/>
 
-    <title>Hello, world!</title>
+    <title>GoldenPopcorn | Actors </title>
   </head>
   <body>
 

@@ -70,7 +70,7 @@ class CountryController extends BaseController
 
                 $country->save($newData);
 
-                return redirect()->to('/country-list');
+                return redirect()->to(base_url('country'));
             }
         }
         echo view('include/country-add',$data);

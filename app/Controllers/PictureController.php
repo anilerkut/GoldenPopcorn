@@ -83,7 +83,7 @@ class PictureController extends BaseController
 
                 $picture->save($newData);
                
-                return redirect()->to('/dashboard');
+                return redirect()->to(base_url('picture'));
             }
         }
     }
