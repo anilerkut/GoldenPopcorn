@@ -70,7 +70,7 @@ class GenderController extends BaseController
 
                 $gender->save($newData);
 
-                return redirect()->to('/gender-list');
+                return redirect()->to(base_url('gender'));
             }
         }
         echo view('include/gender-add',$data);

@@ -112,7 +112,7 @@ class NewsController extends BaseController
 
                 $news->save($newData);
 
-                return redirect()->to('/dashboard');
+                return redirect()->to(base_url('news'));
             }
         }
     }

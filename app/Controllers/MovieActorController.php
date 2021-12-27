@@ -34,22 +34,26 @@ class MovieActorController extends BaseController
 
     public function edit($id) //Brings the information on the edit screen 
     { 
-        $gender = new GenderModel();
+        $roleModel = new MovieActorModel();
         $actor = new ActorModel();
-        $data['gender'] = $gender->findAll();
-        $data['actor'] = $actor->find($id);
-        return view('include/actor-update', $data);
+        $movie = new MovieModel();
+        $data['movie'] = $movie->findAll();
+        $data['actor'] = $actor->findAll();
+        $data['roleModel'] = $roleModel->find($id);
+        return view('include/movie-actor-update', $data);
     }
 
     public function update($id) //update the informations
     {   
-        $actor = new ActorModel();
+        $roleModel = new MovieActorModel();
         $data = 
         [
-            'actor_name' => $this->request->getPost('actor_name')
+            'role_name'  => $this->request->getVar('role_name'),
+            'actor_id'  => $this->request->getVar('actor_id'),
+            'movie_id'  => $this->request->getVar('movie_id'),
         ];
-        $actor->update($id, $data);
-        return redirect()->to(base_url('actor'));
+        $roleModel->update($id, $data);
+        return redirect()->to(base_url('role'));
     }
 
     public function delete($id) //delete data
@@ -89,7 +93,7 @@ class MovieActorController extends BaseController
                 ];
                     $role->save($newData);
 
-                return redirect()->to('/include/movie-actor-list');
+                return redirect()->to(base_url('role'));
             }
         }
         echo view('include/movie-actor-add',$data);

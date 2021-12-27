@@ -122,6 +122,22 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/MovieWarningController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Movie Warning
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/MovieDirectorController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Movie Director
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

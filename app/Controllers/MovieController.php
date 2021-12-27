@@ -7,6 +7,8 @@ use App\Models\MovieModel;
 use App\Models\CountryModel;
 use App\Models\LanguageModel;
 use App\Models\MovieActorModel;
+use App\Models\PictureModel;
+
 
 class MovieController extends BaseController
 {
@@ -47,16 +49,19 @@ class MovieController extends BaseController
 
     public function movieDetails($id) //to the movie details page
     { 
-        //$role=new MovieActorModel();
         $movie = new MovieModel();
         $country = new CountryModel();
         $language = new LanguageModel();
+        $picture = new PictureModel();
+        $category=new CategoryModel();
         $movieCountry=(($movie->getMovieCountryID($id)));
         $movieLanguage=(($movie->getMovieLanguageID($id)));   
-        $movieActors=(($movie->getMovieActors($id)));
+        $data['categories']=(($movie->getMovieCategories($id)));
+        $data['warnings']=(($movie->getMovieWarnings($id)));
+        $data['picture']=(($movie->getMoviePictures($id)));
         $data['movie'] = $movie->find($id);
         $data['director'] = $movie->getMovieDirectors($id);
-        $data['role'] = $movieActors;
+        $data['role'] =(($movie->getMovieActors($id)));
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
         return view('/site/movie-details',$data);
@@ -171,11 +176,12 @@ class MovieController extends BaseController
     public function listByCategory($categoryId) {
         $movieModel = new MovieModel();
         $categoryModel = new CategoryModel();
-        $data['movie'] = $movieModel->select('*')
+        $data['movie'] = $movieModel->select('*,movie.id as id')
                              ->join('movie_category', 'movie_category.movie_id = movie.id')
                              ->join('category', 'category.id = movie_category.category_id')
                              ->where('movie_category.category_id',$categoryId)
                              ->paginate($this->perPage);
+
         $data['category'] = $categoryModel->findAll();
         $data['pager'] = $movieModel->pager;
         return view('site/mainPage', $data);

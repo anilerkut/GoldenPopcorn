@@ -81,23 +81,37 @@ $routes->get('search/movie(:num)', 'MovieController::searchByName/$1');
 
 //Role
 $routes->get('role', 'MovieActorController::list');
-$routes->get('roles', 'MovieActorController::listByCard');
-$routes->get('role/filter(:num)', 'MovieActorController::listByCategory/$1');
 $routes->get('role-add', 'MovieActorController::add');
 $routes->get('role/edit(:num)', 'MovieActorController::edit/$1');
 $routes->put('role/update(:num)', 'MovieActorController::update/$1');
 $routes->get('role/delete(:num)', 'MovieActorController::delete/$1');
 $routes->get('role/movie(:num)', 'MovieActorController::searchByName/$1');
 
-//MovieCategory
+// Movie Category
 $routes->get('categoryList', 'MovieCategoryController::list');
-$routes->get('categories', 'MovieCategoryController::listByCard');
-$routes->get('categories/filter(:num)', 'MovieCategoryController::listByCategory/$1');
-$routes->get('categories-add', 'MovieCategoryController::add');
+$routes->get('movie-category-add', 'MovieCategoryController::add');
 $routes->get('categories/edit(:num)', 'MovieCategoryController::edit/$1');
 $routes->put('categories/update(:num)', 'MovieCategoryController::update/$1');
 $routes->get('categories/delete(:num)', 'MovieCategoryController::delete/$1');
 $routes->get('categories/movie(:num)', 'MovieCategoryController::searchByName/$1');
+
+// Movie Directors
+$routes->get('movie-directors', 'MovieDirectorController::list');
+$routes->get('movie-directors-add', 'MovieDirectorController::add');
+$routes->get('movie-directors/edit(:num)', 'MovieDirectorController::edit/$1');
+$routes->put('movie-directors/update(:num)', 'MovieDirectorController::update/$1');
+$routes->get('movie-directors/delete(:num)', 'MovieDirectorController::delete/$1');
+$routes->get('movie-directors/movie(:num)', 'MovieDirectorController::searchByName/$1');
+
+//MovieWarning
+$routes->get('warningList', 'MovieWarningController::list');
+$routes->get('warning', 'MovieWarningController::listByCard');
+$routes->get('warning/filter(:num)', 'MovieWarningController::listByWarning/$1');
+$routes->get('movie-warning-add', 'MovieWarningController::add');
+$routes->get('warning/edit(:num)', 'MovieWarningController::edit/$1');
+$routes->put('warning/update(:num)', 'MovieWarningController::update/$1');
+$routes->get('warning/delete(:num)', 'MovieWarningController::delete/$1');
+$routes->get('warning/movie(:num)', 'MovieWarningController::searchByName/$1');
 
 // Actor
 $routes->get('actor', 'ActorController::list');
@@ -129,7 +143,7 @@ $routes->get('warning/edit(:num)', 'WarningController::edit/$1');
 $routes->put('warning/update(:num)', 'WarningController::update/$1');
 $routes->get('warning/delete(:num)', 'WarningController::delete/$1');
 
-// Director Data
+// Director
 $routes->get('director', 'DirectorController::list');
 $routes->get('director-add', 'DirectorController::add');
 $routes->get('director/edit(:num)', 'DirectorController::edit/$1');

@@ -120,7 +120,7 @@ class ActorController extends BaseController
                 ];
                     $actor->save($newData);
 
-                return redirect()->to('/actor-list');
+                return redirect()->to(base_url('actor'));
             }
         }
         echo view('include/actor-add',$data);
@@ -139,6 +139,7 @@ class ActorController extends BaseController
         $actor = new ActorModel();
         $gender = new GenderModel();
         $actorGender=(($actor->getActorGenderID($id)));
+        $data['actorMovieRoles'] = (($actor->getActorMovieandRoles($id)));
         $data['actor'] = $actor->find($id);
         $data['gender'] = $gender->find($actorGender->actor_gender);
         return view('/site/actor-details',$data);

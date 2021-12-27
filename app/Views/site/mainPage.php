@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>GoldenPopCorn</title>
+    <title> GoldenPopcorn</title>
 </head>
 <body>
 
@@ -30,14 +30,14 @@
                 Categories
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <?php foreach ($category as $row) : ?>
-                        <a class="dropdown-item" href="/MovieController/listByCategory/<?= $row['id'] ?>"><?=$row['category_name']?></a>
+                <?php foreach ($category as $cat) : ?>
+                        <a class="dropdown-item" href="/MovieController/listByCategory/<?= $cat['id'] ?>"><?=$cat['category_name']?></a>
                 <?php endforeach; ?>
             </div>
         </div>
 
         <h2 class="text-center">ALL MOVIES</h2>
-        <div class="row mb-4">
+        <div class="row mb-4">           
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 

@@ -65,12 +65,32 @@
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Movie Name</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>Role</p>
-                                    </div>
+                                <table class="table table-hover">
+                                    <thead  class="text-blue ">
+                                        <th>
+                                            Movie Poster
+                                        </th>
+                                        <th>
+                                            Movie Name
+                                        </th>
+                                        <th >
+                                            Role
+                                        </th>                                      
+                                    </thead>
+                                    <?php foreach ($actorMovieRoles as $row) : ?>
+                                    <tbody>
+                                        <td>
+                                            <img src=<?php echo $row["movie_poster"]?>  width="80px" height="120px" alt=""/>
+                                        </td>                                      
+                                        <td style="vertical-align:middle">
+                                            <a href="<?= base_url('MovieController/movieDetails/'.$row['movie_id'] ) ?>"><?=$row['movie_name']?></a>
+                                        </td>
+                                        <td style="vertical-align:middle">
+                                            <?=$row['role_name']?>
+                                        </td>
+                                    </tbody>
+                                    <?php endforeach; ?>
+                                </table>
                                 </div>
                             </div>
                         </div>
