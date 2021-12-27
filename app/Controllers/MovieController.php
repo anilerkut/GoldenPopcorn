@@ -172,11 +172,12 @@ class MovieController extends BaseController
     public function listByCategory($categoryId) {
         $movieModel = new MovieModel();
         $categoryModel = new CategoryModel();
-        $data['movie'] = $movieModel->select('*')
+        $data['movie'] = $movieModel->select('*,movie.id as id')
                              ->join('movie_category', 'movie_category.movie_id = movie.id')
                              ->join('category', 'category.id = movie_category.category_id')
                              ->where('movie_category.category_id',$categoryId)
                              ->paginate(9);
+                             
         $data['category'] = $categoryModel->findAll();
         $data['pager'] = $movieModel->pager;
         return view('site/mainPage', $data);
