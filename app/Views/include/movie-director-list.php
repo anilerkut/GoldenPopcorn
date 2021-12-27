@@ -3,7 +3,7 @@
 
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <a href="<?= base_url('role-add') ?>" class="btn btn-primary mt-3 btn-lg" >
+    <a href="<?= base_url('movie-directors-add') ?>" class="btn btn-primary mt-3 btn-lg" >
                             <i class="fas fa-plus"></i>
     </a>
 
@@ -11,27 +11,23 @@
         <thead>
         <tr>
             <th scope="col"></th>
-            <th scope="col">Role</th>
-            <th scope="col">Actor ID</th>
+            <th scope="col">Director ID</th>
             <th scope="col">Movie ID</th>
-            <th scope="col">Operations</th>
         </tr>
         </thead>
         <tbody>
         <?php
         $num=1;
-         foreach ($role as $row) : ?>
+         foreach ($movieDirectors as $row) : ?>
         <tr>
             <th scope="row"><?= $num ?></th>
-            <td><?= $row['role_name'] ?></td>
-            <td><?= $row['actor_id'] ?></td>
+            <td><?= $row['director_id'] ?></td>
             <td><?= $row['movie_id'] ?></td>
-            
             <?php $num++ ?>
             <td>
                 <table>
                     <td>
-                        <a href="<?= base_url('MovieActorController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
+                        <a href="<?= base_url('MovieDirectorController/edit/'.$row['id'] ) ?>" class="btn btn-warning">
                             <i class="fas fa-pen-square"></i>
                         </a>
                     </td>

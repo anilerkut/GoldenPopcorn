@@ -50,7 +50,7 @@ class ActorModel extends Model
 
     public function getActorMovieandRoles($id){ //brings the actor's movie and roles from movie and role table
         $builder=$this->builder($this->table);
-        $builder=$builder->select('role_name,movie_name,movie_poster');
+        $builder=$builder->select('role_name,movie_name,movie_poster,movie_id');
         $builder = $builder->join('movie_actor', 'movie_actor.actor_id = actor.id');
         $builder = $builder->join('movie', 'movie.id = movie_actor.movie_id');
         $builder=$builder->where('actor.id',$id);

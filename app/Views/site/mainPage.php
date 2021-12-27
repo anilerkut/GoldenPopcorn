@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>GoldenPopCorn</title>
+    <title> GoldenPopcorn</title>
 </head>
 <body>
 

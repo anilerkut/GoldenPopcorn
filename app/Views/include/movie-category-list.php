@@ -3,7 +3,7 @@
 
 
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <a href="<?= base_url('categories-add') ?>" class="btn btn-primary mt-3 btn-lg" >
+    <a href="<?= base_url('movie-category-add') ?>" class="btn btn-primary mt-3 btn-lg" >
                             <i class="fas fa-plus"></i>
     </a>
 

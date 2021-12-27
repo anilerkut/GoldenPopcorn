@@ -35,27 +35,31 @@ class MovieWarningController extends BaseController
     public function edit($id) //Brings the information on the edit screen 
     { 
         $movieWarningModel = new MovieWarningModel();
-        $data['warnings'] = $warnings->findAll();
-        $data['movie'] = $movie->find($id);
-        return view('include/movie-update', $data);
+        $warning = new WarningModel();
+        $movie = new MovieModel();
+        $data['movie'] = $movie->findAll();
+        $data['warning'] = $warning->findAll();
+        $data['movieWarningModel'] = $movieWarningModel->find($id);
+        return view('include/movie-warning-update', $data);
     }
 
     public function update($id) //update the informations
     {   
-        $actor = new ActorModel();
+        $movieWarningModel = new MovieWarningModel();
         $data = 
         [
-            'actor_name' => $this->request->getPost('actor_name')
+            'movie_id' => $this->request->getPost('movie_id'),
+            'warning_id' => $this->request->getPost('warning_id')
         ];
-        $actor->update($id, $data);
-        return redirect()->to(base_url('actor'));
+        $movieWarningModel->update($id, $data);
+        return redirect()->to(base_url('warningList'));
     }
 
     public function delete($id) //delete data
     { 
-        $actor = new ActorModel();
-        $actor->delete($id);
-        return redirect()->to(base_url('actor'));
+        $movieWarningModel = new MovieWarningModel();
+        $movieWarningModel->delete($id);
+        return redirect()->to(base_url('warningList'));
     }
 
     public function addMovieWarnings() {
@@ -86,7 +90,7 @@ class MovieWarningController extends BaseController
                 ];
                     $movieWarningModel->save($newData);
 
-                return redirect()->to('/include/movie-warning-list');
+                return redirect()->to(base_url('warningList'));
             }
         }
         echo view('include/movie-warning-add',$data);

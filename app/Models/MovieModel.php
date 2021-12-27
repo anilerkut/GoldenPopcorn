@@ -73,11 +73,21 @@ class MovieModel extends Model
         return $builder->getResultArray();
     }
 
-    public function getMovieCategories($id){ //brings the movie's pictures from picture table
+    public function getMovieCategories($id){ //brings the movie's categories from category table
         $builder=$this->builder($this->table);
         $builder=$builder->select('category_name');
         $builder = $builder->join('movie_category', 'movie_category.movie_id = movie.id');
         $builder = $builder->join('category', 'category.id = movie_category.category_id');
+        $builder=$builder->where('movie.id',$id);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getMovieWarnings($id){ //brings the movie's pictures from picture table
+        $builder=$this->builder($this->table);
+        $builder=$builder->select('warning_name');
+        $builder = $builder->join('movie_warning', 'movie_warning.movie_id = movie.id');
+        $builder = $builder->join('warning', 'warning.id = movie_warning.warning_id');
         $builder=$builder->where('movie.id',$id);
         $builder=$builder->get();
         return $builder->getResultArray();

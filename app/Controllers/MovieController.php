@@ -49,7 +49,6 @@ class MovieController extends BaseController
 
     public function movieDetails($id) //to the movie details page
     { 
-        //$role=new MovieActorModel();
         $movie = new MovieModel();
         $country = new CountryModel();
         $language = new LanguageModel();
@@ -57,15 +56,15 @@ class MovieController extends BaseController
         $category=new CategoryModel();
         $movieCountry=(($movie->getMovieCountryID($id)));
         $movieLanguage=(($movie->getMovieLanguageID($id)));   
-        $movieActors=(($movie->getMovieActors($id)));
         $data['categories']=(($movie->getMovieCategories($id)));
+        $data['warnings']=(($movie->getMovieWarnings($id)));
         $data['picture']=(($movie->getMoviePictures($id)));
         $data['movie'] = $movie->find($id);
         $data['director'] = $movie->getMovieDirectors($id);
-        $data['role'] = $movieActors;
+        $data['role'] =(($movie->getMovieActors($id)));
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
-        return view('/site/muvi',$data);
+        return view('/site/movie-details',$data);
     }
 
 

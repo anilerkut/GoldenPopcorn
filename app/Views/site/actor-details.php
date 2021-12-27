@@ -83,7 +83,7 @@
                                             <img src=<?php echo $row["movie_poster"]?>  width="80px" height="120px" alt=""/>
                                         </td>                                      
                                         <td style="vertical-align:middle">
-                                            <?=$row['movie_name']?>
+                                            <a href="<?= base_url('MovieController/movieDetails/'.$row['movie_id'] ) ?>"><?=$row['movie_name']?></a>
                                         </td>
                                         <td style="vertical-align:middle">
                                             <?=$row['role_name']?>
