@@ -68,9 +68,11 @@
           <!-- right start -->
           <div class="col-md-4">
               <h3><?= $movie["movie_name"] ?></h3>
-              <span>
-                  Category: Action Horror Comedy
-              </span>
+              <span class="font-weight-bold">
+                  Category: </span>
+                <?php foreach ($categories as $row) : ?>                  
+                        <span> <?=$row['category_name']?></span>
+                <?php endforeach; ?> 
               <hr>
               <h4>Rate Movie</h4>
                 <div class="stars" data-rating="3">
@@ -181,32 +183,37 @@
 
             <!-- movie pictures tab -->
             <div class="tab-pane fade" id="movie-pictures" role="tabpanel" aria-labelledby="movie-pictures-tab">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
+               
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                
                     <div class="carousel-inner carousel-height">
+                    
                         <div class="carousel-item active">
-                            <img src="https://cdn.onebauer.media/one/empire-tmdb/films/157336/images/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg?format=jpg&quality=80&width=960&height=540&ratio=16-9&resize=aspectfill" class="d-block w-100" alt="...">
+                                <img src=" <?= $picture[0]['picture_link']?>" class="d-block w-100" alt="...">
                         </div>
-                        <div class="carousel-item">
-                            <img src="https://m.media-amazon.com/images/M/MV5BMTAyOTI5MTg5MDFeQTJeQWpwZ15BbWU4MDYyMjg4MTMx._V1_.jpg" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://images.mubicdn.net/images/film/113049/cache-89429-1623408443/image-w1280.jpg" class="d-block w-100" alt="...">
-                        </div>
+                        <?php  $i=0; foreach ($picture as $row) : ?>
+                        { 
+                            <?php if($i==0){ ?><div class="carousel-item active">
+                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100" alt="...">
+                                                </div>
+                            <?php  }$i++?>
+                            <?php if($i!=0){ ?><div class="carousel-item">
+                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100" alt="...">
+                                                </div>
+                            <?php }?>
+                        } <?php endforeach; ?>
+                    
                     </div>
-                    <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+                
+                    <button class="carousel-control-prev" type="button" data-target="#carouselExampleFade" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                    <button class="carousel-control-next" type="button" data-target="#carouselExampleFade" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </button>
-                </div>
+                    </div>
             </div>
             <!-- comments tab -->
             <div class="tab-pane fade" id="movie-comments" role="tabpanel" aria-labelledby="movie-comments-tab">

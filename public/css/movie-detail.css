@@ -13,5 +13,15 @@
 }
 
 .carousel-height {
-    height: 400px;
+    height: 600px;
 }
+
+
+.trailer-tab-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vW;
+}
+
+

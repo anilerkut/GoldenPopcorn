@@ -8,6 +8,8 @@ use App\Models\MovieModel;
 use App\Models\CountryModel;
 use App\Models\LanguageModel;
 use App\Models\MovieActorModel;
+use App\Models\PictureModel;
+
 
 class MovieController extends BaseController
 {
@@ -51,9 +53,13 @@ class MovieController extends BaseController
         $movie = new MovieModel();
         $country = new CountryModel();
         $language = new LanguageModel();
+        $picture = new PictureModel();
+        $category=new CategoryModel();
         $movieCountry=(($movie->getMovieCountryID($id)));
         $movieLanguage=(($movie->getMovieLanguageID($id)));   
         $movieActors=(($movie->getMovieActors($id)));
+        $data['categories']=(($movie->getMovieCategories($id)));
+        $data['picture']=(($movie->getMoviePictures($id)));
         $data['movie'] = $movie->find($id);
         $data['director'] = $movie->getMovieDirectors($id);
         $data['role'] = $movieActors;

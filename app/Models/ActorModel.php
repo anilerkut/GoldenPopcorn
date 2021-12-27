@@ -15,22 +15,6 @@ class ActorModel extends Model
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
-
-    public function getActorList()
-    {
-        $builder=$this->builder($this->table);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getActor($id)
-    {
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
     public function getActorSelect($id)
     {
         $builder=$this->builder($this->table);
@@ -64,4 +48,13 @@ class ActorModel extends Model
         return $builder->getFirstRow();
     }
 
+    public function getActorMovieandRoles($id){ //brings the actor's movie and roles from movie and role table
+        $builder=$this->builder($this->table);
+        $builder=$builder->select('role_name,movie_name,movie_poster');
+        $builder = $builder->join('movie_actor', 'movie_actor.actor_id = actor.id');
+        $builder = $builder->join('movie', 'movie.id = movie_actor.movie_id');
+        $builder=$builder->where('actor.id',$id);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
 }
