@@ -41,7 +41,7 @@
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 
-                        <a href="<?= base_url('MovieController/movieDetails/'.$row['id'] ) ?>" class="btn btn-warning">
+                        <a href="<?= base_url('movie/'.$row['id'] ) ?>" class="btn btn-warning">
                             <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"alt="...">  
                         </a>
 
@@ -49,11 +49,6 @@
                         <h5 class="card-title"><?= $row['movie_name'] ?></h5>
                         <span class="movie_info"><?= $row['movie_releasedate'] ?></span>
                         <span class="movie_info float-right"><i class="fas fa-star"></i> <?= $row['imdb_rating'] ?></span>
-                        <div class="mt-3 text-center card-like-button">
-                            <button type="button" class="btn btn-outline-danger"><i class="fas fa-heart"
-                                    data-toggle="tooltip" data-placement="bottom" title="Add Favorite">
-                                </i></button>
-                        </div>
                     </div>
                 </div>
             </div>

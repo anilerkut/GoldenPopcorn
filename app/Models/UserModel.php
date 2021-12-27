@@ -24,14 +24,12 @@ class UserModel extends Model
     protected function beforeInsert( array $data )
     {
         $data =$this->passwordHash($data);
-
         return $data;
     }
 
     protected function beforeUpdate( array $data )
     {
         $data =$this->passwordHash($data);
-
         return $data;
     }
 
@@ -42,13 +40,23 @@ class UserModel extends Model
         return $data;
     }
 
-    public function getUserDetails($id) {
-        $builder=$this->builder($this->table);
+    public function getUserMovies($id) {
+        $builder = $this->builder($this->table);
+        $builder = $builder->select('movie.movie_name, movie.movie_poster, movie.id');
         $builder = $builder->join('watchlist', 'watchlist.user_id = user.id');
         $builder = $builder->join('movie', 'movie.id = watchlist.movie_id');
-        $builder=$builder->where('user.id',$id);
-        $builder=$builder->get();
+        $builder = $builder->where('user.id',$id);
+        $builder = $builder->get();
         return $builder->getResultArray();
+    }
+
+    public function deleteFromWatchlist ($userId, $movieId) {
+
+        $builder = $builder->join('watchlist', 'watchlist.user_id = user.id');
+        $builder = $builder->join('movie', 'movie.id = watchlist.movie_id');
+        $builder = $builder->where('watchlist.user_id',$userId);
+        $builder = $builder->where('watchlist.movie_id',$movieId);
+        $builder->delete();
     }
 
 }

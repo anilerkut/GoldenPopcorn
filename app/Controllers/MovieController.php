@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-
 use App\Models\CategoryModel;
 use App\Models\MovieModel;
 use App\Models\CountryModel;
@@ -12,6 +11,7 @@ use App\Models\MovieActorModel;
 class MovieController extends BaseController
 {
     private $movieModel;
+    public $perPage = 12;
 
     public function __construct()
     {
@@ -59,7 +59,7 @@ class MovieController extends BaseController
         $data['role'] = $movieActors;
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
-        return view('/site/muvi',$data);
+        return view('/site/movie-details',$data);
     }
 
 
@@ -149,10 +149,14 @@ class MovieController extends BaseController
         echo view('include/movie-add',$data);   
     }
 
-    public function listByCard($id) {
+    public function listByCard() {
         $movie = new MovieModel();
-        $data['movie'] = $movie->getMovieListByCard();
-        return view('/mainPage', $data);
+        $category = new CategoryModel();
+        $data['movie'] = $movie->select('id, movie_name, movie_duration, imdb_rating, movie_releasedate, movie_poster')
+                               ->paginate($this->perPage);
+        $data['pager'] = $movie->pager;
+        $data['category'] = $category->findAll();
+        return view('site/mainPage', $data);
     }
 
     public function searchByName($name) {
@@ -171,7 +175,7 @@ class MovieController extends BaseController
                              ->join('movie_category', 'movie_category.movie_id = movie.id')
                              ->join('category', 'category.id = movie_category.category_id')
                              ->where('movie_category.category_id',$categoryId)
-                             ->paginate(9);
+                             ->paginate($this->perPage);
         $data['category'] = $categoryModel->findAll();
         $data['pager'] = $movieModel->pager;
         return view('site/mainPage', $data);

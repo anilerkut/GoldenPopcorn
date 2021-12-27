@@ -58,10 +58,11 @@
               <img src="<?= $movie["movie_poster"]?>" class="d-block w-50 mx-auto" style="" alt="...">
               <div class="text-center">
                   <p class="my-4"><?= $movie["movie_summary"]?></p>
-                  <button class="d-block btn btn-outline-danger btn-lg mx-auto">
-                      <i class="far fa-plus-square fa-lg"></i>
+                  <a href="<?= base_url('WatchlistController/addUserMovie/'.'11'.'/'.$movie['id']) ?>"
+                     class="btn btn-outline-danger btn-lg mx-auto">
+                      <i class="fas fa-heart fa-lg"></i>
                       Add to Watchlist
-                  </button>
+                  </a>
               </div>
           </div>
           <!-- left end -->
