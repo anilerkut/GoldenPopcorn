@@ -13,9 +13,6 @@
                     <a class="nav-link" href="<?=base_url('actors')?>">Actors</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('directors')?>">Directors</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('news-list')?>">News</a>
                 </li>
                 <li class="nav-item">

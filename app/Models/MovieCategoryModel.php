@@ -15,5 +15,4 @@ class MovieCategoryModel extends Model
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
-
 }

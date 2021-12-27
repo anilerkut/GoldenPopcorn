@@ -30,8 +30,8 @@
                 Categories
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <?php foreach ($category as $row) : ?>
-                        <a class="dropdown-item" href="/MovieController/listByCategory/<?= $row['id'] ?>"><?=$row['category_name']?></a>
+                <?php foreach ($category as $cat) : ?>
+                        <a class="dropdown-item" href="/MovieController/listByCategory/<?= $cat['id'] ?>"><?=$cat['category_name']?></a>
                 <?php endforeach; ?>
             </div>
         </div>

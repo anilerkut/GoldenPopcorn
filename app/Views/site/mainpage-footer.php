@@ -3,7 +3,7 @@
     <div class="container text-center mt-5">
         <div class="row">
             <div class="col-md-12 py-3 mt-2">
-                <a href="#" class="">
+                <a href="https://github.com/anilerkut/GoldenPopcorn" class="">
                     <i class="fab fa-github fa-lg text-white mr-md-5 mr-3 fa-2x"> </i>
                 </a>
                 <a href="#" class="">

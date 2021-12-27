@@ -64,4 +64,23 @@ class MovieModel extends Model
         return $builder->getResultArray();
     }
 
+    public function getMoviePictures($id){ //brings the movie's pictures from picture table
+        $builder=$this->builder($this->table);
+        $builder=$builder->select('picture_link');
+        $builder = $builder->join('picture', 'picture.movie_id = movie.id');
+        $builder=$builder->where('movie.id',$id);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getMovieCategories($id){ //brings the movie's pictures from picture table
+        $builder=$this->builder($this->table);
+        $builder=$builder->select('category_name');
+        $builder = $builder->join('movie_category', 'movie_category.movie_id = movie.id');
+        $builder = $builder->join('category', 'category.id = movie_category.category_id');
+        $builder=$builder->where('movie.id',$id);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
 }
