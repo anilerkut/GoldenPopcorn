@@ -151,7 +151,6 @@
                                       <img src="<?=$row['actor_picture']?>" width="80px" height="100px" alt="">
                                   </td>
                                   <td style="vertical-align:middle">
-                                      <?=$row['actor_firstname']." ".$row['actor_lastname']?>
                                         <a href="<?= base_url('ActorController/actorDetails/'.$row['actor_id'] ) ?>"><?=$row['actor_firstname']." ".$row['actor_lastname']?></a>
                                   </td>
                                   <td style="vertical-align:middle">
@@ -183,11 +182,11 @@
 
             <!-- movie details tab -->
             <div class="tab-pane fade" id="movie-informations" role="tabpanel" aria-labelledby="movie-informations-tab">
-                  <p> <b> Duration </b>:<?= $movie["movie_duration"]?></p>
+                  <p> <b> Duration </b>:<?= $movie["movie_duration"]?> Minutes </p>
                   <p> <b> Release Date </b>: <?= $movie["movie_releasedate"]?></p>
                   <p> <b> Country </b>: <?= $country["country_name"]?></p>
                   <p> <b> Language </b>: <?= $language["language_name"]?></p>
-                  <p> <b> Movie Gross </b>: <?= $movie["movie_gross"]?></p>
+                  <p> <b> Movie Gross </b>: $<?= $movie["movie_gross"]?></p>
             </div>
 
             <!-- movie pictures tab -->
@@ -227,7 +226,17 @@
             </div>
             <!-- comments tab -->
             <div class="tab-pane fade" id="movie-comments" role="tabpanel" aria-labelledby="movie-comments-tab">
-                Vivamus rhoncus nisl sed venenatis luctus. Sed condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla turpis elit, consequat eu eros ac, consectetur fringilla urna. Duis gravida ex pulvinar mauris ornare, eget porttitor enim vulputate. Mauris hendrerit, massa nec aliquam cursus, ex elit euismod lorem, vehicula rhoncus nisl dui sit amet eros. Nulla turpis lorem, dignissim a sapien eget, ultrices venenatis dolor. Curabitur vel turpis at magna elementum hendrerit vel id dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum.
+                <form class="mt-5" action="<?= base_url('CommentController/addComment/'.'9'.'/'.$movie['id']) ?>" method="post">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Comment</span>
+                            </div>
+                            <textarea class="form-control" id="movieComment" aria-label="Comment" name= "comment_content"></textarea>
+                            <button type="submit" class="btn btn-primary mt-3">Add Comment</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <!-- rating tab -->
             <div class="tab-pane fade" id="movie-rating" role="tabpanel" aria-labelledby="movie-rating-tab">

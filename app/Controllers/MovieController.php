@@ -158,10 +158,22 @@ class MovieController extends BaseController
         $movie = new MovieModel();
         $category = new CategoryModel();
         $data['movie'] = $movie->select('id, movie_name, movie_duration, imdb_rating, movie_releasedate, movie_poster')
+                                ->where('movie.movie_releasedate <= NOW()')
                                ->paginate($this->perPage);
         $data['pager'] = $movie->pager;
         $data['category'] = $category->findAll();
         return view('site/mainPage', $data);
+    }
+
+    public function listUpcomingByCard() {
+        $movie = new MovieModel();
+        $category = new CategoryModel();
+        $data['movie'] = $movie->select('id, movie_name, movie_duration, imdb_rating, movie_releasedate, movie_poster')
+                                ->where('movie.movie_releasedate > NOW()')
+                               ->paginate($this->perPage);
+        $data['pager'] = $movie->pager;
+        $data['category'] = $category->findAll();
+        return view('site/upcoming-movies', $data);
     }
 
     public function searchByName($name) {

@@ -7,10 +7,10 @@ use CodeIgniter\Model;
 class WatchlistModel extends Model
 {
     protected $table='watchlist';
-    protected $primaryKey = 'movie_id, user_id';
+    protected $primaryKey = 'id';
     protected $returnType ='array';
     protected $useSoftDeletes =false;
-    protected $allowedFields = ['movie_id', 'user_id'];
+    protected $allowedFields = ['movie_id','user_id'];
     protected $useTimestamps= false;
     protected $updatedField='updated_at';
     protected $skipValidation=false;
