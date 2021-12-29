@@ -44,7 +44,6 @@
       }
   </style>
 </head>
-<body>
 
 <?= $this->include('site/mainpage-header.php') ?>
 
@@ -59,11 +58,10 @@
               <div class="text-center">
                   <p class="my-4"><?= $movie["movie_summary"]?></p>
 
-                  <a href="<?= base_url('WatchlistController/addUserMovie/'.'11'.'/'.$movie['id']) ?>"
-                     class="btn btn-outline-danger btn-lg mx-auto">
+                  <button class="btn btn-outline-danger btn-lg mx-auto" id="addToWatchlist">
                       <i class="fas fa-heart fa-lg"></i>
                       Add to Watchlist
-                  </a>
+                  </button>
 
               </div>
           </div>
@@ -252,68 +250,27 @@
 
 <?= $this->include('site/mainpage-footer.php') ?>
 
-    <script>
-        $(document).ready(function() {
-
-    // Gets the video src from the data-src on each button
-
-    var $videoSrc;
-    $('.video-btn').click(function() {
-        $videoSrc = $(this).data( "src" );
-    });
-    console.log($videoSrc);
-
-    // when the modal is opened autoplay it
-    $('#myModal').on('shown.bs.modal', function (e) {
-
-    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
-    $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
-    })
-
-
-    // stop playing the youtube video when I close the modal
-    $('#myModal').on('hide.bs.modal', function (e) {
-        // a poor man's stop video
-        $("#video").attr('src',$videoSrc);
-    })
-            //initial setup
-            document.addEventListener('DOMContentLoaded', function(){
-                let stars = document.querySelectorAll('.star');
-                stars.forEach(function(star){
-                    star.addEventListener('click', setRating);
-                });
-
-                let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
-                let target = stars[rating - 1];
-                target.dispatchEvent(new MouseEvent('click'));
-            });
-
-            function setRating(ev){
-                let span = ev.currentTarget;
-                let stars = document.querySelectorAll('.star');
-                let match = false;
-                let num = 0;
-                stars.forEach(function(star, index){
-                    if(match){
-                        star.classList.remove('rated');
-                    }else{
-                        star.classList.add('rated');
-                    }
-                    //are we currently looking at the span that was clicked
-                    if(star === span){
-                        match = true;
-                        num = index + 1;
-                    }
-                });
-                document.querySelector('.stars').setAttribute('data-rating', num);
-            }
-
-
-    </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script>
+
+        $('#addToWatchlist').on("click",function () {
+            console.log('SA BİLADER');
+            $.ajax({
+                url:'<?= base_url('WatchlistController/addUserMovie/'.session()->get('user')['id'].'/'.$movie['id']) ?>',
+                success:function (data) {
+                    let obj = JSON.parse(data);
+                    swal.fire(obj.message, "", obj.status);
+                }
+            });
+        })
+
+</script>
+
 
 </body>
 </html>
