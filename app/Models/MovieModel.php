@@ -93,4 +93,14 @@ class MovieModel extends Model
         return $builder->getResultArray();
     }
 
+    public function getMovieComments($id){ //brings the movie's pictures from picture table
+        $builder=$this->builder($this->table);
+        $builder=$builder->select('comment_content,comment_date,user_firstname,user_lastname');
+        $builder = $builder->join('comment', 'comment.movie_id = movie.id');
+        $builder = $builder->join('user', 'user.id = comment.user_id');
+        $builder=$builder->where('movie.id',$id);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
 }

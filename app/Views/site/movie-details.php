@@ -396,7 +396,6 @@
                </div>
 
             </div>
-          
             <!-- rating tab -->
             <div class="tab-pane fade" id="movie-rating" role="tabpanel" aria-labelledby="movie-rating-tab">
 
@@ -415,7 +414,75 @@
           </div>
         </div>
         <!-- row end -->
+        <form action="<?= base_url('CommentController/addComment/'.session()->get('user')['id'].'/'.$movie['id']) ?>" method="post">
+                    <section style="background-color: #d94125;">
+                        <div class="row d-flex justify-content-center py-3">
+                            <div class="col-md-10 col-lg-8 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex flex-start w-100">
+                                            <div class="w-100">
+                                                <h5>Add Comment</h5>
+                                                <div class="form-outline">
+                                                    <textarea class="form-control" id="textAreaExample" rows="4" name="comment_content"
+                                                        placeholder="What is your view?"></textarea>
+                                                </div>
+                                                <div class="d-flex justify-content-end mt-2">
+                                                    <button type="submit" class="btn btn-success">
+                                                        Send <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+        </form>
+                
+                <section class=>
+                    <div class="my-3 py-3">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12 col-lg-10">
+                                <div class="card text-dark">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-0">Recent comments</h4>
+                                        <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+                                            <?php foreach ($comment as $row) : ?>
+                                                <div class="d-flex flex-start mt-3">
+                                                            <img
+                                                                class="rounded-circle shadow-1-strong me-3"
+                                                                src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
+                                                                alt="avatar"
+                                                                width="60"
+                                                                height="60"
+                                                            />
+                                                            <div class="ml-3">
+                                                                <h6 class="fw-bold mb-1"><?= $row["user_firstname"]." ". $row["user_lastname"]?></h6>
+                                                                <div class="d-flex align-items-center mb-3">
+                                                                <p class="mb-0">
+                                                                    <?= $row["comment_date"]?>                       
+                                                                </p>
+                                                                </div>
+                                                                <p class="mb-0">
+                                                                    <?= $row["comment_content"]?>
+                                                                </p>
+                                                            </div>                                                           
+                                                </div>
+                                                <hr class="my-2" />
+                                            <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
 </section>
+
+
+
 
 
 <?= $this->include('site/mainpage-footer.php') ?>
