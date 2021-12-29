@@ -5,8 +5,17 @@
 }
 
 .rating-font{
-    font-size: 1.5ram;
+    font-size: 1.5rem;
 }
+
+.bg-black {
+    background-color: black;
+}
+
+.carousel-height {
+    height: 600px;
+}
+
 
 .trailer-tab-center{
     display: flex;

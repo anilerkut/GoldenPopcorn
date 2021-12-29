@@ -40,37 +40,32 @@ class User extends BaseController
             else
             {
                 $model = new UserModel();
-                $user=$model->where('user_email',$this->request->getVar('user_email'))
-                            ->first();
+                $user = $model->where('user_email',$this->request->getVar('user_email'))
+                              ->first();
 
                 $this->setUserSession($user);
-                $session->setFlashdata('success','Succesful Registiration');
                 return redirect()->to('/movies');
             }
         }
         echo view('site/login',$data);
-
     }
 
     private function setUserSession($user)
     {
         $data=[
-
+            'id' => $user['id'],
             'user_firstname'=>$user['user_firstname'],
             'user_lastname'=>$user['user_lastname'],
             'user_email'=>$user['user_email'],
             'isLoggedIn'=>true,
         ];
-
-        session()->set($data);
-        return true;
+        session()->set('user', $data);
     }
 
     public function register()  
     {
         $data=[];
         helper(['form']);
-        
 
         if($this->request->getPost())
         {
@@ -145,25 +140,39 @@ class User extends BaseController
 
     public function edit($id) {
         $userModel = new UserModel();
-        $data['user'] = $userModel->getUserDetails($id);
+        $data['user'] = $userModel->find($id);
+        $data['movies'] = $userModel->getUserMovies($id);
         return view('site/profile', $data);
     }
 
     public function update($id) {
-        $userModel = new UserModel();
-        $newPassword = $this->request->getPost('user_password');
-        $newPasswordAgain = $this->request->getPost('user_password_again');
-        echo "Burdayım";
-        if ($newPassword == $newPasswordAgain) {
-            $data = [
+        $data=[];
+        helper(['form']);
+        $rules=
+            [
+                'user_firstname' => 'required|alpha_space|min_length[2]',
+                'user_lastname' => 'required|alpha_space|min_length[2]',
+                'user_password' => 'required|min_length[4]|max_length[30]',
+                'user_password_again'  => 'matches[user_password]',
+            ];
+
+        if(! $this->validate($rules)) {
+            $data['validation']= $this->validator;
+        } else {
+            $userModel = new UserModel();
+            $newPassword = $this->request->getPost('user_password');
+            $newPasswordAgain = $this->request->getPost('user_password_again');
+            echo "Burdayım";
+            $newData = [
                 'user_firstname' => $this->request->getPost('user_firstname'),
                 'user_lastname' => $this->request->getPost('user_lastname'),
                 'user_password' => $newPassword
             ];
-            $userModel->update($id, $data);
+            $userModel->update($id, $newData);
+            return redirect()->to(base_url('profile/'.$id));
         }
-        // return redirect()->to(base_url('site/profile', $data));
-        $this->edit($id);
+        $this->edit();
     }
+
 
 }

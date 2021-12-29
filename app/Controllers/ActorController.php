@@ -120,7 +120,7 @@ class ActorController extends BaseController
                 ];
                     $actor->save($newData);
 
-                return redirect()->to('/actor-list');
+                return redirect()->to(base_url('actor'));
             }
         }
         echo view('include/actor-add',$data);
@@ -129,9 +129,8 @@ class ActorController extends BaseController
     public function listByCard() 
     {
         $actor = new ActorModel();
-        $gender = new GenderModel();
-        $data['gender'] = $gender->findAll();
-        $data['actor'] = $actor->findAll();
+        $data['actor'] = $actor->paginate(12);
+        $data['pager'] = $actor->pager;
         return view('site/actor-page', $data);
     }
 
@@ -140,9 +139,30 @@ class ActorController extends BaseController
         $actor = new ActorModel();
         $gender = new GenderModel();
         $actorGender=(($actor->getActorGenderID($id)));
+        $data['actorMovieRoles'] = (($actor->getActorMovieandRoles($id)));
         $data['actor'] = $actor->find($id);
         $data['gender'] = $gender->find($actorGender->actor_gender);
         return view('/site/actor-details',$data);
+    }
+
+    public function listByAtoZ() {
+        $actorModel = new ActorModel();
+        $data['actor'] = $actorModel->select('id, actor_firstname, actor_lastname, actor_picture')
+            ->orderBy('actor_firstname', 'ASC')
+            ->orderBy('actor_lastname', 'ASC')
+            ->paginate(12);
+        $data['pager'] = $actorModel->pager;
+        return view('site/actor-page', $data);
+    }
+
+    public function listByZtoA() {
+        $actorModel = new ActorModel();
+        $data['actor'] = $actorModel->select('id, actor_firstname, actor_lastname, actor_picture')
+            ->orderBy('actor_firstname', 'DESC')
+            ->orderBy('actor_lastname', 'DESC')
+            ->paginate(12);
+        $data['pager'] = $actorModel->pager;
+        return view('site/actor-page', $data);
     }
 
 }

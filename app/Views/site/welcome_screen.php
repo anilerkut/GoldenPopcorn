@@ -54,7 +54,7 @@
     </header>
 
 
-    <section class="story-container py-3 id=" section-one">
+    <section class="story-container py-3" id="section-one">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center">

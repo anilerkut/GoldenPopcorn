@@ -26,7 +26,7 @@
             </div>
             <div class="main">
                  <!--Take user information for recording!-->
-                <form action="<?= base_url('/register') ?>" method="post">
+                <form action="/User/register" method="post">
                     <span>
                         <i class="fas fa-user"></i>   <!--icon from fontawesome !-->
                         <input type="text" id="firstname" name="user_firstname" placeholder="First Name">
