@@ -12,7 +12,12 @@ class Home extends BaseController
 {
     public function index()
     {
+
+        
+        //return view('site/welcome_screen.php');
+
         return view('site/welcome_screen.php');
+
     }
 
 }
