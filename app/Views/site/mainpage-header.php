@@ -10,6 +10,9 @@
                     <a class="nav-link" href="<?=base_url('movies')?>">Movies<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?=base_url('upcoming-movies')?>">Upcoming Movies</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('actors')?>">Actors</a>
                 </li>
                 <li class="nav-item">
