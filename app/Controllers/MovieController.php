@@ -55,7 +55,8 @@ class MovieController extends BaseController
         $picture = new PictureModel();
         $category=new CategoryModel();
         $movieCountry=(($movie->getMovieCountryID($id)));
-        $movieLanguage=(($movie->getMovieLanguageID($id)));   
+        $movieLanguage=(($movie->getMovieLanguageID($id)));  
+        $data['comment']=(($movie->getMovieComments ($id)));
         $data['categories']=(($movie->getMovieCategories($id)));
         $data['warnings']=(($movie->getMovieWarnings($id)));
         $data['picture']=(($movie->getMoviePictures($id)));
