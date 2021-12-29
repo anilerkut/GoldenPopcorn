@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="/css/welcome_screen.css">
 
+
     <title>GoldenPopcorn</title>
 </head>
 
@@ -58,8 +59,8 @@
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center">
                     <div class="text-center text-md-left">
-                        <h1 class="mb-3">Lorem, ipsum dolor.</h1>
-                        <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quasi?</h2>
+                        <h1 class="mb-3">All about movies</h1>
+                        <h2>Everything about the movies you want to watch is here.</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -75,8 +76,8 @@
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center order-sm-2">
                     <div class="text-center text-md-left">
-                        <h1 class="mb-3">Lorem, ipsum dolor.</h1>
-                        <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quasi?</h2>
+                        <h1 class="mb-3">Rate movies</h1>
+                        <h2>Rate your favorite movie with people like you who have watched the movie.</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -92,8 +93,8 @@
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center">
                     <div class="text-center text-md-left">
-                        <h1 class="mb-3">Lorem, ipsum dolor.</h1>
-                        <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quasi?</h2>
+                        <h1 class="mb-3">Create your own movie list</h1>
+                        <h2>Gather the movies you've watched or want to watch in a list. You don't need to remember the name of the movies anymore.</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -116,17 +117,14 @@
                                 <div class="d-flex justify-content-between align-items-center" role="button"
                                     data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                     aria-controls="collapseOne">
-                                    <h4>What is Muvi?</h4>
+                                    <h4>What is Goldenpopcorn ?</h4>
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                                 data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates laborum
-                                        dolor
-                                        similique maiores. Quae consequuntur consectetur earum asperiores pariatur fuga
-                                        repudiandae, eos, dolor atque enim aspernatur ea? Dignissimos, sit temporibus.
+                                    <p>Goldenpopcorn is a universal movie library. We host information about all movies from past to present. You can find out the budgets, actors, directors and more of the movies you are curious about with one click.
                                     </p>
                                 </div>
                             </div>
@@ -137,14 +135,14 @@
                                 <div class="d-flex justify-content-between align-items-center" role="button"
                                     data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                                     aria-controls="collapseTwo">
-                                    <h4>How much does Muvi cost?</h4>
+                                    <h4>How much does Goldenpopcorn cost?</h4>
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                 data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, cupiditate.
+                                    <p>Goldenpopcorn currently offers a free service to all its users.
                                     </p>
                                 </div>
                             </div>

@@ -58,7 +58,7 @@ class MovieController extends BaseController
         $data['role']=$movieActors;
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
-        return view('/site/muvi',$data);
+        return view('/site/movie-details',$data);
     }
 
 

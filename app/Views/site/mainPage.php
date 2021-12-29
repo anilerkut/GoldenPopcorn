@@ -23,9 +23,9 @@
 
     <a href="top"></a>
 
-    <div class="container my-5">
+    <div class="container my-5 container-color p-5 ">
 
-        <div class="dropdown">
+        <div class="dropdown mt-5">
             <button class="btn btn-lg btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Categories
             </button>
@@ -41,19 +41,15 @@
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 
-                        <a href="<?= base_url('MovieController/movieDetails/'.$row['id'] ) ?>" class="btn btn-warning">
+                        <a href="<?= base_url('MovieController/movieDetails/'.$row['id'] ) ?>" class="btn movie-card-bg">
                             <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"alt="...">  
                         </a>
 
                     <div class="card-body card-body-height" >
-                        <h5 class="card-title"><?= $row['movie_name'] ?></h5>
-                        <span class="movie_info"><?= $row['movie_releasedate'] ?></span>
-                        <span class="movie_info float-right"><i class="fas fa-star"></i> <?= $row['imdb_rating'] ?></span>
-                        <div class="mt-3 text-center card-like-button">
-                            <button type="button" class="btn btn-outline-danger"><i class="fas fa-heart"
-                                    data-toggle="tooltip" data-placement="bottom" title="Add Favorite">
-                                </i></button>
-                        </div>
+                        <h5 class="card-title card-text-white"><?= $row['movie_name'] ?></h5>
+                        <span class="movie_info card-text-white"><?= $row['movie_releasedate'] ?></span>
+                        <span class="movie_info float-right card-text-white"><i class="fas fa-star card-star-color"></i> <?= $row['imdb_rating'] ?></span>
+                       
                     </div>
                 </div>
             </div>
