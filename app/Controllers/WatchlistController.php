@@ -17,12 +17,23 @@ class WatchlistController extends BaseController
 
     public function addUserMovie($userId, $movieId) {
         $watchlistModel = new WatchlistModel();
-        $newData = [
-            'user_id' => $userId,
-            'movie_id' => $movieId
-        ];
-        $watchlistModel->save($newData);
-        return redirect()->to(base_url('movie/'.$movieId));
+        if ($watchlistModel->checkUserWatchlist($userId, $movieId) === null) {
+            $newData = [
+                'user_id' => $userId,
+                'movie_id' => $movieId
+            ];
+            $watchlistModel->save($newData);
+            $data['status'] = 'success';
+            $data['message'] = 'Successfully added!';
+            echo json_encode($data);
+            //return redirect()->to(base_url('movie/'.$movieId));
+        } else {
+            // echo "ZATEN MEVCUT!";
+            $data['status'] = 'error';
+            $data['message'] = 'Already exists in your watchlist!';
+            echo json_encode($data);
+        }
+
     }
 
 }
