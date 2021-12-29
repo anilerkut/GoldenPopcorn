@@ -18,14 +18,7 @@ class MovieModel extends Model
 
     public function getMovieListByCard(){
         $builder=$this->builder($this->table);
-        $builder=$builder->select('movie_name','movie_duration','imdb_rating','movie_releasedate');
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getMovie($id){
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
+        $builder=$builder;
         $builder=$builder->get();
         return $builder->getResultArray();
     }
@@ -46,14 +39,6 @@ class MovieModel extends Model
         return $builder->getFirstRow();
     }
 
-    public function getMovieSelect($id){ 
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->select('movie_name','movie_duration');
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
     public function getMovieLike($name){
         $builder=$this->builder($this->table);
         $builder=$builder->like('movie_name',$name);
@@ -66,6 +51,44 @@ class MovieModel extends Model
         $builder = $builder->join('movie_actor', 'movie_actor.movie_id = movie.id');
         $builder = $builder->join('actor', 'actor.id = movie_actor.actor_id');
         $builder=$builder->where('movie_actor.movie_id',$movieId);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getMovieDirectors($movieId) {
+        $builder=$this->builder($this->table);
+        $builder = $builder->join('movie_director', 'movie_director.movie_id = movie.id');
+        $builder = $builder->join('director', 'director.id = movie_director.director_id');
+        $builder=$builder->where('movie.id',$movieId);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getMoviePictures($id){ //brings the movie's pictures from picture table
+        $builder=$this->builder($this->table);
+        $builder=$builder->select('picture_link');
+        $builder = $builder->join('picture', 'picture.movie_id = movie.id');
+        $builder=$builder->where('movie.id',$id);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getMovieCategories($id){ //brings the movie's categories from category table
+        $builder=$this->builder($this->table);
+        $builder=$builder->select('category_name');
+        $builder = $builder->join('movie_category', 'movie_category.movie_id = movie.id');
+        $builder = $builder->join('category', 'category.id = movie_category.category_id');
+        $builder=$builder->where('movie.id',$id);
+        $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getMovieWarnings($id){ //brings the movie's pictures from picture table
+        $builder=$this->builder($this->table);
+        $builder=$builder->select('warning_name');
+        $builder = $builder->join('movie_warning', 'movie_warning.movie_id = movie.id');
+        $builder = $builder->join('warning', 'warning.id = movie_warning.warning_id');
+        $builder=$builder->where('movie.id',$id);
         $builder=$builder->get();
         return $builder->getResultArray();
     }

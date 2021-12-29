@@ -2,16 +2,18 @@
 
 namespace App\Controllers;
 
-
 use App\Models\CategoryModel;
 use App\Models\MovieModel;
 use App\Models\CountryModel;
 use App\Models\LanguageModel;
 use App\Models\MovieActorModel;
+use App\Models\PictureModel;
+
 
 class MovieController extends BaseController
 {
     private $movieModel;
+    public $perPage = 12;
 
     public function __construct()
     {
@@ -47,15 +49,19 @@ class MovieController extends BaseController
 
     public function movieDetails($id) //to the movie details page
     { 
-        //$role=new MovieActorModel();
         $movie = new MovieModel();
         $country = new CountryModel();
         $language = new LanguageModel();
+        $picture = new PictureModel();
+        $category=new CategoryModel();
         $movieCountry=(($movie->getMovieCountryID($id)));
         $movieLanguage=(($movie->getMovieLanguageID($id)));   
-        $movieActors=(($movie->getMovieActors($id))); 
+        $data['categories']=(($movie->getMovieCategories($id)));
+        $data['warnings']=(($movie->getMovieWarnings($id)));
+        $data['picture']=(($movie->getMoviePictures($id)));
         $data['movie'] = $movie->find($id);
-        $data['role']=$movieActors;
+        $data['director'] = $movie->getMovieDirectors($id);
+        $data['role'] =(($movie->getMovieActors($id)));
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
         return view('/site/movie-details',$data);
@@ -148,10 +154,26 @@ class MovieController extends BaseController
         echo view('include/movie-add',$data);   
     }
 
-    public function listByCard($id) {
+    public function listByCard() {
         $movie = new MovieModel();
-        $data['movie'] = $movie->getMovieListByCard();
-        return view('/mainPage', $data);
+        $category = new CategoryModel();
+        $data['movie'] = $movie->select('id, movie_name, movie_duration, imdb_rating, movie_releasedate, movie_poster')
+                                ->where('movie.movie_releasedate <= NOW()')
+                               ->paginate($this->perPage);
+        $data['pager'] = $movie->pager;
+        $data['category'] = $category->findAll();
+        return view('site/mainPage', $data);
+    }
+
+    public function listUpcomingByCard() {
+        $movie = new MovieModel();
+        $category = new CategoryModel();
+        $data['movie'] = $movie->select('id, movie_name, movie_duration, imdb_rating, movie_releasedate, movie_poster')
+                                ->where('movie.movie_releasedate > NOW()')
+                               ->paginate($this->perPage);
+        $data['pager'] = $movie->pager;
+        $data['category'] = $category->findAll();
+        return view('site/upcoming-movies', $data);
     }
 
     public function searchByName($name) {
@@ -166,11 +188,12 @@ class MovieController extends BaseController
     public function listByCategory($categoryId) {
         $movieModel = new MovieModel();
         $categoryModel = new CategoryModel();
-        $data['movie'] = $movieModel->select('*')
+        $data['movie'] = $movieModel->select('*,movie.id as id')
                              ->join('movie_category', 'movie_category.movie_id = movie.id')
                              ->join('category', 'category.id = movie_category.category_id')
                              ->where('movie_category.category_id',$categoryId)
-                             ->paginate(9);
+                             ->paginate($this->perPage);
+
         $data['category'] = $categoryModel->findAll();
         $data['pager'] = $movieModel->pager;
         return view('site/mainPage', $data);

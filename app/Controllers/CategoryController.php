@@ -70,7 +70,7 @@ class CategoryController extends BaseController
 
                 $category->save($newData);
 
-                return redirect()->to('/category-list');//?statussuccess
+                return redirect()->to(base_url('category'));
             }
         }
         echo view('include/category-add',$data);

@@ -25,25 +25,25 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5" width="150px" src="https://picsum.photos/id/1005/200/300">
-                    <span class="font-weight-bold"><?= $user[0]['user_firstname']." ".$user[0]['user_lastname'] ?></span></div>
+                    <span class="font-weight-bold"><?= $user['user_firstname']." ".$user['user_lastname'] ?></span></div>
             </div>
             <div class="col-md-9 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
-                    <form action="<?= base_url('User/update/'.$user[0]['id']) ?>" method="POST" class="mt-5">
+                    <form action="<?= base_url('User/update/'.$user['id']) ?>" method="POST" class="mt-5">
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="account-fn">First Name</label>
-                                <input class="form-control" type="text" id="account-fn" placeholder="<?= $user[0]['user_firstname'] ?>" name="user_firstname">
+                                <input class="form-control" type="text" id="account-fn" placeholder="<?= $user['user_firstname'] ?>" name="user_firstname">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="account-ln">Last Name</label>
-                                <input class="form-control" type="text" id="account-ln" placeholder="<?= $user[0]['user_lastname']  ?>" name="user_lastname">
+                                <input class="form-control" type="text" id="account-ln" placeholder="<?= $user['user_lastname']  ?>" name="user_lastname">
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                             <div class="form-group">
                                 <label for="account-email">E-mail Address</label>
                                 <input class="form-control" type="email" id="account-email"
-                                    value="<?= $user[0]['user_email']  ?>" disabled="">
+                                    value="<?= $user['user_email']  ?>" disabled="">
                             </div>
                         </div>
                     </div>
@@ -74,9 +74,17 @@
                     </div>
                 </div>
                 <div class="mb-5 text-center">
-                    <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+                    <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
                 </div>
                 </form>
+                <hr>
+                <?php if(isset($validation)):?>
+                    <div class="col-12">
+                        <div class="alert alert-warning">
+                            <?= $validation->listErrors() ?>
+                        </div>
+                    </div>
+                <?php endif;?>
             </div>
         </div>
     </div>
@@ -84,16 +92,15 @@
 
     <div class="container mb-5">
         <div class="row">
-            <?php foreach ($user as $row) : ?>
+            <?php foreach ($movies as $row) : ?>
             <div class="col-md-12">
                 <div class="list-group">
                     <div class="list-group-item d-flex align-items-center">
                         <img src="<?= $row['movie_poster']  ?>" alt="" width="100px" class="rounded-sm ml-n2"/>
                         <div class="flex-fill pl-3 pr-3">
-                                    <div><?= $row['movie_name']  ?></div>
+                            <a href="<?= base_url('MovieController/movieDetails/'.$row['id']) ?>" class="font-weight-bold" id="movieName"><?= $row['movie_name']?></a>
                         </div>
-                        <a href="<?= base_url() ?>" class="btn btn-outline-primary mr-2">SEE DETAILS</a>
-                        <a href="#" class="btn btn-outline-danger card-link"><i class="fas fa-trash"></i></a>
+                        <a href="<?= base_url('WatchlistController/deleteUserMovie/'.$user['id'].'/'.$row['id']) ?>" class="btn btn-outline-danger card-link"><i class="fas fa-trash"></i></a>
                     </div>
                 </div>
             </div>

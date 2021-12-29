@@ -46,3 +46,9 @@ body {
 .img-height {
     height: 400px;
 }
+
+#movieName, #movieName:hover, #movieName:visited {
+    color: black;
+    text-decoration: none;
+}
+

@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
-    <title> GoldenPopcorn</title>
+    <title> GoldenPopcorn | Upcoming Movies </title>
 </head>
 <body>
 
@@ -23,20 +23,9 @@
 
     <a href="top"></a>
 
-    <div class="container my-5 container-color p-5 ">
+    <div class="container my-5">
 
-        <div class="dropdown mt-5">
-            <button class="btn btn-lg btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <?php foreach ($category as $cat) : ?>
-                        <a class="dropdown-item" href="/MovieController/listByCategory/<?= $cat['id'] ?>"><?=$cat['category_name']?></a>
-                <?php endforeach; ?>
-            </div>
-        </div>
-
-        <h2 class="text-center">ALL MOVIES</h2>
+        <h2 class="text-center">UPCOMING MOVIES</h2>
         <div class="row mb-4">           
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
@@ -46,10 +35,8 @@
                         </a>
 
                     <div class="card-body card-body-height" >
-                        <h5 class="card-title card-text-white"><?= $row['movie_name'] ?></h5>
-                        <span class="movie_info card-text-white"><?= $row['movie_releasedate'] ?></span>
-                        <span class="movie_info float-right card-text-white"><i class="fas fa-star card-star-color"></i> <?= $row['imdb_rating'] ?></span>
-                       
+                        <h5 class="card-title"><?= $row['movie_name'] ?></h5>
+                        <span class="movie_info"><?= $row['movie_releasedate'] ?></span>
                     </div>
                 </div>
             </div>

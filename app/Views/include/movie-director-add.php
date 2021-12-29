@@ -1,16 +1,7 @@
-<!-- PICTURE ADD -->
-
 <?= $this->include('data/admin-operation-top.php') ?>
 
-
 <div class="container" style="min-height : calc(100vh - 200px);">
-    <form class="mt-5"  action="PictureController/addPicture" method="post">
-        <div class="form-row">
-            <div class="form-group col-md-12">
-                <label for="inputPictureLink">Picture Link</label>
-                <input type="text" class="form-control" id="inputPictureLink" name="picture_link">
-            </div>
-        </div>
+    <form class="mt-5" action="/MovieDirectorController/addMovieDirectors" method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputMovie">Movie</label>
@@ -21,10 +12,18 @@
                     <?php endforeach ?>
                 </select>
             </div>
+            <div class="form-group col-md-6">
+                <label for="inputDirector">Director</label>
+                <select id="inputDirector" class="form-control" name="director_id">
+                    <option selected>Choose Director</option>
+                    <?php foreach ($director as $key=> $dir): ?>
+                        <option value="<?=$dir['id'] ?>"><?php echo $dir["director_name"];?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Save</button>
     </form>
 </div>
-
 
 <?= $this->include('data/admin-operation-bottom.php') ?>
