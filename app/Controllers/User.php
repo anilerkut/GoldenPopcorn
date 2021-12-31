@@ -7,6 +7,7 @@ use App\Models\UserModel;
 class User extends BaseController
 {
     private $userModel;
+    private $perPage = 4;
 
     public function __construct() {
         $this->userModel = new UserModel();
@@ -141,7 +142,13 @@ class User extends BaseController
     public function edit($id) {
         $userModel = new UserModel();
         $data['user'] = $userModel->find($id);
-        $data['movies'] = $userModel->getUserMovies($id);
+        // $data['movies'] = $userModel->getUserMovies($id);
+        $data['movies'] = $userModel->select('movie.movie_name, movie.movie_poster, movie.id')
+                                    ->join('watchlist', 'watchlist.user_id = user.id')
+                                    ->join('movie', 'movie.id = watchlist.movie_id')
+                                    ->where('user.id',$id)
+                                    ->paginate($this->perPage);
+        $data['pager'] = $userModel->pager;
         return view('site/profile', $data);
     }
 
@@ -161,8 +168,6 @@ class User extends BaseController
         } else {
             $userModel = new UserModel();
             $newPassword = $this->request->getPost('user_password');
-            $newPasswordAgain = $this->request->getPost('user_password_again');
-            echo "Burdayım";
             $newData = [
                 'user_firstname' => $this->request->getPost('user_firstname'),
                 'user_lastname' => $this->request->getPost('user_lastname'),
@@ -171,7 +176,7 @@ class User extends BaseController
             $userModel->update($id, $newData);
             return redirect()->to(base_url('profile/'.$id));
         }
-        $this->edit();
+        $this->edit($id);
     }
 
 
