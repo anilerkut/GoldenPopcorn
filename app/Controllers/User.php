@@ -44,7 +44,14 @@ class User extends BaseController
                               ->first();
 
                 $this->setUserSession($user);
-                return redirect()->to('/movies');
+                if($user['user_type']==1)
+                {
+                    return redirect()->to('/movies');
+                }
+                else if($user['user_type']==2)
+                {
+                    return redirect()->to('/movie');
+                }
             }
         }
         echo view('site/login',$data);
@@ -93,6 +100,7 @@ class User extends BaseController
                     'user_lastname'    => $this->request->getVar('user_lastname'),
                     'user_password' => $this->request->getVar('user_password'),
                     'user_email'     => $this->request->getVar('user_email'),
+                    'user_type' => 1,
                     'user_gender'    => $this->request->getVar('user_gender'),
                     'user_birthdate'    => $this->request->getVar('user_birthdate')
                 ];

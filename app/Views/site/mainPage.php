@@ -14,6 +14,11 @@
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main-page-header.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Orbitron:wght@500&family=Oswald:wght@300&display=swap" rel="stylesheet">
 
     <title> GoldenPopcorn</title>
 </head>
@@ -23,27 +28,41 @@
 
     <a href="top"></a>
 
-    <div class="container my-5 container-color p-5 ">
+    <div class="container my-5 container-color p-5">
 
-        <div class="dropdown mt-5">
-            <button class="btn btn-lg btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <?php foreach ($category as $cat) : ?>
-                        <a class="dropdown-item" href="/MovieController/listByCategory/<?= $cat['id'] ?>"><?=$cat['category_name']?></a>
-                <?php endforeach; ?>
+        <div class="row">
+            <div class="dropdown">
+                <button class="btn cat-dropdown btn-outline-secondary dropdown-toggle" name="categorybutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <option value=""> Select Category</option>
+                    <?php foreach ($category as $cat) : ?>
+                            <a class="dropdown-item" href="/MovieController/listByCategory/<?= $cat['id'] ?>"><?=$cat['category_name']?></a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <div class="dropdown mx-3">
+                <button class="btn cat-dropdown btn-outline-secondary dropdown-toggle" name="countrybutton1" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Countries
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <option value=""> Select Country</option>
+                    <?php foreach ($country as $cou) : ?>
+                            <a class="dropdown-item" href="/MovieController/listByCountry/<?= $cou['id'] ?>"><?=$cou['country_name']?></a>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
+        
 
-        <h2 class="text-center">ALL MOVIES</h2>
+        <h2 class="text-center" style="font-family: 'Amaranth', sans-serif;">MOVIES</h2>
         <div class="row mb-4">           
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 
-
-                        <a href="<?= base_url('movie/'.$row['id'] ) ?>" class="btn btn-warning">
-
+                        <a href="<?= base_url('movie/'.$row['id'] ) ?>" class="btn bg-black">
                             <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"alt="...">  
                         </a>
 
@@ -52,8 +71,6 @@
                         <h5 class="card-title card-text-white"><?= $row['movie_name'] ?></h5>
                         <span class="movie_info card-text-white"><?= $row['movie_releasedate'] ?></span>
                         <span class="movie_info float-right card-text-white"><i class="fas fa-star card-star-color"></i> <?= $row['imdb_rating'] ?></span>
-                       
-
                     </div>
                 </div>
             </div>

@@ -13,11 +13,17 @@ body {
     -moz-border-radius: 0px 0px 25px 25px;
     -ms-border-radius: 0px 0px 25px 25px;
     -o-border-radius: 0px 0px 25px 25px;
-    box-shadow: 5px 5px 6px  #000;
+    box-shadow: 4px 4px 5px  #000;
+}
+
+.cat-dropdown
+{
+    background-color: #e7662a;
+    color: #000;
 }
 
 .img-height {
-    height: 280px;
+    height: 300px;
 }
 
 .card-text-white {
@@ -32,7 +38,7 @@ body {
 
     border-radius: 0px 0px 25px 25px;
     background-color: #e6662b;
-    min-height:120px;
+    min-height:130px;
 
     position:relative;
 }
