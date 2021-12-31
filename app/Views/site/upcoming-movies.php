@@ -39,6 +39,8 @@
                             <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"alt="...">  
                         </a>
 
+
+                        
                     <div class="card-body card-body-height" >
                         <h5 class="card-title"><?= $row['movie_name'] ?></h5>
                         <span class="movie_info"><?= $row['movie_releasedate'] ?></span>
