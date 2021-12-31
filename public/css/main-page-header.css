@@ -1,0 +1,19 @@
+.bg-black {
+    background-color: black;
+}
+
+.color-orange
+{
+    color: #e7662a !important;
+}
+
+li a
+{
+    color: #ECEBEB !important;
+}
+
+.header-radius
+{
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px;
+}

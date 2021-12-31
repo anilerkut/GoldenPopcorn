@@ -14,6 +14,11 @@
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main-page-header.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Orbitron:wght@500&family=Oswald:wght@300&display=swap" rel="stylesheet">
 
     <title> GoldenPopcorn | Upcoming Movies </title>
 </head>
@@ -23,14 +28,14 @@
 
     <a href="top"></a>
 
-    <div class="container my-5">
+    <div class="container container-color my-5 p-5">
 
-        <h2 class="text-center">UPCOMING MOVIES</h2>
+        <h2 class="text-center"  style="font-family: 'Amaranth', sans-serif;">UPCOMING MOVIES</h2>
         <div class="row mb-4">           
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 
-                        <a href="<?= base_url('movie/'.$row['id'] ) ?>" class="btn btn-warning">
+                        <a href="<?= base_url('movie/'.$row['id'] ) ?>" class="btn bg-black">
                             <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"alt="...">  
                         </a>
 
