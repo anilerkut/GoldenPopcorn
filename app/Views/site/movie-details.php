@@ -297,7 +297,13 @@
                 url:'<?= base_url('WatchlistController/addUserMovie/'.session()->get('user')['id'].'/'.$movie['id']) ?>',
                 success:function (data) {
                     let obj = JSON.parse(data);
-                    swal.fire(obj.message, "", obj.status);
+                    Swal.fire({
+                        position: 'center',
+                        icon: obj.status,
+                        title: obj.message,
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 }
             });
         })
