@@ -16,12 +16,13 @@
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/main-page-header.css">
 
-    <title>Hello, world!</title>
+    <title>My Profile</title>
 </head>
 
 <body>
 
-<?= $this->include('site/mainpage-header.php') ?>
+    <?= $this->include('site/mainpage-header.php') ?>
+
 
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
@@ -109,12 +110,14 @@
             </div>
             <?php endforeach;?>
         </div>
-
+        <div class="row d-flex justify-content-center mt-2">
+            <nav>
+                <?= $pager->links() ?>
+            </nav>
+        </div>
     </div>
 
-
-
-    <!-- Optional JavaScript; choose one of the two! -->
+    <?= $this->include('site/mainpage-footer.php') ?>
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -124,6 +127,7 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
 
+
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -132,6 +136,7 @@
     -->
 
     <?= $this->include('site/mainpage-footer.php') ?>
+
 </body>
 
 </html>
