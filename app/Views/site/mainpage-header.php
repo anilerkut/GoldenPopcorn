@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
-        <a class="navbar-brand text-warning" href="#">GOLDENPOPCORN</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-turquoise py-3 header-radius">
+        <a class="navbar-brand color-orange" href="#">GOLDENPOPCORN</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,8 +26,8 @@
                 </li>
             </ul>
         </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search" id="searchTxt">
-            <a href="#" class="btn btn-outline-warning my-2 my-sm-0" id="btnSearch">Search</a>
+        <form action="<?= base_url('MovieController/searchByName/')?>" class="form-inline my-2 my-lg-0" id="searchForm" method="post">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search movie" aria-label="Search" name="searchTxt" id="searchTxt">
+            <button type="submit" class="btn btn-outline-warning my-2 my-sm-0" id="search">Search</button>
         </form>
-    </nav>
+</nav>

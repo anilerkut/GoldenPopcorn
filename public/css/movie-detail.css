@@ -14,8 +14,8 @@
 
 .carousel-height {
     height: 600px;
+    width: 900px;
 }
-
 
 .trailer-tab-center{
     display: flex;
@@ -24,4 +24,38 @@
     width: 100vW;
 }
 
+.star{
+    color: goldenrod;
+    font-size: 2.0rem;
+    padding: 0 1rem; /* space out the stars */
+}
+/*
+.star::before{
+    content: url('<?= base_url('blackwhite.png')?>');
+    cursor: pointer;
+}
 
+.star.rated::before{
+    // the style for a selected star
+    content: url('<?= base_url('org.png')?>');  // filled star
+}
+*/
+.stars{
+    font-size: 2.0rem;
+    font-weight: 900;
+}
+
+.rating, .rating:hover {
+    text-decoration: none;
+}
+
+td a, td a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+td a:hover {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}

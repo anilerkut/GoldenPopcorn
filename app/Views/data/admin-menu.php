@@ -75,6 +75,30 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="/MovieCategoryController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Movie Categories
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/MovieDirectorController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Movie Director
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/MovieWarningController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Movie Warning
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="/NewsController/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
@@ -89,7 +113,15 @@
                             Picture
                         </p>
                     </a>
-                </li>        
+                </li>     
+                <li class="nav-item">
+                    <a href="/MovieActorController/list" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p class="list-font" style="display: inline-block">
+                            Role
+                        </p>
+                    </a>
+                </li>   
                 <li class="nav-item">
                     <a href="/User/list" class="nav-link">
                         <i class="nav-icon fas fa-film"></i>
@@ -103,38 +135,6 @@
                         <i class="nav-icon fas fa-film"></i>
                         <p class="list-font" style="display: inline-block">
                             Warning
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/MovieActorController/list" class="nav-link">
-                        <i class="nav-icon fas fa-film"></i>
-                        <p class="list-font" style="display: inline-block">
-                            Role
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/MovieCategoryController/list" class="nav-link">
-                        <i class="nav-icon fas fa-film"></i>
-                        <p class="list-font" style="display: inline-block">
-                            Movie Categories
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/MovieWarningController/list" class="nav-link">
-                        <i class="nav-icon fas fa-film"></i>
-                        <p class="list-font" style="display: inline-block">
-                            Movie Warning
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/MovieDirectorController/list" class="nav-link">
-                        <i class="nav-icon fas fa-film"></i>
-                        <p class="list-font" style="display: inline-block">
-                            Movie Director
                         </p>
                     </a>
                 </li>

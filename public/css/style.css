@@ -1,6 +1,6 @@
 body {
 
-  background: url("../celalabem.jpg");
+  background: url("../mainpage-background.jpg");
  
 
     /*background-image: linear-gradient(#FCF0C8, #fff);*/
@@ -13,11 +13,17 @@ body {
     -moz-border-radius: 0px 0px 25px 25px;
     -ms-border-radius: 0px 0px 25px 25px;
     -o-border-radius: 0px 0px 25px 25px;
-    box-shadow: 5px 5px 6px  #000;
+    box-shadow: 4px 4px 5px  #000;
+}
+
+.cat-dropdown
+{
+    background-color: #e7662a;
+    color: rgb(5, 5, 5);
 }
 
 .img-height {
-    height: 280px;
+    height: 300px;
 }
 
 .card-text-white {
@@ -31,7 +37,8 @@ body {
 .card-body-height{
     border-radius: 0px 0px 25px 25px;
     background-color: #e6662b;
-    min-height:120px;
+    min-height:130px;
+
     position:relative;
 }
 
@@ -54,23 +61,7 @@ body {
 }
 
 
-.pagination li {
-    text-indent: 1.25rem;
-    font-size: 1.5rem;
-    display: list-item;
-}
-
-.pagination a {
-    color: black;
-    text-decoration: none;
-}
-
-.pagination a:hover{
-    background-color: black;
-    color: white;
-}
-
-.bg-black {
+.bg-black-main {
     background-color: black;
 }
 

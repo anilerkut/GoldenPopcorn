@@ -14,6 +14,7 @@
             <th scope="col"></th>
             <th scope="col">Picture Link</th>
             <th scope="col">Movie ID</th>
+            <th scope="col">Operations</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
         <tr>
             <th scope="row"><?= $num ?></th>
             <td><?= $row['picture_link'] ?></td>
+            <td><?= $row['movie_id'] ?></td>
             <?php $num++ ?>
             <td>
                 <table>
@@ -34,16 +36,16 @@
                     <td>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#exampleModal">
+                                    data-target="#exampleModal-<?=$row['id']?>">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-<?=$row['id']?>" tabindex="-1"  
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Picture Link</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Picture</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>

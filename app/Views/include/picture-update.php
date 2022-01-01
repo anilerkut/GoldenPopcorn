@@ -10,7 +10,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputFullName">Picture Link</label>
-                    <input type="text" class="form-control" id="inputFullName" name="category_name" value="<?= $picture['picture_link'] ?>">
+                    <input type="text" class="form-control" id="inputFullName" name="picture_link" value="<?= $picture['picture_link'] ?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputMovie">Movie</label>

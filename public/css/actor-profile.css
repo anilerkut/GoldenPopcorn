@@ -1,5 +1,5 @@
 body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background: -webkit-linear-gradient(left, #e7662a, #ee931d);
 }
 .emp-profile{
     padding: 3%;
@@ -38,7 +38,7 @@ body{
 }
 .profile-head h6{
 
-    color: #0062cc;
+    color: #e7662a;
 }
 .profile-edit-btn{
     border: none;
@@ -68,7 +68,7 @@ body{
 }
 .profile-head .nav-tabs .nav-link.active{
     border: none;
-    border-bottom:2px solid #0062cc;
+    border-bottom:2px solid #099ca7;
 }
 .profile-work{
     padding: 14%;
@@ -94,10 +94,25 @@ body{
 }
 .profile-tab p{
     font-weight: 600;
-    color: #0062cc;
+    color: #099ca7;
 }
 
 .text-blue
 {
-    color: #0062cc;
+    color: #099ca7 !important;
+}
+
+.text-black
+{
+    color: #0c0c0c !important;
+}
+
+td a, td a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+td a:hover {
+    color: #099ca7;
+    text-decoration: none;
 }

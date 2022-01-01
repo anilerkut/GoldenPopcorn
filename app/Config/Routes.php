@@ -71,14 +71,19 @@ $routes->get('gender/delete(:num)', 'GenderController::delete/$1');
 // Movie
 $routes->get('movie', 'MovieController::list');
 $routes->get('movies', 'MovieController::listByCard');
+$routes->post('movie-search', 'MovieController::searchByName');
 $routes->get('upcoming-movies', 'MovieController::listUpcomingByCard');
 $routes->get('movie/(:num)', 'MovieController::movieDetails/$1');
+$routes->get('movie/(:num)/rating/(:num)', 'MovieController::movieRate/$1/$2');
 $routes->get('movies/filter(:num)', 'MovieController::listByCategory/$1');
 $routes->get('movie-add', 'MovieController::add');
 $routes->get('movie/edit(:num)', 'MovieController::edit/$1');
 $routes->put('movie/update(:num)', 'MovieController::update/$1');
 $routes->get('movie/delete(:num)', 'MovieController::delete/$1');
 $routes->get('search/movie(:num)', 'MovieController::searchByName/$1');
+
+//User 
+$routes->get('user', 'User::list');
 
 //Role
 $routes->get('role', 'MovieActorController::list');

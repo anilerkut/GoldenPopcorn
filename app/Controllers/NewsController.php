@@ -41,6 +41,8 @@ class NewsController extends BaseController
     public function edit($id) //Brings the information on the edit screen 
     { 
         $news = new NewsModel();
+        $actor = new ActorModel();
+        $data['actor'] = $actor->findAll();
         $data['news'] = $news->find($id);
         return view('include/news-update', $data);
     }
@@ -48,9 +50,13 @@ class NewsController extends BaseController
     public function update($id) //update the informations
     {   
         $news = new NewsModel();
+        $actor = new ActorModel();
+        $data['actor'] = $actor->findAll();
         $data = 
         [
-            'news_name' => $this->request->getPost('news_name')
+            'news_name' => $this->request->getPost('news_name'),
+            'news_date'  => $this->request->getVar('news_date'),
+            'actor_id' => $this->request->getVar('actor_id'), 
         ];
         $news->update($id, $data);
         return redirect()->to(base_url('news'));

@@ -31,6 +31,8 @@ class PictureController extends BaseController
 
     public function edit($id) //Brings the information on the edit screen 
     { 
+        $movie = new MovieModel();
+        $data['movie']=$movie->findAll();
         $picture = new PictureModel();
         $data['picture'] = $picture->find($id);
         return view('include/picture-update', $data);
@@ -41,7 +43,8 @@ class PictureController extends BaseController
         $picture = new PictureModel();
         $data = 
         [
-            'picture_name' => $this->request->getPost('picture_name')
+            'picture_link'  => $this->request->getVar('picture_link'),
+            'movie_id' =>  $this->request->getVar('movie_id'),
         ];
         $picture->update($id, $data);
         return redirect()->to(base_url('picture'));

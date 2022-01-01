@@ -7,6 +7,7 @@ use App\Models\UserModel;
 class User extends BaseController
 {
     private $userModel;
+    private $perPage = 4;
 
     public function __construct() {
         $this->userModel = new UserModel();
@@ -44,7 +45,14 @@ class User extends BaseController
                               ->first();
 
                 $this->setUserSession($user);
-                return redirect()->to('/movies');
+                if($user['user_type']==1)
+                {
+                    return redirect()->to('/movies');
+                }
+                else if($user['user_type']==2)
+                {
+                    return redirect()->to('/movie');
+                }
             }
         }
         echo view('site/login',$data);
@@ -93,6 +101,7 @@ class User extends BaseController
                     'user_lastname'    => $this->request->getVar('user_lastname'),
                     'user_password' => $this->request->getVar('user_password'),
                     'user_email'     => $this->request->getVar('user_email'),
+                    'user_type' => 1,
                     'user_gender'    => $this->request->getVar('user_gender'),
                     'user_birthdate'    => $this->request->getVar('user_birthdate')
                 ];
@@ -107,11 +116,9 @@ class User extends BaseController
 
     public function delete($id=null) 
     {
-        if (!is_null($id)) {
+        if (!is_null($id))
+        {
             $this->userModel->delete($id);
-            return $this->response->setJSON([
-               'message' => 'Kullanıcı silindi'
-            ]);
         }
     }
 
@@ -124,6 +131,7 @@ class User extends BaseController
                 'message' => "kullanıcı getirildi"
             ]);
         }
+        return redirect()->to(base_url('user'));
     }
 
     public function list()
@@ -141,7 +149,13 @@ class User extends BaseController
     public function edit($id) {
         $userModel = new UserModel();
         $data['user'] = $userModel->find($id);
-        $data['movies'] = $userModel->getUserMovies($id);
+        // $data['movies'] = $userModel->getUserMovies($id);
+        $data['movies'] = $userModel->select('movie.movie_name, movie.movie_poster, movie.id')
+                                    ->join('watchlist', 'watchlist.user_id = user.id')
+                                    ->join('movie', 'movie.id = watchlist.movie_id')
+                                    ->where('user.id',$id)
+                                    ->paginate($this->perPage);
+        $data['pager'] = $userModel->pager;
         return view('site/profile', $data);
     }
 
@@ -161,8 +175,6 @@ class User extends BaseController
         } else {
             $userModel = new UserModel();
             $newPassword = $this->request->getPost('user_password');
-            $newPasswordAgain = $this->request->getPost('user_password_again');
-            echo "Burdayım";
             $newData = [
                 'user_firstname' => $this->request->getPost('user_firstname'),
                 'user_lastname' => $this->request->getPost('user_lastname'),
@@ -171,7 +183,7 @@ class User extends BaseController
             $userModel->update($id, $newData);
             return redirect()->to(base_url('profile/'.$id));
         }
-        $this->edit();
+        $this->edit($id);
     }
 
 

@@ -32,3 +32,8 @@ body {
     background-color: black;
     color: white;
 }
+
+.bg-orange
+{
+    color: #e7662a !important; 
+}
