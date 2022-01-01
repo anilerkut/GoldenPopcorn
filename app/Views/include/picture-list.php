@@ -14,6 +14,7 @@
             <th scope="col"></th>
             <th scope="col">Picture Link</th>
             <th scope="col">Movie ID</th>
+            <th scope="col">Operations</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
         <tr>
             <th scope="row"><?= $num ?></th>
             <td><?= $row['picture_link'] ?></td>
+            <td><?= $row['movie_id'] ?></td>
             <?php $num++ ?>
             <td>
                 <table>
