@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/director.css">
     <link rel="stylesheet" href="/css/main-page-header.css">
 
-    <title>Document</title>
+    <title>GoldenPopcorn | <?= $movie["movie_name"]?></title>
 </head>
 <body>
 
@@ -169,14 +169,14 @@
                    
                         <?php  $i=0; foreach ($picture as $row) : ?>
                         { 
-                            <?php if($i==0){ ?><div class="carousel-item active">
-                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100" alt="...">
+                            <?php if($i==0){ ?><div class="carousel-item active carousel-height" >
+                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100 carousel-height"  alt="...">
                                                 </div>
-                            <?php  }$i++?>
-                            <?php if($i!=0){ ?><div class="carousel-item">
-                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100" alt="...">
+                            <?php  }?>
+                            <?php if($i!=0){ ?><div class="carousel-item carousel-height">
+                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100 carousel-height" alt="...">
                                                 </div>
-                            <?php }?>
+                            <?php }$i++?>
                         } <?php endforeach; ?>
                     
                     </div>

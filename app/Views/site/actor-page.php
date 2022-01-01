@@ -13,6 +13,7 @@
 
       <link href="/css/actor.css" type="text/css" rel="stylesheet"/>
       <link rel="stylesheet" href="/css/main-page-header.css">
+      <link rel="stylesheet" href="/css/pagination.css">
 
     <title>GoldenPopcorn | Actors </title>
   </head>

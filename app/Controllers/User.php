@@ -116,11 +116,9 @@ class User extends BaseController
 
     public function delete($id=null) 
     {
-        if (!is_null($id)) {
+        if (!is_null($id))
+        {
             $this->userModel->delete($id);
-            return $this->response->setJSON([
-               'message' => 'Kullanıcı silindi'
-            ]);
         }
     }
 
@@ -133,6 +131,7 @@ class User extends BaseController
                 'message' => "kullanıcı getirildi"
             ]);
         }
+        return redirect()->to(base_url('user'));
     }
 
     public function list()

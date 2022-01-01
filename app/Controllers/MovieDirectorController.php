@@ -39,7 +39,7 @@ class MovieDirectorController extends BaseController
         $data['movie'] = $movie->findAll();
         $data['director'] = $director->findAll();
         $data['movieDirectorModel'] = $movieDirectorModel->find($id);
-        return view('include/movie-warning-update', $data);
+        return view('include/movie-director-update', $data);
     }
 
     public function update($id) //update the informations
@@ -58,7 +58,7 @@ class MovieDirectorController extends BaseController
     { 
         $movieDirectorModel = new MovieDirectorModel();
         $movieDirectorModel->delete($id);
-        return redirect()->to(base_url('categories/delete'));
+        return redirect()->to(base_url('movie-directors'));
     }
 
     public function addMovieDirectors() {

@@ -1,0 +1,15 @@
+.pagination li {
+    text-indent: 1.25rem;
+    font-size: 1.5rem;
+    display: list-item;
+}
+
+.pagination a {
+    color: black !important;
+    text-decoration: none;
+}
+
+.pagination a:hover{
+    background-color: #e6662b;
+    color: white;
+}

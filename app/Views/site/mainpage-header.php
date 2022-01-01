@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-black py-3 header-radius">
+<nav class="navbar navbar-expand-lg navbar-dark bg-turquoise py-3 header-radius">
         <a class="navbar-brand color-orange" href="#">GOLDENPOPCORN</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

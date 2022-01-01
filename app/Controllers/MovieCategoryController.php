@@ -58,7 +58,7 @@ class MovieCategoryController extends BaseController
     { 
         $movieCategoryModel = new MovieCategoryModel();
         $movieCategoryModel->delete($id);
-        return redirect()->to(base_url('categories/delete'));
+        return redirect()->to(base_url('categoryList'));
     }
 
     public function addMovieCategories() {
