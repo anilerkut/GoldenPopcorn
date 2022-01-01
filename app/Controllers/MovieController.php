@@ -8,6 +8,7 @@ use App\Models\CountryModel;
 use App\Models\LanguageModel;
 use App\Models\MovieActorModel;
 use App\Models\PictureModel;
+use App\Models\RatingModel;
 
 
 class MovieController extends BaseController
@@ -177,9 +178,20 @@ class MovieController extends BaseController
         return view('site/upcoming-movies', $data);
     }
 
-    public function searchByName($name) {
+    public function searchByName() {
         $movie = new MovieModel();
-        $data['movie'] = $movie->getMovieLike($name);
+        $name = $this->request->getPost('searchTxt');
+        $data['movie'] = $movie->select('movie.id, movie_name, movie_duration, imdb_rating, movie_releasedate, movie_poster')
+                               ->join('movie_actor', 'movie_actor.movie_id = movie.id')
+                               ->join('actor', 'actor.id = movie_actor.actor_id')
+                               ->join('movie_director', 'movie_director.movie_id = movie.id')
+                               ->join('director', 'director.id = movie_director.director_id')
+                               ->groupBy('movie.id')
+                               ->like('movie_name', $name)
+                               ->orLike('actor_firstname', $name)
+                               ->orLike('actor_lastname', $name)
+                               ->orLike('director_name', $name)
+                               ->paginate($this->perPage);
         $category = new CategoryModel();
         $data['category'] = $category->findAll();
         $data['pager'] = $movie->pager;
@@ -198,6 +210,33 @@ class MovieController extends BaseController
         $data['category'] = $categoryModel->findAll();
         $data['pager'] = $movieModel->pager;
         return view('site/mainPage', $data);
+    }
+
+    public function movieRate($movieId, $rating)
+    {
+        $uri = service('uri');
+        $movieId = $uri->getSegment(2);
+        $rating = $uri->getSegment(4);
+        if (!session()->get('user')){
+            return redirect()->to(base_url('home/signIn'));
+        } else if($rating < 1 || $rating > 5) {
+            die('404');
+        } else {
+            $ratingModel = new RatingModel();
+            $newData = [
+                'movie_id' => $movieId,
+                'user_id' => session()->get('user')['id'],
+                'rating' => $rating
+            ];
+            $obj = $ratingModel->checkUserRating(session()->get('user')['id'], $movieId);
+            if ($obj !== null) {
+                $ratingModel->update($obj->id,$newData);
+            } else {
+                $ratingModel->save($newData);
+            }
+            return redirect()->to(base_url('movie/'.$movieId));
+        }
+
     }
 
 }
