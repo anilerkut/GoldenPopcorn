@@ -14,6 +14,7 @@
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="header.css">
 
     <title> GoldenPopcorn</title>
 </head>
@@ -46,10 +47,12 @@
                         </a>
 
                     <div class="card-body card-body-height" >
+
                         <h5 class="card-title card-text-white"><?= $row['movie_name'] ?></h5>
                         <span class="movie_info card-text-white"><?= $row['movie_releasedate'] ?></span>
                         <span class="movie_info float-right card-text-white"><i class="fas fa-star card-star-color"></i> <?= $row['imdb_rating'] ?></span>
                        
+
                     </div>
                 </div>
             </div>
@@ -75,8 +78,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-        crossorigin="anonymous"></script>
-
+        crossorigin="anonymous"></script>    
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
