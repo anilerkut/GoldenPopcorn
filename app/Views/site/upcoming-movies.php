@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/main-page-header.css">
+    <link rel="stylesheet" href="/css/pagination.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +36,7 @@
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 
-                        <a href="<?= base_url('movie/'.$row['id'] ) ?>" class="btn bg-black">
+                        <a href="<?= base_url('movie/'.$row['id'] ) ?>" class="btn bg-black-main">
                             <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"alt="...">  
                         </a>
 

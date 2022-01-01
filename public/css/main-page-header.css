@@ -1,10 +1,15 @@
+.bg-turquoise {
+    background-color: #099ca7;
+}
 .bg-black {
-    background-color: black;
+    background-color: #0f0f0f;
 }
 
 .color-orange
 {
-    color: #e7662a !important;
+    font-size:20px !important;
+    color: #252525 !important;
+    font-weight: bold !important;
 }
 
 li a

@@ -80,6 +80,9 @@ $routes->put('movie/update(:num)', 'MovieController::update/$1');
 $routes->get('movie/delete(:num)', 'MovieController::delete/$1');
 $routes->get('search/movie(:num)', 'MovieController::searchByName/$1');
 
+//User 
+$routes->get('user', 'User::list');
+
 //Role
 $routes->get('role', 'MovieActorController::list');
 $routes->get('role-add', 'MovieActorController::add');

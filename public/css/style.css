@@ -1,6 +1,6 @@
 body {
 
-  background: url("../celalabem.jpg");
+  background: url("../mainpage-background.jpg");
  
 
     /*background-image: linear-gradient(#FCF0C8, #fff);*/
@@ -19,7 +19,7 @@ body {
 .cat-dropdown
 {
     background-color: #e7662a;
-    color: #000;
+    color: rgb(5, 5, 5);
 }
 
 .img-height {
@@ -62,23 +62,7 @@ body {
 }
 
 
-.pagination li {
-    text-indent: 1.25rem;
-    font-size: 1.5rem;
-    display: list-item;
-}
-
-.pagination a {
-    color: black;
-    text-decoration: none;
-}
-
-.pagination a:hover{
-    background-color: black;
-    color: white;
-}
-
-.bg-black {
+.bg-black-main {
     background-color: black;
 }
 

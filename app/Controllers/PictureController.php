@@ -31,6 +31,8 @@ class PictureController extends BaseController
 
     public function edit($id) //Brings the information on the edit screen 
     { 
+        $movie = new MovieModel();
+        $data['movie']=$movie->findAll();
         $picture = new PictureModel();
         $data['picture'] = $picture->find($id);
         return view('include/picture-update', $data);

@@ -31,33 +31,31 @@
                     <td>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#deleteModal">
+                                    data-target="#exampleModal-<?=$row['id']?>">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="deleteModal" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-<?=$row['id']?>" tabindex="-1"  
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">News Content</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">News</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                                <div class="modal-body">
-                                                    <input type="hidden" name="delete_id" id="delete_id">
-                                                    Are you sure you want to delete it?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                        Close
-                                                    </button>                                        
-                                                    <a href="<?= base_url('NewsController/delete/'.$row['id'] ) ?>" class="btn btn-primary">
+                                            <div class="modal-body">
+                                                Are you sure you want to delete it?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <a href="<?= base_url('NewsController/delete/'.$row['id'] ) ?>" class="btn btn-primary">
                                                         Delete
-                                                    </a>                                                                                   
-                                                </div>
+                                                </a>     
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
