@@ -159,11 +159,13 @@ class MovieController extends BaseController
     public function listByCard() {
         $movie = new MovieModel();
         $category = new CategoryModel();
+        $country = new CountryModel();
         $data['movie'] = $movie->select('id, movie_name, movie_duration, imdb_rating, movie_releasedate, movie_poster')
                                 ->where('movie.movie_releasedate <= NOW()')
                                ->paginate($this->perPage);
         $data['pager'] = $movie->pager;
         $data['category'] = $category->findAll();
+        $data['country'] = $country->findAll();
         return view('site/mainPage', $data);
     }
 
@@ -201,12 +203,29 @@ class MovieController extends BaseController
     public function listByCategory($categoryId) {
         $movieModel = new MovieModel();
         $categoryModel = new CategoryModel();
+        $countryModel = new CountryModel();
         $data['movie'] = $movieModel->select('*,movie.id as id')
                              ->join('movie_category', 'movie_category.movie_id = movie.id')
                              ->join('category', 'category.id = movie_category.category_id')
                              ->where('movie_category.category_id',$categoryId)
                              ->paginate($this->perPage);
 
+        $data['category'] = $categoryModel->findAll();
+        $data['country'] = $countryModel->findAll();
+        $data['pager'] = $movieModel->pager;
+        return view('site/mainPage', $data);
+    }
+
+    public function listByCountry($countryId) {
+        $movieModel = new MovieModel();
+        $countryModel = new CountryModel();
+        $categoryModel = new CategoryModel();
+        $data['movie'] = $movieModel->select('*,movie.id as id')
+                             ->join('country', 'movie.country_id = country.id')
+                             ->where('movie.country_id',$countryId)
+                             ->paginate($this->perPage);
+
+        $data['country'] = $countryModel->findAll();
         $data['category'] = $categoryModel->findAll();
         $data['pager'] = $movieModel->pager;
         return view('site/mainPage', $data);

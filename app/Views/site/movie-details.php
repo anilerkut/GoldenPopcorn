@@ -10,8 +10,8 @@
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/movie-detail.css">
     <link rel="stylesheet" href="/css/director.css">
-
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/main-page-header.css">
+    <title>GoldenPopcorn | <?= $movie["movie_name"]?></title>
 </head>
 <body>
 
@@ -76,16 +76,20 @@
                   </thead>
                   <tbody>
                       <tr>
+                            <?php if($movie["rottentomatoes_rating"]!=0){}?>
                           <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1009px-Rotten_Tomatoes.svg.png" alt="tomato_logo" style="width:50px;height:50px"><span class="rating-font"> Rotten Tomatoes</span></td>
-                          <td><?= $movie["rottentomatoes_rating"]?></td>
+                          <td> <?php if($movie["rottentomatoes_rating"]!=0){echo $movie["rottentomatoes_rating"];}
+                                else{echo "?";}?></td>
                       </tr>
                       <tr>
                           <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/IMDb_Logo_Square.svg/2048px-IMDb_Logo_Square.svg.png" alt="imdb_logo" style="width:50px;height:50px"><span class="rating-font"> Imdb</span></td>
-                          <td><?= $movie["imdb_rating"]?></td>
+                          <td> <?php if($movie["imdb_rating"]!=0){echo $movie["imdb_rating"];}
+                                else{echo "?";}?></td>
                       </tr>
                       <tr>
                           <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Metacritic.svg/1024px-Metacritic.svg.png" alt="meta_logo" style="width:50px;height:50px"><span class="rating-font"> Meta Critic</span></td>
-                          <td><?= $movie["metacritic_rating"]?></td>
+                          <td> <?php if($movie["metacritic_rating"]!=0){echo $movie["metacritic_rating"];}
+                                else{echo "?";}?></td></td>
                       </tr>
                       <tr>
                           <td><img src="<?= base_url('org.png')?>" alt="imdb_logo" style="width:50px;height:60px"><span class="rating-font">Golden Popcorn</span></td>
@@ -160,7 +164,8 @@
                   <p> <b> Release Date </b>: <?= $movie["movie_releasedate"]?></p>
                   <p> <b> Country </b>: <?= $country["country_name"]?></p>
                   <p> <b> Language </b>: <?= $language["language_name"]?></p>
-                  <p> <b> Movie Gross </b>: $<?= $movie["movie_gross"]?></p>
+                  <p> <b> Movie Gross </b>: $<?php if($movie["movie_gross"]!=100){echo $movie["movie_gross"];}
+                                else{echo "?";}?></p>
             </div>
 
             <!-- movie pictures tab -->
@@ -170,19 +175,16 @@
                 
                     <div class="carousel-inner carousel-height">
                    
-                        <div class="carousel-item active">
-                                <img src=" <?= $picture[0]['picture_link']?>" class="d-block w-100" alt="...">
-                        </div>
                         <?php  $i=0; foreach ($picture as $row) : ?>
                         { 
-                            <?php if($i==0){ ?><div class="carousel-item active">
-                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100" alt="...">
+                            <?php if($i==0){ ?><div class="carousel-item active carousel-height" >
+                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100 carousel-height"  alt="...">
                                                 </div>
-                            <?php  }$i++?>
-                            <?php if($i!=0){ ?><div class="carousel-item">
-                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100" alt="...">
+                            <?php  }?>
+                            <?php if($i!=0){ ?><div class="carousel-item carousel-height">
+                                                <img src=" <?= $row['picture_link']?>" class="d-block w-100 carousel-height" alt="...">
                                                 </div>
-                            <?php }?>
+                            <?php }$i++?>
                         } <?php endforeach; ?>
                     
                     </div>

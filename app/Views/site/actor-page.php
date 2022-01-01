@@ -12,6 +12,8 @@
             integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
       <link href="/css/actor.css" type="text/css" rel="stylesheet"/>
+      <link rel="stylesheet" href="/css/main-page-header.css">
+      <link rel="stylesheet" href="/css/pagination.css">
 
     <title>GoldenPopcorn | Actors </title>
   </head>

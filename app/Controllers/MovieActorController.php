@@ -58,9 +58,9 @@ class MovieActorController extends BaseController
 
     public function delete($id) //delete data
     { 
-        $actor = new ActorModel();
-        $actor->delete($id);
-        return redirect()->to(base_url('actor'));
+        $roleModel = new MovieActorModel();
+        $roleModel->delete($id);
+        return redirect()->to(base_url('role'));
     }
 
     public function addRole() {

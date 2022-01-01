@@ -33,16 +33,16 @@
                     <td>
                       <!-- Button trigger modal -->
                       <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#exampleModal">
+                                    data-target="#exampleModal-<?=$row['id']?>">
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-<?=$row['id']?>" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Movie Name</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Country Name</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -52,12 +52,11 @@
                                                 Are you sure you want to delete it?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="button" class="btn btn-primary">
-                                                    Delete
-                                                </button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                    <a href="<?= base_url('CountryController/delete/'.$row['id'] ) ?>" class="btn btn-primary">
+                                                        Delete
+                                                    </a>   
                                             </div>
                                         </div>
                                     </div>
