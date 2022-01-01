@@ -63,6 +63,7 @@
         <?php foreach ($movie as $row) : ?>
             <div class="col-md-3 my-4" >
                 <div class="card border-rounded p-2"> 
+
                         <a href="<?= base_url('movie/'.$row['id'] ) ?>" class="btn bg-black-main">
                             <img src=<?=$row['movie_poster']?> class="card-img-top rounded-top img-height"alt="...">  
                         </a>
@@ -99,28 +100,33 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
 
+
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
 
-        let btnSearch = document.querySelector('#btnSearch');
-        btnSearch.addEventListener("click", searchMovie);
+        //let btnSearch = document.querySelector('#search');
+        //btnSearch.addEventListener("click", searchMovie);
 
-        function searchMovie() {
+        function searchMovie(e) {
+            e.preventDefault();
             let inputTxt = document.querySelector('#searchTxt');
-            console.log('ARANAN FİLM ADI: ' + inputTxt.value);
-            window.location.href = "MovieController/searchByName/" + inputTxt.value;
+            let formSearch = document.querySelector('#searchForm');
+            formSearch.setAttribute('action', inputTxt);
+
+            //console.log('ARANAN FİLM ADI: ' + inputTxt.value);
+            //window.location.href = "MovieController/searchByName/" + inputTxt.value;//
         }
+/*
+        $('#searchForm').submit(function(){
+            const inputText = $('#searchTxt').val();
+            $(this).attr('action', "<?= base_url('MovieController/searchByName/') ?>" + inputText);
+        });
+*/
 
     </script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>

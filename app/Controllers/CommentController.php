@@ -45,8 +45,7 @@ class CommentController extends BaseController
     }
 
     public function addComment($userID,$movieID)
-     {
-        
+    {
         $data = [];
         helper(['form']);
 

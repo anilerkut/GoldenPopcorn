@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/css/movie-detail.css">
     <link rel="stylesheet" href="/css/director.css">
     <link rel="stylesheet" href="/css/main-page-header.css">
-
     <title>GoldenPopcorn | <?= $movie["movie_name"]?></title>
 </head>
 <body>
@@ -26,37 +25,47 @@
           <div class="col-md-6">
               <img src="<?= $movie["movie_poster"]?>" class="d-block w-50 mx-auto" style="" alt="...">
               <div class="text-center">
-                  <p class="my-4"><?= $movie["movie_summary"]?></p>
-
+                  <p class="my-4 mx-3"><?= $movie["movie_summary"]?></p>
                   <button class="btn btn-outline-danger btn-lg mx-auto" id="addToWatchlist">
                       <i class="fas fa-heart fa-lg"></i>
                       Add to Watchlist
                   </button>
-
               </div>
           </div>
           <!-- left end -->
           <!-- right start -->
           <div class="col-md-4">
               <h3><?= $movie["movie_name"] ?></h3>
-
-                <span class="font-weight-bold">Category: </span>
-                <?php foreach ($categories as $row) : ?>                  
-                        <span><?=$row['category_name']?></span>
-                <?php endforeach; ?> 
-                <span class="font-weight-bold">Warning: </span>
-                <?php foreach ($warnings as $row) : ?>                  
-                        <span><?=$row['warning_name']?></span>
-                <?php endforeach; ?> 
-
+                <div>
+                    <span class="font-weight-bold">Category: </span>
+                    <?php foreach ($categories as $row) : ?>
+                            <span><?=$row['category_name']?></span>
+                    <?php endforeach; ?>
+                </div>
+               <div>
+                    <span class="font-weight-bold">Warning: </span>
+                    <?php foreach ($warnings as $row) : ?>
+                            <span><?=$row['warning_name']?></span>
+                    <?php endforeach; ?>
+               </div>
               <hr>
               <h4>Rate Movie</h4>
                 <div class="stars" data-rating="3">
-                    <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
-                    <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
-                    <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
-                    <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
-                    <img src="<?= base_url('org.png')?>" style="width: 80px; height: 80px" alt="">
+                    <a href="/movie/<?= $movie["id"]?>/rating/1" class="rating">
+                        <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+                    </a>
+                    <a href="/movie/<?= $movie["id"]?>/rating/2" class="rating">
+                        <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+                    </a>
+                    <a href="/movie/<?= $movie["id"]?>/rating/3" class="rating">
+                        <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+                    </a>
+                    <a href="/movie/<?= $movie["id"]?>/rating/4" class="rating">
+                        <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+                    </a>
+                    <a href="/movie/<?= $movie["id"]?>/rating/5" class="rating">
+                        <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+                    </a>
                 </div>
               <table class="table table-hover mt-5">
                   <thead>
@@ -101,7 +110,6 @@
               <a class="nav-item nav-link" id="movie-directors-tab" data-toggle="tab" href="#movie-directors" role="tab" aria-controls="movie-directors" aria-selected="false">Directors</a>
               <a class="nav-item nav-link" id="movie-informations-tab" data-toggle="tab" href="#movie-informations" role="tab" aria-controls="movie-informations" aria-selected="false">Movie Details</a>
               <a class="nav-item nav-link" id="movie-pictures-tab" data-toggle="tab" href="#movie-pictures" role="tab" aria-controls="movie-pictures" aria-selected="false">Movie Pictures</a>
-              <a class="nav-item nav-link" id="movie-rating-tab" data-toggle="tab" href="#movie-rating" role="tab" aria-controls="movie-rating" aria-selected="false">Rating</a>
               <a class="nav-item nav-link" id="movie-trailer-tab" data-toggle="tab" href="#movie-trailer" role="tab" aria-controls="movie-trailer" aria-selected="false">Trailer</a>
           </nav>
           <div class="tab-content p-3" id="nav-tabContent">
@@ -117,7 +125,6 @@
                       </thead>
                       <?php foreach ($role as $row) : ?>
                               <tbody class="text-center">
-
                                   <td>
                                       <img src="<?=$row['actor_picture']?>" width="80px" height="100px" alt="">
                                   </td>
@@ -204,7 +211,7 @@
                     align-items: center;
                     width: 100vW;">
                       <iframe width="1000" height="600" class=""
-                              src=<?php echo $movie["movie_trailer"]?> type="video/mp4">
+                              src="<?php echo $movie["movie_trailer"]?>" type="video/mp4">
                       </iframe>
                   </div>
               </div>
@@ -221,11 +228,11 @@
                                             <div class="w-100">
                                                 <h5>Add Comment</h5>
                                                 <div class="form-outline">
-                                                    <textarea class="form-control" id="textAreaExample" rows="4" name="comment_content"
+                                                    <textarea class="form-control" id="commentArea" rows="4" name="comment_content"
                                                         placeholder="What is your view?"></textarea>
                                                 </div>
                                                 <div class="d-flex justify-content-end mt-2">
-                                                    <button type="submit" class="btn btn-success">
+                                                    <button type="submit" class="btn btn-success" id="comment">
                                                         Send <i class="fas fa-long-arrow-alt-right ms-1"></i>
                                                     </button>
                                                 </div>
@@ -278,15 +285,10 @@
 
 </section>
 
-
-
-
-
 <?= $this->include('site/mainpage-footer.php') ?>
 
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

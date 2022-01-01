@@ -26,8 +26,8 @@
                 </li>
             </ul>
         </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search" id="searchTxt">
-            <a href="#" class="btn btn-outline-warning my-2 my-sm-0" id="btnSearch">Search</a>
+        <form action="<?= base_url('MovieController/searchByName/')?>" class="form-inline my-2 my-lg-0" id="searchForm" method="post">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search movie" aria-label="Search" name="searchTxt" id="searchTxt">
+            <button type="submit" class="btn btn-outline-warning my-2 my-sm-0" id="search">Search</button>
         </form>
-    </nav>
+</nav>
