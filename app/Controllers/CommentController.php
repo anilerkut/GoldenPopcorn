@@ -31,7 +31,7 @@ class CommentController extends BaseController
         $commentModel = new CommentModel();
         $data = 
         [
-            'actor_name' => $this->request->getPost('actor_name')
+           
         ];
         $actor->update($id, $data);
         return redirect()->to(base_url('actor'));

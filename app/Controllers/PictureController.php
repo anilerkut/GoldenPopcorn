@@ -43,7 +43,8 @@ class PictureController extends BaseController
         $picture = new PictureModel();
         $data = 
         [
-            'picture_name' => $this->request->getPost('picture_name')
+            'picture_link'  => $this->request->getVar('picture_link'),
+            'movie_id' =>  $this->request->getVar('movie_id'),
         ];
         $picture->update($id, $data);
         return redirect()->to(base_url('picture'));
