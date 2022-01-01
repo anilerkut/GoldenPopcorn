@@ -157,7 +157,8 @@
                   <p> <b> Release Date </b>: <?= $movie["movie_releasedate"]?></p>
                   <p> <b> Country </b>: <?= $country["country_name"]?></p>
                   <p> <b> Language </b>: <?= $language["language_name"]?></p>
-                  <p> <b> Movie Gross </b>: $<?= $movie["movie_gross"]?></p>
+                  <p> <b> Movie Gross </b>: $<?php if($movie["movie_gross"]!=100){echo $movie["movie_gross"];}
+                                else{echo "?";}?></p>
             </div>
 
             <!-- movie pictures tab -->

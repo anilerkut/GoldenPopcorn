@@ -9,7 +9,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="https://www.google.com.tr/?hl=tr" class="nav-link">
+            <a href="/login" class="nav-link">
                 <i class="fas fa-sign-out-alt"></i>
                 Log out</a>
         </li>
