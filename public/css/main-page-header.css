@@ -22,3 +22,20 @@ li a
     border-bottom-left-radius: 30px; 
     border-bottom-right-radius: 30px;
 }
+
+#logOut:hover
+{
+    background-color: white;
+    color: black;
+}
+
+#logOut
+{
+    color: white;
+}
+
+#search:hover
+{
+    background-color: #e7662a;
+    color: #0f0f0f;
+}
