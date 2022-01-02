@@ -57,6 +57,7 @@ class NewsController extends BaseController
         [
             'news_name' => $this->request->getPost('news_name'),
             'news_date'  => $this->request->getVar('news_date'),
+            'news_title'  => $this->request->getVar('news_title'),
             'actor_id' => $this->request->getVar('actor_id'), 
         ];
         $news->update($id, $data);
@@ -115,6 +116,7 @@ class NewsController extends BaseController
                     'news_content'  => $this->request->getVar('news_content'),
                     'news_date'  => $this->request->getVar('news_date'),
                     'actor_id' => $this->request->getVar('actor_id'), 
+                    'news_title'  => $this->request->getVar('news_title'),
                 ];
 
                 $news->save($newData);

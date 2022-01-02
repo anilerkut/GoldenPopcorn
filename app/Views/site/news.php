@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/css/main-page-header.css">
     <link rel="stylesheet" href="/css/pagination.css">
     
+    <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Orbitron:wght@500&family=Oswald:wght@300&display=swap" rel="stylesheet">
+
     <title>GoldenPopcorn | News </title>
 </head>
 
@@ -23,7 +25,7 @@
 <div class="container my-5">
 
     <div class="dropdown">
-        <button class="btn btn-lg btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn cat-dropdown btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Sort By Date
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -32,7 +34,7 @@
         </div>
     </div>
 
-    <h2 class="text-center">ALL NEWS</h2>
+    <h2 class="text-center"style="font-family: 'Amaranth', sans-serif;">NEWS</h2>
     <div class="row my-4">
         <?php foreach ($news as $row) : ?>
             

@@ -242,6 +242,13 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if(isset($validation)):?>
+                        <div class="col-12"> 
+                            <div class="alert alert-warning">
+                                <?= $validation->listErrors() ?>
+                            </div>
+                        </div>
+                        <?php endif;?>
                     </section>
         </form>
                 
@@ -308,7 +315,18 @@
                     })
                 }
             });
-        })
+        });
+
+        $(document).ready(function () {
+            <?php if(session()->getFlashdata('status')){ ?>
+                Swal.fire({
+                    icon: '<?= session()->getFlashdata('status_icon') ?>',
+                    title: '<?= session()->getFlashdata('status') ?>',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            <?php } ?>
+        });
 
 </script>
 

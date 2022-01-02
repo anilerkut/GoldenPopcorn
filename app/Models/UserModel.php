@@ -11,7 +11,8 @@ class UserModel extends Model
     protected $returnType ='array'; //sonuçları hangi formatta alabileceğimiz değişken
     protected $useSoftDeletes =false;  //true yaparsak datayı silince veritabanında kalmaya devam eder false yaparsak gider.
 
-    protected $allowedFields = ['user_firstname','user_lastname','user_email','user_type','user_password','user_gender','user_birthdate','updated_at']; //buranın içine kullanıcıların kullanmasını istediğimiz dataları giricez.
+    protected $allowedFields = ['user_firstname','user_lastname','user_email','user_type','user_password','user_gender',
+        'user_birthdate', 'user_image', 'updated_at']; //buranın içine kullanıcıların kullanmasını istediğimiz dataları giricez.
 
 
     protected $useTimestamp= true;  //bunu true yaparsak güncelleme yaptığımızda updated_at sütunu oluşuyor. , Zaman birimleri kullanılsın mı?

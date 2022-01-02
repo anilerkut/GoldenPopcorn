@@ -26,7 +26,7 @@
             </div>
             <div class="main">
                  <!--Take user information for recording!-->
-                <form action="/User/register" method="post">
+                <form action="/User/register" method="post" enctype="multipart/form-data">
                     <span>
                         <i class="fas fa-user"></i>   <!--icon from fontawesome !-->
                         <input type="text" id="firstname" name="user_firstname" placeholder="First Name">
@@ -59,6 +59,9 @@
                             </optgroup>
                         </select>
                     </span><br>
+                    <span>
+                        <input type="file" name="user_image">
+                    </span>
                     <?php if(isset($validation)):?>
                     <div class="col-12"> 
                         <div class="alert alert-warning">

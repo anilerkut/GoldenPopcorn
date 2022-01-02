@@ -6,13 +6,11 @@
 <div class="container" style="min-height : calc(100vh - 200px);">
     <form class="mt-5"  action="NewsController/addNews" method="post">
         <div class="form-row">
-
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">News Content</span>
                 </div>
                 <textarea class="form-control" id="newsContent" aria-label="News Content" name= "news_content"></textarea>
-
             </div>
         </div>
         <div class="form-row">
@@ -21,6 +19,12 @@
                     <label for="inputNewsDate">News Date</label>
                 </div>
                 <input type="date" class="form-control" id="newsDate"  name="news_date">
+            </div>
+            <div class="form-group col-md-6">
+                <div class="input-group-prepend">
+                    <label for="inputNewsDate">News Title</label>
+                </div>
+                <input type="text" class="form-control" id="newsDate"  name="news_title">
             </div>
         </div>
         <div class="form-row">

@@ -29,6 +29,7 @@ body {
     background-color: black;
 }
 
+
  .wrapper {
 	 margin: 10vh;
 }
@@ -108,3 +109,11 @@ body {
 	 background: linear-gradient(0deg, rgba(35, 79, 109, 0.3785889355742297) 0%, rgba(69, 95, 113, 1) 100%);
 }
  
+
+.cat-dropdown
+{
+    background-color: #e7662a;
+    color: rgb(5, 5, 5);
+}
+
+
