@@ -39,14 +39,24 @@
       <div class="row mb-4">
           <?php foreach ($actor as $row) : ?>
           <div class="col-md-4 my-4">
-              <div class="card text-center">
-                  <a href="<?= base_url('ActorController/actorDetails/'.$row['id'] ) ?>" class="btn btn-warning">
-                            <img src="<?=$row['actor_picture']?>" class="card-img-top rounded-top img-height" alt="...">
-                  </a>
-                  <div class="card-body bg-black">
-                      <p class="card-text font-weight-bold text-white"><?= $row['actor_firstname']." ".$row['actor_lastname'] ?></p>
-                  </div>
-              </div>
+          <div class="card">
+              
+     <div class="card__image-container">
+     <a href="<?= base_url('ActorController/actorDetails/'.$row['id'] ) ?>">
+       <img class="card__image" src="<?=$row['actor_picture']?>" alt="">
+       </a>
+    </div>
+      
+      <svg class="card__svg" viewBox="0 0 800 500">
+
+        <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="orange"/>
+        <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="orange" stroke-width="8" fill="transparent"/>
+      </svg>
+    
+     <div class="card__content">
+       <h1 class="card__title"><?= $row['actor_firstname']." ".$row['actor_lastname'] ?></h1>
+    </div>
+  </div>
           </div>
           <?php endforeach; ?>
       </div>
