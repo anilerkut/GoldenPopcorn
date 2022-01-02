@@ -242,6 +242,13 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if(isset($validation)):?>
+                        <div class="col-12"> 
+                            <div class="alert alert-warning">
+                                <?= $validation->listErrors() ?>
+                            </div>
+                        </div>
+                        <?php endif;?>
                     </section>
         </form>
                 
@@ -285,7 +292,6 @@
 
 </section>
 
-<?= $this->include('site/mainpage-footer.php') ?>
 
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

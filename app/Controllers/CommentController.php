@@ -77,6 +77,7 @@ class CommentController extends BaseController
                     ->with('status_icon','success');
             }
         }
+        echo view('site/movie-details',$data);
     }
 
 }
