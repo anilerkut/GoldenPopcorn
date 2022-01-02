@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" width="150px" src="https://picsum.photos/id/1005/200/300">
+                    <img class="rounded-circle mt-5" width="200px" height="200px" src="<?= "../uploads/".$user['user_image']; ?>">
                     <span class="font-weight-bold"><?= $user['user_firstname']." ".$user['user_lastname'] ?></span></div>
             </div>
             <div class="col-md-9 border-right">
@@ -104,7 +104,7 @@
                         <div class="flex-fill pl-3 pr-3">
                             <a href="<?= base_url('MovieController/movieDetails/'.$row['id']) ?>" class="font-weight-bold" id="movieName"><?= $row['movie_name']?></a>
                         </div>
-                        <a href="<?= base_url('WatchlistController/deleteUserMovie/'.$user['id'].'/'.$row['id']) ?>" class="btn btn-outline-danger card-link"><i class="fas fa-trash"></i></a>
+                        <button type="button" value="<?= $row['id'] ?>" class="btn btn-danger delete"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
             </div>
@@ -119,23 +119,48 @@
 
     <?= $this->include('site/mainpage-footer.php') ?>
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-        crossorigin="anonymous"></script>
-
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-    -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-    <?= $this->include('site/mainpage-footer.php') ?>
+    <script>
+
+        $(document).ready(function() {
+           $('.delete').click(function (e) {
+               e.preventDefault();
+               let movieId = $(this).val();
+               Swal.fire({
+                   title: 'Are you sure?',
+                   text: "You won't be able to revert this!",
+                   icon: 'warning',
+                   showCancelButton: true,
+                   confirmButtonColor: '#3085d6',
+                   cancelButtonColor: '#d33',
+                   confirmButtonText: 'Yes, delete it!'
+               }).then((result) => {
+                   if (result.isConfirmed) {
+                       $.ajax({
+                           url:'<?= base_url('WatchlistController/deleteUserMovie/'.session()->get('user')['id'])?>' + '/' + movieId,
+                           success:function (response) {
+                               Swal.fire({
+                                   position: 'center',
+                                   icon: response.status,
+                                   title: response.message,
+                                   showConfirmButton: false,
+                                   timer: 1500
+                               }).then((confirmed) => {
+                                   window.location.reload();
+                               });
+                           }
+                       })
+                   }
+               })
+           })
+        });
+
+    </script>
 
 </body>
 

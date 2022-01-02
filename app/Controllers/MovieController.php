@@ -196,6 +196,8 @@ class MovieController extends BaseController
                                ->paginate($this->perPage);
         $category = new CategoryModel();
         $data['category'] = $category->findAll();
+        $country = new CountryModel();
+        $data['country'] = $country->findAll();
         $data['pager'] = $movie->pager;
         return view('site/mainPage', $data);
     }

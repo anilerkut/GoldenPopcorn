@@ -95,6 +95,15 @@ class User extends BaseController
             else
             {
                 $user = new UserModel();
+                $file = $this->request->getFile('user_image');
+                $imageName = "";
+                if ($file->isValid() && ! $file->hasMoved()) {
+                    $imageName = $file->getRandomName();
+                    $file->move('uploads/', $imageName);
+                }
+                if ($imageName === "") {
+                    $imageName = 'no-user-profile-picture.jpg';
+                }
 
                 $newdata = [
                     'user_firstname'     => $this->request->getVar('user_firstname'),
@@ -103,7 +112,8 @@ class User extends BaseController
                     'user_email'     => $this->request->getVar('user_email'),
                     'user_type' => 1,
                     'user_gender'    => $this->request->getVar('user_gender'),
-                    'user_birthdate'    => $this->request->getVar('user_birthdate')
+                    'user_birthdate'    => $this->request->getVar('user_birthdate'),
+                    'user_image' => $imageName
                 ];
 
                 $user->save($newdata);
@@ -169,7 +179,6 @@ class User extends BaseController
                 'user_password' => 'required|min_length[4]|max_length[30]',
                 'user_password_again'  => 'matches[user_password]',
             ];
-
         if(! $this->validate($rules)) {
             $data['validation']= $this->validator;
         } else {
@@ -184,6 +193,7 @@ class User extends BaseController
             return redirect()->to(base_url('profile/'.$id));
         }
         $this->edit($id);
+        echo view('site/profile', $data);
     }
 
 

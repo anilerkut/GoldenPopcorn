@@ -106,25 +106,6 @@
             $('[data-toggle="tooltip"]').tooltip()
         })
 
-        //let btnSearch = document.querySelector('#search');
-        //btnSearch.addEventListener("click", searchMovie);
-
-        function searchMovie(e) {
-            e.preventDefault();
-            let inputTxt = document.querySelector('#searchTxt');
-            let formSearch = document.querySelector('#searchForm');
-            formSearch.setAttribute('action', inputTxt);
-
-            //console.log('ARANAN FİLM ADI: ' + inputTxt.value);
-            //window.location.href = "MovieController/searchByName/" + inputTxt.value;//
-        }
-/*
-        $('#searchForm').submit(function(){
-            const inputText = $('#searchTxt').val();
-            $(this).attr('action', "<?= base_url('MovieController/searchByName/') ?>" + inputText);
-        });
-*/
-
     </script>
 
 </body>

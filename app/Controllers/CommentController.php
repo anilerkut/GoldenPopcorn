@@ -73,8 +73,8 @@ class CommentController extends BaseController
                     'comment_date' => $date,
                 ];
                 $comment->save($newData);
-
-                return redirect()->to(base_url('movie/'.$movieID));
+                return redirect()->to(base_url('movie/'.$movieID))->with('status', 'Your comment is added successfully')
+                    ->with('status_icon','success');
             }
         }
     }

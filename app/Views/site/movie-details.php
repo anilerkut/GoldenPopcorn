@@ -309,7 +309,18 @@
                     })
                 }
             });
-        })
+        });
+
+        $(document).ready(function () {
+            <?php if(session()->getFlashdata('status')){ ?>
+                Swal.fire({
+                    icon: '<?= session()->getFlashdata('status_icon') ?>',
+                    title: '<?= session()->getFlashdata('status') ?>',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            <?php } ?>
+        });
 
 </script>
 

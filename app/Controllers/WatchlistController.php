@@ -11,8 +11,13 @@ class WatchlistController extends BaseController
     public function deleteUserMovie($userId, $movieId) {
         $watchlistModel = new WatchlistModel();
         $watchlistModel->deleteFromUserWatchlist($userId, $movieId);
-        $userModel = new UserModel();
-        return redirect()->to(base_url('profile/'.$userId));
+        $data = [
+            'status' => 'success',
+            'message' => 'The movie has been removed from your watchlist!',
+        ];
+        // $userModel = new UserModel();
+        return $this->response->setJSON($data);
+        //return redirect()->to(base_url('profile/'.$userId));
     }
 
     public function addUserMovie($userId, $movieId) {

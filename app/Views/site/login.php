@@ -46,7 +46,6 @@
                     <?php endif;?>
                     <button>Login</button><br>
                      <!--Links to other pages !-->
-                    <a href="****">Forgot your password?</a><br>
                     <p>Don't have an account?<a href="/register">Sign Up</a> </p>
                 </form>  
             </div>
