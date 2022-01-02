@@ -15,17 +15,4 @@ class CountryModel extends Model
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
-
-    public function getCountryList(){
-        $builder=$this->builder($this->table);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getCountry($id){
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
 }

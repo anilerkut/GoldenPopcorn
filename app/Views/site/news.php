@@ -37,6 +37,7 @@
     <h2 class="text-center"style="font-family: 'Amaranth', sans-serif;">NEWS</h2>
     <div class="row my-4">
         <?php foreach ($news as $row) : ?>
+
             
             <div class="col-md-4 mt-4"><div class="card text-white card-has-bg click-col" style="background-image:url('<?=$row["actor_picture"]?>');">
          <div class="card-img-overlay d-flex flex-column">
@@ -55,6 +56,7 @@
         </div>
       </div>
     </div>
+
         <?php endforeach;?>
     </div>
     <nav>

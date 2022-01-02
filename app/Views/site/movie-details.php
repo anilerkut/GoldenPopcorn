@@ -41,8 +41,6 @@
                     <?php foreach ($categories as $row) : ?>
                             <span><?=$row['category_name']?></span>
                     <?php endforeach; ?>
-                </div>
-               <div>
                     <span class="font-weight-bold">Warning: </span>
                     <?php foreach ($warnings as $row) : ?>
                             <span><?=$row['warning_name']?></span>
@@ -264,7 +262,7 @@
                                                 <div class="d-flex flex-start mt-3">
                                                             <img
                                                                 class="rounded-circle shadow-1-strong me-3"
-                                                                src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
+                                                                src="<?="/uploads/".$row["user_image"]?>"
                                                                 alt="avatar"
                                                                 width="60"
                                                                 height="60"

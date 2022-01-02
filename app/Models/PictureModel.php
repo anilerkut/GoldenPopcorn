@@ -15,20 +15,6 @@ class PictureModel extends \CodeIgniter\Model
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
-
-    public function getPictureList(){
-        $builder=$this->builder($this->table);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getPicture($id){
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
     public function getPictureSelect($id){
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
