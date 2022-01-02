@@ -197,6 +197,8 @@ class MovieController extends BaseController
         $category = new CategoryModel();
         $country = new CountryModel();
         $data['category'] = $category->findAll();
+
+        $country = new CountryModel();
         $data['country'] = $country->findAll();
         $data['pager'] = $movie->pager;
         return view('site/mainPage', $data);
