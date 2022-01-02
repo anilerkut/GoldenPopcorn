@@ -20,6 +20,12 @@
                 </div>
                 <input type="date" class="form-control" id="newsDate"  name="news_date" value="<?= $news['news_date'] ?>">
             </div>
+            <div class="form-group col-md-6">
+                <div class="input-group-prepend">
+                    <label for="inputNewsDate">News Title</label>
+                </div>
+                <input type="text" class="form-control" id="newsDate"  name="news_title" value="<?= $news['news_title'] ?>">
+            </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">

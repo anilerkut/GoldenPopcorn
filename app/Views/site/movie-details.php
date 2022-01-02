@@ -242,6 +242,13 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if(isset($validation)):?>
+                        <div class="col-12"> 
+                            <div class="alert alert-warning">
+                                <?= $validation->listErrors() ?>
+                            </div>
+                        </div>
+                        <?php endif;?>
                     </section>
         </form>
                 
