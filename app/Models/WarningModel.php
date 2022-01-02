@@ -15,17 +15,4 @@ class WarningModel extends Model
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
-
-    public function getWarningList(){
-        $builder=$this->builder($this->table);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getWarning($id){
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
 }

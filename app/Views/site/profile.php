@@ -28,8 +28,9 @@
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" width="200px" height="200px" src="<?= "../uploads/".$user['user_image']; ?>">
-                    <span class="font-weight-bold"><?= $user['user_firstname']." ".$user['user_lastname'] ?></span></div>
+                    <img class="rounded-circle mt-5" width="200px" height="200px" src="<?= "/uploads/".$user['user_image']; ?>">
+                    <span class="font-weight-bold"><?= $user['user_firstname']." ".$user['user_lastname'] ?></span>
+                </div>
             </div>
             <div class="col-md-9 border-right">
                 <div class="p-3 py-5">
