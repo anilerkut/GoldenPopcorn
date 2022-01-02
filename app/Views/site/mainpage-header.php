@@ -20,14 +20,13 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('profile/'.session()->get('user')['id'])?>">My Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('login')?>">Log Out</a>
-                </li>
+                </li>  
             </ul>
         </div>
-        <form action="<?= base_url('MovieController/searchByName/')?>" class="form-inline my-2 my-lg-0" id="searchForm" method="post">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search movie" aria-label="Search" name="searchTxt" id="searchTxt">
-            <button type="submit" class="btn btn-outline-warning my-2 my-sm-0" id="search">Search</button>
+        <form action="<?= base_url('MovieController/searchByName/')?>" class="form-inline mr-4 my-2 my-lg-0" id="searchForm" method="post">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search movie" aria-label="Search" name="searchTxt" id="searchTxt">
+                    <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" id="search">Search</button>
         </form>
+                
+        <a class="btn mr-2" id="logOut" href="<?=base_url('login')?>"><i class="fas fa-sign-out-alt"></i>LOG OUT</a>             
 </nav>
