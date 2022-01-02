@@ -11,6 +11,8 @@
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/news.css">
     <link rel="stylesheet" href="/css/main-page-header.css">
+    <link rel="stylesheet" href="/css/pagination.css">
+    
     <title>GoldenPopcorn | News </title>
 </head>
 
@@ -34,28 +36,28 @@
     <div class="row my-4">
         <?php foreach ($news as $row) : ?>
             
-            <div class="col-md-4"><div class="card text-white card-has-bg click-col" style="background-image:url('https://source.unsplash.com/600x900/?tech,street');">
-         <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
-        <div class="card-img-overlay d-flex flex-column">
+            <div class="col-md-4 mt-4"><div class="card text-white card-has-bg click-col" style="background-image:url('<?=$row["actor_picture"]?>');">
+         <div class="card-img-overlay d-flex flex-column">
          <div class="card-body">
-            <small class="card-meta mb-2">Thought Leadership</small>
-            <h4 class="card-title mt-0 "><a class="text-white" herf="#">Goverment Lorem Ipsum Sit Amet Consectetur dipisi?</a></h4>
-           <small><i class="far fa-clock"></i> October 15, 2020</small>
+            <small class="card-meta mb-2"><?=$row["actor_firstname"]?> <?=$row["actor_lastname"]?></small>
+            <h4 class="card-title mt-0 "><a class="text-white" href="<?= base_url('news-details/'.$row['id'] ) ?>"><?=$row["news_title"]?></a></h4>
           </div>
           <div class="card-footer">
            <div class="media">
-  <img class="mr-3 rounded-circle" src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/male-512.png" alt="Generic placeholder image" style="max-width:50px">
+ 
   <div class="media-body">
-    <h6 class="my-0 text-white d-block">Oz COruhlu</h6>
-     <small>Director of UI/UX</small>
+    <h6 class="my-0 text-white d-block"><?=$row["news_date"]?></h6>
   </div>
 </div>
           </div>
         </div>
-      </div></div>
+      </div>
+    </div>
         <?php endforeach;?>
     </div>
-
+    <nav>
+            <?= $pager->links() ?>
+        </nav>
 </div>
 
 <?= $this->include('site/mainpage-footer.php') ?>
