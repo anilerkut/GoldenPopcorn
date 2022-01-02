@@ -15,22 +15,6 @@ class MovieActorModel extends Model
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
-
-    public function getRoleList()
-    {
-        $builder=$this->builder($this->table);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
-    public function getRole($id)
-    {
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
     public function getRoleSelect($id)
     {
         $builder=$this->builder($this->table);
