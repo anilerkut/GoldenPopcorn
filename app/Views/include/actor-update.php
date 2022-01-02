@@ -13,6 +13,10 @@
                 <label for="inputLastName">Last Name</label>
                 <input type="text" class="form-control" id="inputLastName" name="actor_lastname"  value="<?= $actor['actor_lastname'] ?>">
             </div>
+            <div class="form-group col-md-6">
+                <label for="inputActorPic">Actor Picture Link</label>
+                <input type="text" class="form-control" id="inputLastName" name="actor_picture" value="<?= $actor['actor_picture'] ?>">
+            </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">

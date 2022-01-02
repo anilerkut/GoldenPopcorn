@@ -117,7 +117,6 @@
         </div>
     </div>
 
-    <?= $this->include('site/mainpage-footer.php') ?>
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

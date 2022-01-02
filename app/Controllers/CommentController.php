@@ -77,6 +77,7 @@ class CommentController extends BaseController
                 return redirect()->to(base_url('movie/'.$movieID));
             }
         }
+        echo view('site/movie-details',$data);
     }
 
 }
