@@ -11,6 +11,7 @@ use App\Models\MovieModel;
 class NewsController extends BaseController
 {
     private $newsModel;
+    public $perPage=6;
 
     public function __construct()
     {
@@ -128,9 +129,12 @@ class NewsController extends BaseController
     public function listByCard()
     {
         $news = new NewsModel();
-        // $data['news'] = $news->paginate(10);
-        $data['news'] = $news->getNewsByCard();
-        // $data['pager'] = $news->pager;
+        $actorModel = new ActorModel();
+        $data['news'] = $news->select('news.id, news_title, actor_firstname, actor_lastname,news_date,actor_picture,actor_id')
+        ->join('actor', 'actor.id = news.actor_id')
+        ->paginate($this->perPage);
+        $data['actor'] = $actorModel->findAll();
+        $data['pager'] = $news->pager;
         return view('site/news', $data);
     }
 
@@ -144,10 +148,10 @@ class NewsController extends BaseController
     public function listByNewDate() {
         $newsModel = new NewsModel();
         $actorModel = new ActorModel();
-        $data['news'] = $newsModel->select('news.id, news_title, actor_firstname, actor_lastname')
+        $data['news'] = $newsModel->select('news.id, news_title, actor_firstname, actor_lastname,actor_picture,news_date')
             ->join('actor', 'actor.id = news.actor_id')
             ->orderBy('news_date', 'DESC')
-            ->paginate(9);
+            ->paginate($this->perPage);
         $data['actor'] = $actorModel->findAll();
         $data['pager'] = $newsModel->pager;
         return view('site/news', $data);
@@ -156,10 +160,10 @@ class NewsController extends BaseController
     public function listByOldDate() {
         $newsModel = new NewsModel();
         $actorModel = new ActorModel();
-        $data['news'] = $newsModel->select('news.id, news_title, actor_firstname, actor_lastname')
+        $data['news'] = $newsModel->select('news.id, news_title, actor_firstname, actor_lastname,actor_picture,news_date')
             ->join('actor', 'actor.id = news.actor_id')
             ->orderBy('news_date', 'ASC')
-            ->paginate(9);
+            ->paginate($this->perPage);
         $data['actor'] = $actorModel->findAll();
         $data['pager'] = $newsModel->pager;
         return view('site/news', $data);

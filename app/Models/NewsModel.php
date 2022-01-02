@@ -15,14 +15,6 @@ class NewsModel extends Model
     protected $updatedField='updated_at';
     protected $skipValidation=false;
 
-    public function getNewsByCard(){
-        $builder=$this->builder($this->table);
-        $builder=$builder->select('news.id, news_title, actor_firstname, actor_lastname');
-        $builder = $builder->join('actor', 'actor.id = news.actor_id');
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
     public function getNewsWithActor($id){
         $builder=$this->builder($this->table);
         $builder = $builder->join('actor', 'actor.id = news.actor_id');
@@ -31,10 +23,5 @@ class NewsModel extends Model
         return $builder->getFirstRow();
     }
 
-    public function getNewsLike($name){
-        $builder=$this->builder($this->table);
-        $builder=$builder->like('actor_firstname',$name,both);
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
+
 }

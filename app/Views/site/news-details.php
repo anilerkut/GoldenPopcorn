@@ -19,20 +19,27 @@
 <?= $this->include('site/mainpage-header.php') ?>
 
 <div class="container my-5">
-    <div class="card">
-        <div>
-            <img src="<?= $news->actor_picture ?>"
-                 class="card-img-top img-height d-block mx-auto my-2" alt="...">
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><?= $news->news_title ?></h5>
-            <p class="card-text"><?= $news->news_content ?></p>
-        </div>
-        <div class="card-footer">
-            <p class="text-muted mt-2">Related Actor: <?= $news->actor_firstname." ".$news->actor_lastname ?></p>
-            <small class="text-muted float-right"><?= $news->news_date ?></small>
-        </div>
-    </div>
+<article class="postcard light red">
+			<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="<?= $news->actor_picture ?>" alt="Image Title" />
+			</a>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title blue text-center"><?= $news->news_title ?></h1>
+				<div class="postcard__subtitle small">
+					<time datetime="2020-05-25 12:00:00">
+						<i class="fas fa-calendar-alt mr-2"></i><?= $news->news_date ?>
+					</time>
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt"><?= $news->news_content ?></div>
+				<ul class="postcard__tagbox">
+
+					<li class="tag__item play blue">
+						<a href="<?= base_url('ActorController/actorDetails/'.$news->actor_id ) ?>"><i class="fas fa-tag mr-2"></i>Related Actor: <?= $news->actor_firstname." ".$news->actor_lastname ?></a>
+				    </li>
+			    </ul>
+		</div>
+</article>
 </div>
 
 <?= $this->include('site/mainpage-footer.php') ?>

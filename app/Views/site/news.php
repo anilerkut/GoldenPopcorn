@@ -11,7 +11,10 @@
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/news.css">
     <link rel="stylesheet" href="/css/main-page-header.css">
+    <link rel="stylesheet" href="/css/pagination.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Orbitron:wght@500&family=Oswald:wght@300&display=swap" rel="stylesheet">
+
     <title>GoldenPopcorn | News </title>
 </head>
 
@@ -34,18 +37,31 @@
     <h2 class="text-center"style="font-family: 'Amaranth', sans-serif;">NEWS</h2>
     <div class="row my-4">
         <?php foreach ($news as $row) : ?>
-        <div class="col-sm-6">
-            <div class="card bg-dark text-white h-100">
-                <div class="card-body text-center">
-                    <h5 class="card-title"><?= $row['news_title'] ?></h5>
-                    <p class="card-text display-4"><?= $row['actor_firstname']." ".$row['actor_lastname'] ?></p>
-                    <a href="<?= base_url('news-details/'.$row['id']) ?>" class="btn btn-primary">Read More</a>
-                </div>
-            </div>
+
+            
+            <div class="col-md-4 mt-4"><div class="card text-white card-has-bg click-col" style="background-image:url('<?=$row["actor_picture"]?>');">
+         <div class="card-img-overlay d-flex flex-column">
+         <div class="card-body">
+            <small class="card-meta mb-2"><?=$row["actor_firstname"]?> <?=$row["actor_lastname"]?></small>
+            <h4 class="card-title mt-0 "><a class="text-white" href="<?= base_url('news-details/'.$row['id'] ) ?>"><?=$row["news_title"]?></a></h4>
+          </div>
+          <div class="card-footer">
+           <div class="media">
+ 
+  <div class="media-body">
+    <h6 class="my-0 text-white d-block"><?=$row["news_date"]?></h6>
+  </div>
+</div>
+          </div>
         </div>
-        <?php endforeach;?>
+      </div>
     </div>
 
+        <?php endforeach;?>
+    </div>
+    <nav>
+            <?= $pager->links() ?>
+        </nav>
 </div>
 
 <?= $this->include('site/mainpage-footer.php') ?>
