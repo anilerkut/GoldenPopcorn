@@ -24,19 +24,13 @@ class MovieModel extends Model
     }
 
     public function getMovieCountryID($id){ //brings the movie's country from country table
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->select('country_id');
-        $builder=$builder->get();
-        return $builder->getFirstRow();
+        $moviecountry=$this->db->query("CALL movieCountryId(".$id.")")->getRow();
+        return $moviecountry;
     }
 
     public function getMovieLanguageID($id){ //brings the movie's language from language table
-        $builder=$this->builder($this->table);
-        $builder=$builder->where('id',$id);
-        $builder=$builder->select('language_id');
-        $builder=$builder->get();
-        return $builder->getFirstRow();
+        $movieLanguage=$this->db->query("CALL movieLanguageId(".$id.")")->getRow();
+        return $movieLanguage;
     }
 
     public function getMovieLike($name){
