@@ -35,6 +35,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'User::login');
 $routes->get('/register', 'User::register');
 $routes->get('/profile/(:num)', 'User::edit/$1');
+$routes->get('/suggest', 'MovieController::suggest');
 
 $routes->group('admin', function ($routes){
     $routes->group('user', function ($routes)
