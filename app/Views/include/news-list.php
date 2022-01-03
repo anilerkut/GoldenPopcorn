@@ -2,7 +2,7 @@
 <?= $this->include('data/admin-operation-top.php') ?>
 
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
     <a href="<?= base_url('news-add') ?>" class="btn btn-primary mt-3 btn-lg" > 
                             <i class="fas fa-plus"></i>
     </a>
@@ -17,10 +17,13 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($news as $row) : ?>
+        <?php
+        $num=1;
+        foreach ($news as $row) : ?>
         <tr>
-            <th scope="row">1</th>
+            <th scope="row"><?= $num ?></th>
             <td><?= $row['news_content'] ?></td>
+            <?php $num++ ?>
             <td>
                 <table>
                     <td>

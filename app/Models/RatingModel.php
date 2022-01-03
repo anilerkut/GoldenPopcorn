@@ -32,4 +32,14 @@ class RatingModel extends \CodeIgniter\Model
         return $builder->getRow();
     }
 
+    public function getUserRating($movieId, $userId)
+    {
+        $builder = $this->builder($this->table);
+        $builder = $builder->select('rating');
+        $builder = $builder->where('movie_id', $movieId);
+        $builder = $builder->where('user_id', $userId);
+        $builder = $builder->get();
+        return $builder->getRow();
+    }
+
 }

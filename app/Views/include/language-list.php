@@ -1,7 +1,7 @@
 <!-- Tüm Language'ları Listele -->
 <?= $this->include('data/admin-operation-top.php') ?>
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
     <a href="<?= base_url('language-add') ?>" class="btn btn-primary mt-3 btn-lg" >
                             <i class="fas fa-plus"></i>
     </a>

@@ -2,7 +2,7 @@
 
 <?= $this->include('data/admin-operation-top.php') ?>
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
         <h4>Update Role</h4>
         <form class="mt-5" action="<?= base_url('MovieActorController/update/'.$roleModel['id']) ?>" method="post">
         <div class="form-row">

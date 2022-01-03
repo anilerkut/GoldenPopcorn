@@ -1,7 +1,7 @@
 <!-- Movie ADD -->
 <?= $this->include('data/admin-operation-top.php') ?>
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
 <h4>Update News </h4>
     <form action="<?= base_url('NewsController/update/'.$news['id']) ?>">
         <div class="form-row">
