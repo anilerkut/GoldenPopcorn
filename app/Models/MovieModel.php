@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use CodeIgniter\Database\BaseBuilder;
 use CodeIgniter\Model;
 class MovieModel extends Model
 {
@@ -16,13 +17,6 @@ class MovieModel extends Model
     protected $skipValidation=false;
 
 
-    public function getMovieListByCard(){
-        $builder=$this->builder($this->table);
-        $builder=$builder;
-        $builder=$builder->get();
-        return $builder->getResultArray();
-    }
-
     public function getMovieCountryID($id){ //brings the movie's country from country table
         $builder=$this->builder($this->table);
         $builder=$builder->where('id',$id);
@@ -37,13 +31,6 @@ class MovieModel extends Model
         $builder=$builder->select('language_id');
         $builder=$builder->get();
         return $builder->getFirstRow();
-    }
-
-    public function getMovieLike($name){
-        $builder=$this->builder($this->table);
-        $builder=$builder->like('movie_name',$name);
-        $builder=$builder->get();
-        return $builder->getResultArray();
     }
 
     public function getMovieActors($movieId) {
@@ -100,6 +87,30 @@ class MovieModel extends Model
         $builder = $builder->join('user', 'user.id = comment.user_id');
         $builder=$builder->where('movie.id',$id);
         $builder=$builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function suggest($limit)
+    {
+        $builder = $this->builder($this->table)->distinct()->limit($limit);
+        $builder = $builder->select('movie.id, movie_name, movie_duration, imdb_rating, movie_releasedate, movie_poster');
+        $builder = $builder->join('movie_category', 'movie_category.movie_id = movie.id');
+
+        $builder = $builder->whereIn('movie_category.category_id', function (BaseBuilder $subqueryBuilder) {
+            return $subqueryBuilder->select('movie_category.category_id')->distinct()->from('watchlist')
+                ->join('movie_category', 'movie_category.movie_id = watchlist.movie_id')
+                ->join('user', 'user.id = watchlist.user_id')
+                ->where('user.id', session()->get('user')['id']);
+        });
+
+        $builder = $builder->whereNotIn('movie.id', function (BaseBuilder $subqueryBuilder) {
+            return $subqueryBuilder->select('watchlist.movie_id')->distinct()->from('watchlist')
+                ->join('movie', 'movie.id =  watchlist.movie_id')
+                ->where('watchlist.user_id', session()->get('user')['id']);
+        });
+
+        $builder = $builder->orderBy('movie.movie_name', 'RANDOM');
+        $builder = $builder->get();
         return $builder->getResultArray();
     }
 

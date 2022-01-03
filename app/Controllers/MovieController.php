@@ -50,13 +50,19 @@ class MovieController extends BaseController
 
     public function movieDetails($id) //to the movie details page
     { 
+        $data = $this->fillMovieDetails($id);
+        return view('/site/movie-details',$data);
+    }
+
+    public function fillMovieDetails($id)
+    {
         $movie = new MovieModel();
         $country = new CountryModel();
         $language = new LanguageModel();
         $picture = new PictureModel();
         $category=new CategoryModel();
         $movieCountry=(($movie->getMovieCountryID($id)));
-        $movieLanguage=(($movie->getMovieLanguageID($id)));  
+        $movieLanguage=(($movie->getMovieLanguageID($id)));
         $data['comment']=(($movie->getMovieComments ($id)));
         $data['categories']=(($movie->getMovieCategories($id)));
         $data['warnings']=(($movie->getMovieWarnings($id)));
@@ -66,7 +72,7 @@ class MovieController extends BaseController
         $data['role'] =(($movie->getMovieActors($id)));
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
-        return view('/site/movie-details',$data);
+        return $data;
     }
 
 
@@ -260,6 +266,13 @@ class MovieController extends BaseController
             return redirect()->to(base_url('movie/'.$movieId));
         }
 
+    }
+
+    public function suggest()
+    {
+        $movie = new MovieModel();
+        $data['movie'] = $movie->suggest(1);
+        return view('site/movie-suggest', $data);
     }
 
 }

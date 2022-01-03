@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-turquoise py-3 header-radius">
-        <a class="navbar-brand color-orange" href="#">GOLDENPOPCORN</a>
+        <span class="navbar-brand color-orange" href="#">GOLDENPOPCORN</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('profile/'.session()->get('user')['id'])?>">My Profile</a>
-                </li>  
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=base_url('suggest/')?>">SUGGEST ME</a>
+                </li>
             </ul>
         </div>
         <form action="<?= base_url('MovieController/searchByName/')?>" class="form-inline mr-4 my-2 my-lg-0" id="searchForm" method="post">

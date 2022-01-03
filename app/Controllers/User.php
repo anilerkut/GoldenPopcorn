@@ -159,7 +159,6 @@ class User extends BaseController
     public function edit($id) {
         $userModel = new UserModel();
         $data['user'] = $userModel->find($id);
-        // $data['movies'] = $userModel->getUserMovies($id);
         $data['movies'] = $userModel->select('movie.movie_name, movie.movie_poster, movie.id')
                                     ->join('watchlist', 'watchlist.user_id = user.id')
                                     ->join('movie', 'movie.id = watchlist.movie_id')
@@ -180,6 +179,14 @@ class User extends BaseController
                 'user_password_again'  => 'matches[user_password]',
             ];
         if(! $this->validate($rules)) {
+            $userModel = new UserModel();
+            $data['user'] = $userModel->find($id);
+            $data['movies'] = $userModel->select('movie.movie_name, movie.movie_poster, movie.id')
+                ->join('watchlist', 'watchlist.user_id = user.id')
+                ->join('movie', 'movie.id = watchlist.movie_id')
+                ->where('user.id',$id)
+                ->paginate($this->perPage);
+            $data['pager'] = $userModel->pager;
             $data['validation']= $this->validator;
         } else {
             $userModel = new UserModel();
@@ -192,7 +199,7 @@ class User extends BaseController
             $userModel->update($id, $newData);
             return redirect()->to(base_url('profile/'.$id));
         }
-        $this->edit($id);
+
         echo view('site/profile', $data);
     }
 

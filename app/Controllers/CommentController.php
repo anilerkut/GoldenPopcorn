@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\MovieModel;
 use App\Models\CommentModel;
 
 class CommentController extends BaseController
@@ -58,6 +57,8 @@ class CommentController extends BaseController
 
             if(! $this->validate($rules))
             {
+                $movie = new MovieController();
+                $data = $movie->fillMovieDetails($movieID);
                 $data['validation']= $this->validator;
             }
             else
@@ -77,6 +78,7 @@ class CommentController extends BaseController
                     ->with('status_icon','success');
             }
         }
+
         echo view('site/movie-details',$data);
     }
 

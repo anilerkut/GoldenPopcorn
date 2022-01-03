@@ -241,11 +241,11 @@
                             </div>
                         </div>
                         <?php if(isset($validation)):?>
-                        <div class="col-12"> 
-                            <div class="alert alert-warning">
-                                <?= $validation->listErrors() ?>
+                            <div class="d-flex justify-content-center">
+                                <div class="alert alert-warning">
+                                    <?= $validation->listErrors() ?>
+                                </div>
                             </div>
-                        </div>
                         <?php endif;?>
                     </section>
         </form>
