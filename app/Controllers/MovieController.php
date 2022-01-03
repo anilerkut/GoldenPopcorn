@@ -72,6 +72,7 @@ class MovieController extends BaseController
         $data['role'] =(($movie->getMovieActors($id)));
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
+        $data['rating'] = $this->getAverageRating($id);
         return $data;
     }
 
@@ -273,6 +274,13 @@ class MovieController extends BaseController
         $movie = new MovieModel();
         $data['movie'] = $movie->suggest(1);
         return view('site/movie-suggest', $data);
+    }
+
+    public function getAverageRating($movieId)
+    {
+        $ratingModel = new RatingModel();
+        $avgRating = $ratingModel->getAverageRating($movieId);
+        return $avgRating;
     }
 
 }

@@ -91,7 +91,9 @@
                       </tr>
                       <tr>
                           <td><img src="<?= base_url('org.png')?>" alt="imdb_logo" style="width:50px;height:60px"><span class="rating-font">Golden Popcorn</span></td>
-                          <td>10</td>
+                          <td><?php if ($rating === null) {echo "?"; }
+                                    else {echo number_format($rating->rating, 1);}?>
+                          </td>
                       </tr>
                   </tbody>
               </table>
