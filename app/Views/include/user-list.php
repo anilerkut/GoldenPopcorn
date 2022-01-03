@@ -2,7 +2,7 @@
 <?= $this->include('data/admin-operation-top.php') ?>
 
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
     <table class="table table-striped mt-5">
         <thead>
         <tr>

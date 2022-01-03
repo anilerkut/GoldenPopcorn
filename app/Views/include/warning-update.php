@@ -3,7 +3,7 @@
 <?= $this->include('data/admin-operation-top.php') ?>
 
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
         <h4>Update Warning</h4>
         <form action="<?= base_url('WarningController/update/'.$warning['id']) ?>" method="POST" class="mt-5">
             <input type="hidden" name="_method" value="PUT">

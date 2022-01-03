@@ -2,7 +2,7 @@
 <?= $this->include('data/admin-operation-top.php') ?>
 
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
     <form class="mt-5" action="MovieController/addMovie" method="post">
         <div class="form-row">
             <div class="form-group col-md-6">

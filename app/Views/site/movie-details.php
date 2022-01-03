@@ -49,6 +49,7 @@
               <hr>
               <h4>Rate Movie</h4>
                 <div class="stars" data-rating="3">
+                    <?php if($user_rating == null) :?>
                     <a href="/movie/<?= $movie["id"]?>/rating/1" class="rating">
                         <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
                     </a>
@@ -64,6 +65,22 @@
                     <a href="/movie/<?= $movie["id"]?>/rating/5" class="rating">
                         <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
                     </a>
+                    <?php else :?>
+                        <?php
+                        $i = 1;
+                        for (; $i <= (int)$user_rating->rating; $i++) : ?>
+                        <a href="/movie/<?= $movie["id"]?>/rating/<?= $i ?>" class="rating">
+                            <img src="<?= base_url('org.png')?>" style="width: 80px; height: 80px" alt="">
+                        </a>
+                        <?php endfor; ?>
+                        <?php for ($j = $i; $j <= 5; $j++) : ?>
+                            <a href="/movie/<?= $movie["id"]?>/rating/<?= $j ?>" class="rating">
+                                <img src="<?= base_url('blackwhite.png')?>" style="width: 80px; height: 80px" alt="">
+                            </a>
+                        <?php endfor; ?>
+                    <?php endif; ?>
+                    <h4 class="text-center mt-4 display-4"><?php if($user_rating == null) {echo "0";}
+                        else {echo (int)$user_rating->rating;}?>/5</h4>
                 </div>
               <table class="table table-hover mt-5">
                   <thead>

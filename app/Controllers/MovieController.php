@@ -59,6 +59,7 @@ class MovieController extends BaseController
         $movie = new MovieModel();
         $country = new CountryModel();
         $language = new LanguageModel();
+        $rating = new RatingModel();
         $picture = new PictureModel();
         $category=new CategoryModel();
         $movieCountry=(($movie->getMovieCountryID($id)));
@@ -73,6 +74,7 @@ class MovieController extends BaseController
         $data['country'] = $country->find($movieCountry->country_id);
         $data['language'] = $language->find($movieLanguage->language_id);
         $data['rating'] = $this->getAverageRating($id);
+        $data['user_rating'] = $rating->getUserRating($id, session()->get('user')['id']);
         return $data;
     }
 

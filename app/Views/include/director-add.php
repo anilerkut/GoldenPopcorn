@@ -2,7 +2,7 @@
 
 <?= $this->include('data/admin-operation-top.php') ?>
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
     <form action="/DirectorController/addDirector" method="POST" class="mt-5">
         <div class="form-row">
             <div class="form-group col-md-6">

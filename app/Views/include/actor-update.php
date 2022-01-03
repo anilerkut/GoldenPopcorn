@@ -1,7 +1,7 @@
 <!-- ACTOR ADD-->
 <?= $this->include('data/admin-operation-top.php') ?>
 
-<div class="container" style="min-height : calc(100vh - 200px);">
+<div class="container" style="min-height : calc(100vh - 200px); margin-left:300px">
 <form action="<?= base_url('ActorController/update/'.$actor['id']) ?>" method="POST" class="mt-5">
         <input type="hidden" name="_method" value="PUT">
         <div class="form-row">
