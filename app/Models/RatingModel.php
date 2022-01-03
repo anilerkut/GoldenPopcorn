@@ -22,4 +22,14 @@ class RatingModel extends \CodeIgniter\Model
         return $builder->getFirstRow();
     }
 
+    public function getAverageRating($movieId)
+    {
+        $builder = $this->builder($this->table);
+        $builder = $builder->selectAvg('rating');
+        $builder = $builder->groupBy('movie_id');
+        $builder = $builder->having('movie_id', $movieId);
+        $builder = $builder->get();
+        return $builder->getRow();
+    }
+
 }
