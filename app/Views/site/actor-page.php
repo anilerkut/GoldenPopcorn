@@ -25,7 +25,7 @@
 
   <div class="container my-5">
 
-      <div class="dropdown mt-4 mb-3">
+      <div class="dropdown  ml-5 mt-4 mb-3">
           <button class="btn cat-dropdown btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Sort By Name
           </button>
@@ -36,28 +36,25 @@
       </div>
 
       <h2 class="text-center" style="font-family: 'Amaranth', sans-serif;">ACTORS</h2>
-      <div class="row mb-4">
+      <div class="row ml-4 mb-4">
           <?php foreach ($actor as $row) : ?>
-          <div class="col-md-4 my-4">
-          <div class="card">
-              
-     <div class="card__image-container">
-     <a href="<?= base_url('ActorController/actorDetails/'.$row['id'] ) ?>">
-       <img class="card__image" src="<?=$row['actor_picture']?>" alt="">
-       </a>
-    </div>
+            <div class="col-md-4 my-4">
+              <div class="card">            
+                <div class="card__image-container">
+                  <a href="<?= base_url('ActorController/actorDetails/'.$row['id'] ) ?>">
+                      <img class="card__image" src="<?=$row['actor_picture']?>" alt="">
+                  </a>
+                </div>
+                <svg class="card__svg" viewBox="0 0 800 500">
+                    <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#e7662a"/>
+                    <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="orange" stroke-width="8" fill="transparent"/>
+                </svg>
       
-      <svg class="card__svg" viewBox="0 0 800 500">
-
-        <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="orange"/>
-        <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="orange" stroke-width="8" fill="transparent"/>
-      </svg>
-    
-     <div class="card__content">
-       <h1 class="card__title"><?= $row['actor_firstname']." ".$row['actor_lastname'] ?></h1>
-    </div>
-  </div>
-          </div>
+                <div class="card__content">
+                    <h1 class="card__title"><?= $row['actor_firstname']." ".$row['actor_lastname'] ?></h1>
+                </div>
+              </div>
+            </div>
           <?php endforeach; ?>
       </div>
 

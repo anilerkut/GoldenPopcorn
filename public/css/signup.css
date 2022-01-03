@@ -9,7 +9,7 @@ body
 .container
 {
     width:580px;
-    height: 600px;
+    height: 650px;
     margin:5% auto;
     margin-right: 150px;
     padding-bottom: 65px;
@@ -22,14 +22,13 @@ body
 .header
 {
     text-align: center;
-    padding-top: 25px;
 }
 
 .header h2
 {
     color: #141414;
     font-size: 55px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
     font-family: 'Amaranth', sans-serif;
 }
 

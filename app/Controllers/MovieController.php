@@ -78,7 +78,6 @@ class MovieController extends BaseController
         return $data;
     }
 
-
     public function update($id) //update the informations
     {   
         $country = new CountryModel();
